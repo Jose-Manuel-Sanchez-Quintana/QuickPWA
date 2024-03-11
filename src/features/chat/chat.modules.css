@@ -1,0 +1,57 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f3f3f3;
+}
+
+/* Agrega estos estilos a tu archivo CSS o en línea en el componente */
+.message-bubble {
+  background-color: rgb(40, 116, 90);
+  /* Color de fondo del mensaje enviado */
+  color: white;
+  /* Color del texto en el mensaje enviado */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  padding: 8px 12px;
+  /* Espacio interno del mensaje */
+  max-width: 70%;
+  /* Ancho máximo del mensaje */
+  align-self: flex-end;
+  /* Alinea el mensaje enviado a la derecha */
+  margin-bottom: 10px;
+  /* Margen inferior entre mensajes */
+}
+
+.message-bubble.other {
+  background-color: #E1E1E1; /* Color de fondo del mensaje recibido */
+  color: black; /* Color del texto en el mensaje recibido */
+  align-self: flex-end; /* Alinea el mensaje recibido a la izquierda */
+}
+
+
+.message-bubble {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  word-wrap: break-word;
+}
+
+.message-bubble.self-end {
+  background-color: #64DE92;
+  color: white;
+  align-self: flex-end;
+}
+
+.message-bubble.self-start {
+  background-color: #397850;
+  color: white;
+  align-self: flex-end;
+  background-color: #E1E1E1;
+  /* Color de fondo del mensaje recibido */
+  color: black;
+  /* Color del texto en el mensaje recibido */
+  align-self: flex-start;
+  /* Alinea el mensaje recibido a la izquierda */
+}

@@ -1,0 +1,12 @@
+/*.background {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../../../assets/imagenesDeFondo/fondoNubes.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-left: 140px;
+    padding-bottom: 120px;
+}
+*/
