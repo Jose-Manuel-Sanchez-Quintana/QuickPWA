@@ -75,7 +75,10 @@ export const Post = ({ post, like, repost, unlike, unrepost, profile_user }) => 
 	return (
 		(is_repost || (!is_repost && post.active === true)) &&
 		<>
-			<div className="bg-gray-50 dark:bg-quick4 dark:text-white sm:flex border-b border-quick5">
+			<div className="
+			
+
+				bg-light-white-0 dark:bg-quick4 dark:text-white ">
 				<div className="sm:mt-0 sm:text-left break-all w-full">
 					{/* Div para la foto de perfil, nombre y numero de followers */}
 					<div className="hover:rounded p-3" >

@@ -4,6 +4,7 @@ import signUpStyles from "./signup.module.css";
 import useSignUpForm from "./useSignUpForm";
 import { Spinner } from "@material-tailwind/react";
 import validator from "validator";
+import { useNavigate } from "react-router-dom";
 //const validator = require("validator");
 
 /*Constante SignUpForm*/
@@ -23,6 +24,7 @@ export const SignUpForm = () => {
   const [email_error, setEmailError] = useState(null);
   const [password_error, setPasswordError] = useState(null);
   const [name_error, setNameError] = useState(null);
+  const navigate = useNavigate()
 
   //variables para la validacion de correos
   const validation_email = () => {
@@ -151,12 +153,9 @@ export const SignUpForm = () => {
             ""
           )}*/}
           <h5 className="text-center">
-            <a
-              className="text-white text-decoration: underline hover:text-purple-400"
-              href="/login"
-            >
+            <p onClick={() => { navigate('/login') }} className="text-white text-decoration: underline hover:text-purple-400 cursor-pointer">
               Already have an account? Log in
-            </a>
+            </p>
           </h5>
         </div>
       </div>

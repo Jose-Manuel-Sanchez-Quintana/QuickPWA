@@ -60,9 +60,9 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
    }
 
    return (
-      <span className="">
+      <>
          <input type='file' hidden ref={post_media_input} onChange={(e) => { handleSetPostMedia(e.target.files) }} multiple accept='image/*' />
-         <div className="h-screen w-screen fixed md:relative top-0 left-0 z-40 md:z-auto rounded-none dark:outline outline-1 outline-quick5 flex md:w-auto md:h-auto flex-row items-top gap-2 md:rounded-md border border-gray-900/10 bg-white dark:bg-quick4 p-6 md:p-1">
+         <div className="top-0 left-0 rounded-none dark:outline outline-1 outline-quick5 flex md:w-auto md:h-auto flex-row items-top gap-2 md:rounded-md border border-gray-900/10 bg-white dark:bg-quick4 p-6 md:p-1">
             <div className="block md:hidden">
                <button onClick={handleClose} className="text-black dark:text-white">
                   <FaArrowLeft />
@@ -70,13 +70,13 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
             </div>
             <div className="">
                <button
-                  className="rounded-full relative h-10 max-h-[40px] w-10 max-w-[40px] select-none text-center align-middle font-sans text-xs font-medium uppercase text-gray-500 transition-all active:bg-gray-700 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  className="rounded-full h-10 w-10 select-none text-center align-middle font-sans text-xs font-medium uppercase text-gray-500 transition-all active:bg-gray-700 disabled:pointer-events-none disabled:shadow-none"
                   type="button"
                   onClick={() => { post_media_input.current.click() }}
                >
-                  <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                     <FaImages color='#90A4AE' size={20} />
-                  </span>
+                  {/* <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"> */}
+                  <FaImages color='#90A4AE' size={20} />
+                  {/* </span> */}
                </button>
 
                {/* <button
@@ -91,9 +91,9 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
                         </span>
                     </button> */}
             </div>
-            <div className="relative grid h-full w-full min-w-[200px]">
+            <div className="grid h-full w-full min-w-[200px]">
                <textarea rows="5" placeholder="Quick tought..." value={post_message} onChange={(e) => { handleSetPostMessage(e.target.value) }}
-                  className="peer h-full  min-h-full w-full resize-none rounded-[7px]  !border-0 border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal dark:text-white outline outline-0 transition-all placeholder:text-blue-gray-300 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-transparent focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50">
+                  className="peer h-full w-full resize-none rounded-[7px]  !border-0 border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal dark:text-white outline outline-0 transition-all placeholder:text-blue-gray-300 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-transparent focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50">
                </textarea>
                <div className='flex'>
                   {
@@ -123,19 +123,19 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
             <div className='grid'>
                <button
                   disabled={post_enabled}
-                  className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase dark:text-white transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-20 disabled:shadow-none"
+                  className="h-10 w-10 select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase dark:text-white transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:shadow-none"
                   type="button"
                   onClick={handleMakePost}
                >
-                  <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                     <IoMdSend size={20} />
-                  </span>
+                  {/* <span className=" transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"> */}
+                  <IoMdSend size={20} />
+                  {/* </span> */}
                </button>
                <span className='flex dark:text-white text-sm items-end justify-center'>
                   <p className='text-slate-400'>{`${post_message.length}/${message_max_chars}`}</p>
                </span>
             </div>
          </div>
-      </span>
+      </>
    )
 }

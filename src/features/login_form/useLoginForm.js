@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const useLoginForm = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const useLoginForm = () => {
   const { user, setUser } = useContext(UserContext);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState("");
+  const navigate = useNavigate()
 
   const logIn = (email, password) => {
     setLoading(true);
@@ -19,8 +21,8 @@ const useLoginForm = () => {
           name: userCredential.user.displayName,
           email: userCredential.user.email,
         });
-        setLoading(false);
-        window.location = "/";
+        setLoading(false)
+        navigate('/')
       })
       .catch((error) => {
         const errorCode = error.code;
