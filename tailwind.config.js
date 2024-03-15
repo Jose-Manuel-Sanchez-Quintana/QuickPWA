@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'light-gray-0': '#f5f8fa',
+        'light-gray-0': '#f7f7f7',
         'light-gray-border': '#e1e8ed',
         'light-white-0': '#ffffff',
         'quick1': '#6c8a91',
@@ -18,6 +18,12 @@ module.exports = {
         'quick8': '#99aab5',
         'quick9': '#2e2f33',
       },
+      height: {
+        'navbar-height': '4rem'
+      },
+      inset: {
+        'navbar-height': '4rem'
+      }
     },
   },
   plugins: [],

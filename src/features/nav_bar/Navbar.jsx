@@ -51,49 +51,57 @@ export const NavBar = () => {
   return (
     <>
       {/* Header */}
-      <NavDrawer open={drawer_open} setOpen={setDrawerOpen} />
+      {/* <NavDrawer open={drawer_open} setOpen={setDrawerOpen} /> */}
       {/* <DrawerWithNavigation open={drawer_open} setOpen={setDrawerOpen} className="z-50" /> */}
 
       {
-        <div className="hidden absolute z-50 w-full h-full bg-quick7">
-          <div className="flex items-center text-white gap-4">
-            <FaArrowLeft />
-            <p>Search</p>
-          </div>
-          <div>
-            <input
-              type="search"
-              value={search_value}
-              className="w-full h-12"
-              placeholder="Quick search..."
-              onFocus={() => { setSearchActive(true) }}
-              onBlur={() => { setSearchActive(false) }}
-              onChange={(e) => { setSearchValue(e.target.value); searchUsers(e.target.value) }}
-            />
-          </div>
+        // <div className="hidden absolute z-50 w-full h-full bg-quick7">
+        //   <div className="flex items-center text-white gap-4">
+        //     <FaArrowLeft />
+        //     <p>Search</p>
+        //   </div>
+        //   <div>
+        //     <input
+        //       type="search"
+        //       value={search_value}
+        //       className="w-full h-12"
+        //       placeholder="Quick search..."
+        //       onFocus={() => { setSearchActive(true) }}
+        //       onBlur={() => { setSearchActive(false) }}
+        //       onChange={(e) => { setSearchValue(e.target.value); searchUsers(e.target.value) }}
+        //     />
+        //   </div>
 
-        </div>
+        // </div>
       }
 
-      <Search results={search_results} />
+      {/* <Search results={search_results} /> */}
 
-      <div className="sticky top-0">
-        <div className="grid bg-green-700 text-white text-5xl grid-cols-3 md:grid-cols-3 justify-between items-center p-1 pl-10 pr-10">
+      <div className="
+          sticky 
+          top-0
+          border border-b-light-grey-border 
+          bg-white h-navbar-height
+          shrink-0
+        ">
+        <div className="
+            grid grid-cols-4
+            mx-auto
+            max-w-[1200px] h-full
+          ">
+
           {/* <div className="px-6"> */}
           {/* <div className="flex"> */}
 
 
           {/* {search_value !== "" && search_active && <Search results={search_results} />} */}
-          <div className="blocl md:hidden col-span-1 h-8 md:h-12 flex justify-start">
+          <div className="flex justify-start col-span-1 block md:hidden h-full">
             <button className="h-full" onClick={() => { setDrawerOpen(true) }}>
               <img src={user.avatar} className="rounded-full h-full aspect-square" alt="" />
             </button>
           </div>
-          <div>
-            <button type="button"><BiSolidHome /></button>
-            <button type="button"><BsBellFill /></button>
-            <button type="button"><BiSolidMessageRoundedDetail /></button>
-            <button type="button"><BsPersonFill /></button>
+          <div className="flex justify-start items-center col-span-1">
+            <img src="test.png" alt="" />
           </div>
           {/* <input
             type="search"
@@ -107,18 +115,23 @@ export const NavBar = () => {
           /> */}
           {/* <Search results={search_results} /> */}
 
-          <div className="col-span-1 h-8 md:h-12 ">
-            <button className="flex justify-center w-full h-8 md:h-12" onClick={() => { navigate('/') }}>
-              <img src="./Quickk.png" className="h-8 md:h-12"></img>
-            </button>
+          <div className="flex flex col-span-2 h-full">
+            <button className="flex items-center px-3 bg-blue-200" type="button"><span className="hidden md:block">For you</span></button>
+            <button className="flex items-center px-3 bg-blue-200" type="button"><span className="hidden md:block">Following</span></button>
+
+            {/* <button className="h-full" onClick={() => { navigate('/') }}> */}
+            {/* <img src="./Quickk.png" className="h-full"></img> */}
+            {/* </button> */}
           </div>
-          {/* Home button */}
-          {/* Logout button */}
-          <div className="col-span-1 h-8 md:h-12 flex justify-end">
-            <button>
-              <FaMagnifyingGlass color="white" className="h-full block md:hidden" onClick={() => { setSearchActive(true) }} />
-              <BiLogOut color="white" className="hidden md:block" onClick={() => { so() }} />
-            </button>
+          <div className="flex justify-center items-center col-span-1 h-full bg-blue-200">
+            <div className="flex items-center p-2 bg-red-200 w-full">
+              <FaMagnifyingGlass color="black" className="mr-2" onClick={() => { setSearchActive(true) }} />
+              <input className="grow" type="text" placeholder="Quick Search" />
+            </div>
+            {/* <button className="" type="button">
+              <FaMagnifyingGlass color="white" className="block md:hidden" onClick={() => { setSearchActive(true) }} />
+              <BiLogOut color="black" className="hidden md:block" onClick={() => { so() }} />
+            </button> */}
           </div>
           {/* </div> */}
           {/* </div> */}

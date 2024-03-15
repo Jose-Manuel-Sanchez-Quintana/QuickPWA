@@ -10,7 +10,7 @@ const useSuggestion = () => {
             const user_list = await getDocs(collection(db, "users"));
 
             setUsers(await Promise.all(
-                user_list.docs.map(async (user) => {
+                user_list.docs.slice(0, 6).map(async (user) => {
                     let user_data = user.data();
                     user_data.uid = user.id;
                     return user_data;

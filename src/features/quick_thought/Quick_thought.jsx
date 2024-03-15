@@ -61,8 +61,12 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
 
    return (
       <>
-         <input type='file' hidden ref={post_media_input} onChange={(e) => { handleSetPostMedia(e.target.files) }} multiple accept='image/*' />
-         <div className="top-0 left-0 rounded-none dark:outline outline-1 outline-quick5 flex md:w-auto md:h-auto flex-row items-top gap-2 md:rounded-md border border-gray-900/10 bg-white dark:bg-quick4 p-6 md:p-1">
+         <input type='file' className="hidden" ref={post_media_input} onChange={(e) => { handleSetPostMedia(e.target.files) }} multiple accept='image/*' />
+         <div className="
+            top-0 left-0
+            outline-quick5 flex md:w-auto md:h-auto flex-row 
+            items-top gap-2 border border-light-grey-border 
+            bg-white dark:bg-quick4 p-6 md:p-1">
             <div className="block md:hidden">
                <button onClick={handleClose} className="text-black dark:text-white">
                   <FaArrowLeft />

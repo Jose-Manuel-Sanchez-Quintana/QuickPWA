@@ -98,10 +98,8 @@ export const Feed = ({ posts, setPosts }) => {
         <div className="
             overflow-hidden
             col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2  
-            rounded-lg
             bg-light-white dark:bg-quick4
-            border border-light-gray-border 
-            dark:outline dark:outline-1 dark:outline-quick5 
+            border-x border-light-gray-border
             text-black text-3xl
             divide-y divide-light-gray-border
         ">
