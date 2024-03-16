@@ -116,18 +116,18 @@ export const NavBar = () => {
           {/* <Search results={search_results} /> */}
 
           <div className="flex flex col-span-2 h-full">
-            <button className="flex items-center px-3 bg-blue-200" type="button"><span className="hidden md:block">For you</span></button>
-            <button className="flex items-center px-3 bg-blue-200" type="button"><span className="hidden md:block">Following</span></button>
+            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span className="hidden md:block">For you</span></button>
+            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span className="hidden md:block">Following</span></button>
 
             {/* <button className="h-full" onClick={() => { navigate('/') }}> */}
             {/* <img src="./Quickk.png" className="h-full"></img> */}
             {/* </button> */}
           </div>
           <div className="flex justify-center items-center col-span-1 h-full bg-blue-200">
-            <div className="flex items-center p-2 bg-red-200 w-full">
+            <label className="flex items-center bg-gray-200 rounded w-full">
               <FaMagnifyingGlass color="black" className="mr-2" onClick={() => { setSearchActive(true) }} />
-              <input className="grow" type="text" placeholder="Quick Search" />
-            </div>
+              <input className="grow bg-transparent focus:outline-none" type="text" placeholder="Quick Search" />
+            </label>
             {/* <button className="" type="button">
               <FaMagnifyingGlass color="white" className="block md:hidden" onClick={() => { setSearchActive(true) }} />
               <BiLogOut color="black" className="hidden md:block" onClick={() => { so() }} />

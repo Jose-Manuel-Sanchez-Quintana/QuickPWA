@@ -38,7 +38,7 @@ export const Profile = ({ name, avatar }) => {
 					<div className="hidden md:flex items-stretch col-span-1">
 						<button className="flex items-center p-2 text-sm hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white w-full text-gray-600 font-semibold" onClick={() => { navigate("/dms?to=" + user.uid) }}>
 							<span className="mr-3">
-								<img src={user.avatar} className="rounded-sm bg-black h-10 w-10 object-contain" alt="" />
+								<img src={user.avatar} className="rounded-sm bg-black h-12 w-12 object-contain" alt="" />
 							</span>
 							<span className="flex">
 								{user.name}

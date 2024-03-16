@@ -117,9 +117,9 @@ export const Post = ({ post, like, repost, unlike, unrepost, profile_user }) => 
 							<span className="flex items-center space-x-4">
 								{
 									is_repost ?
-										<img className="w-20 h-20 rounded-full cursor-pointer" onClick={() => { navigate("/profile?user=" + post.original_post.author.id) }} src={post.original_post.author.avatar} alt="user avatar" loading="lazy"></img>
+										<img className="w-12 h-12 rounded cursor-pointer" onClick={() => { navigate("/profile?user=" + post.original_post.author.id) }} src={post.original_post.author.avatar} alt="user avatar" loading="lazy"></img>
 										:
-										<img className="w-20 h-20 rounded-full cursor-pointer" onClick={() => { navigate("/profile?user=" + post.author.id) }} src={post.author.avatar} alt="user avatar" loading="lazy"></img>
+										<img className="w-12 h-12 rounded cursor-pointer" onClick={() => { navigate("/profile?user=" + post.author.id) }} src={post.author.avatar} alt="user avatar" loading="lazy"></img>
 
 								}
 								<div className="">
