@@ -103,7 +103,7 @@ function App() {
 
 
   return (
-    <div>
+    <>
       {/*Navegacion por las rutas de la pagina*/}
       {user != null &&
         <BrowserRouter>
@@ -166,7 +166,7 @@ function App() {
 
       {/*Usuario Prueba*/}
       {/* <p>Test account: a@gmail.com | a123456</p> */}
-    </div>
+    </>
   )
 }
 

@@ -31,7 +31,7 @@ const relativeDate = (date) => {
 	} else if (diff < day * 2) {
 		return "1 day ago";
 	} else if (diff < week) {
-		return week + " days ago";
+		return Math.floor(diff / day) + " days ago";
 	} else if (diff < month) {
 		return Math.floor(diff / week) + " weeks ago";
 	} else if (diff < year) {
@@ -75,7 +75,10 @@ export const Post = ({ post, like, repost, unlike, unrepost, profile_user }) => 
 	return (
 		(is_repost || (!is_repost && post.active === true)) &&
 		<>
-			<div className="bg-gray-50 dark:bg-quick4 dark:text-white sm:flex border-b border-quick5">
+			<div className="
+			
+
+				bg-light-white-0 dark:bg-quick4 dark:text-white ">
 				<div className="sm:mt-0 sm:text-left break-all w-full">
 					{/* Div para la foto de perfil, nombre y numero de followers */}
 					<div className="hover:rounded p-3" >
@@ -114,9 +117,9 @@ export const Post = ({ post, like, repost, unlike, unrepost, profile_user }) => 
 							<span className="flex items-center space-x-4">
 								{
 									is_repost ?
-										<img className="w-20 h-20 rounded-full cursor-pointer" onClick={() => { navigate("/profile?user=" + post.original_post.author.id) }} src={post.original_post.author.avatar} alt="user avatar" loading="lazy"></img>
+										<img className="w-12 h-12 rounded cursor-pointer" onClick={() => { navigate("/profile?user=" + post.original_post.author.id) }} src={post.original_post.author.avatar} alt="user avatar" loading="lazy"></img>
 										:
-										<img className="w-20 h-20 rounded-full cursor-pointer" onClick={() => { navigate("/profile?user=" + post.author.id) }} src={post.author.avatar} alt="user avatar" loading="lazy"></img>
+										<img className="w-12 h-12 rounded cursor-pointer" onClick={() => { navigate("/profile?user=" + post.author.id) }} src={post.author.avatar} alt="user avatar" loading="lazy"></img>
 
 								}
 								<div className="">
@@ -185,7 +188,7 @@ export const Post = ({ post, like, repost, unlike, unrepost, profile_user }) => 
 												<img src={file.url} className='rounded-md bg-black h-72 object-cover object-center w-full' alt="" />
 											))
 											:
-											post.media.length > 0 && <img src={post.media[0].url} className='rounded-md object-cover w- max-w-xs' alt="" />
+											post.media.length > 0 && <img src={post.media[0].url} className='bg-black w-auto h-72 object-contain' alt="" />
 									}
 								</div>
 								:

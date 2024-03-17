@@ -7,35 +7,58 @@ import { Quick_Thought } from "../quick_thought/Quick_thought";
 import { Post } from "../post/post";
 import useHome from "./UseHome";
 import { Speed_Dial } from "../speed_dial/speed_dial";
+import Bottom_NavBar from "../bottom_navbar/Bottom_NavBar";
 
 export const Home = () => {
   const { user_name, user_avatar, posts, setPosts, post } = useHome();
   const [qt_active, setQtActive] = useState(false)
 
   return (
-    <>
+    <div className="
+        flex flex-col 
+        h-screen
+        bg-light-pattern
+        dark:bg-quick7
+        overflow-y-scroll
+      ">
       <NavBar />
+      {/* w-full lg:w-[1010px] xl:w-[1150px] */}
+      <div className="
+          flex
+          grow
+          justify-center
+          w-full lg:w-fit
+          bg-light-gray-0
+          mx-auto
+        ">
 
-      <div className="h-auto w-auto bg-gray-400 dark:bg-quick7 p-4 grid grid-cols-1 gap-3 lg:grid-cols-4 lg:p-10 md:grid-cols-4 md:p-10 sm:grid-cols-1 sm:p-10 ">
-        <Speed_Dial clickHandler={() => { setQtActive(true) }} />
-        <Profile name={user_name} avatar={user_avatar} />
-        <div className="text-xl rounded-lg col-span-1 sm:col-span-3 lg:col-span-2 grid gap-3">
-          <div className="">
-            {
+        {/* w-[590px] max-w-[590px] md:min-w-[590px] */}
 
-              <span className={`${qt_active ? 'block' : 'hidden'} md:block`}>
-                <Quick_Thought makePost={post} handleClose={() => { setQtActive(false) }} />
-              </span>
-            }
-          </div>
-          <div>
-            <Feed posts={posts} setPosts={setPosts} />
-          </div>
+        {/* <Speed_Dial clickHandler={() => { setQtActive(true) }} /> */}
+        <div className="hidden md:block grow lg:w-[100px] xl:w-[250px]">
+          <Profile name={user_name} avatar={user_avatar} />
         </div>
-        <span className="hidden lg:flex row-span-3">
+        <div className="
+            flex
+            justify-center md:justify-start lg:justify-center
+            w-[580px] max-w-[580px] md:min-w-[580px]
+            md:px-2
+            text-xl 
+            md:border-x border-light-grey-border
+            box-content
+          ">
+          <span className="w-full">
+            {
+              posts !== null && <Quick_Thought makePost={post} handleClose={() => { setQtActive(false) }} />
+            }
+            <Feed posts={posts} setPosts={setPosts} />
+          </span>
+        </div>
+        <aside className="hidden md:flex w-[300px] min-w-[300px] max-w-[300px]">
           <Suggestions />
-        </span>
+        </aside>
       </div>
-    </>
+      <Bottom_NavBar />
+    </div>
   );
 };
