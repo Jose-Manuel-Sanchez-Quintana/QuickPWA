@@ -29,8 +29,10 @@ import {
 } from "@material-tailwind/react";
 import { UserContext } from "../../App";
 import NavDrawer from "../nav_drawer/NavDrawer";
+import { RxCross2 } from "react-icons/rx";
 
 export const NavBar = () => {
+  const [search_visible, setSearchVisible] = useState(false)
   const { searchUsers, search_results } = UseNavbar();
   const [search_value, setSearchValue] = useState("");
   const [search_active, setSearchActive] = useState(false);
@@ -51,7 +53,7 @@ export const NavBar = () => {
   return (
     <>
       {/* Header */}
-      {/* <NavDrawer open={drawer_open} setOpen={setDrawerOpen} /> */}
+      <NavDrawer open={drawer_open} setOpen={setDrawerOpen} />
       {/* <DrawerWithNavigation open={drawer_open} setOpen={setDrawerOpen} className="z-50" /> */}
 
       {
@@ -79,15 +81,18 @@ export const NavBar = () => {
 
       <div className="
           sticky 
+          flex flex-col
           top-0
-          border border-b-light-grey-border 
-          bg-white h-navbar-height
+          shadow-navbar-shadow
+          bg-white 
           shrink-0
+          box-content
         ">
         <div className="
-            grid grid-cols-4
+            flex
+            items-stretch
+            w-full lg:w-fit h-navbar-height
             mx-auto
-            max-w-[1200px] h-full
           ">
 
           {/* <div className="px-6"> */}
@@ -95,13 +100,13 @@ export const NavBar = () => {
 
 
           {/* {search_value !== "" && search_active && <Search results={search_results} />} */}
-          <div className="flex justify-start col-span-1 block md:hidden h-full">
-            <button className="h-full" onClick={() => { setDrawerOpen(true) }}>
-              <img src={user.avatar} className="rounded-full h-full aspect-square" alt="" />
+          <div className="flex md:grow md:justify-center xl:justify-start items-center md:px-2 md:px-0 lg:w-[100px] xl:w-[250px]">
+            <button className="flex items-center justify-center md:hidden h-full pl-3" onClick={() => { setDrawerOpen(true); setSearchVisible(false) }}>
+              <img src={user.avatar} className="rounded w-10 h-10 bg-black object-contain" alt="" />
             </button>
-          </div>
-          <div className="flex justify-start items-center col-span-1">
-            <img src="test.png" alt="" />
+            <button className="hidden md:block" onClick={() => { setDrawerOpen(true) }}>
+              <img src="./test.png" alt="" />
+            </button>
           </div>
           {/* <input
             type="search"
@@ -115,26 +120,46 @@ export const NavBar = () => {
           /> */}
           {/* <Search results={search_results} /> */}
 
-          <div className="flex flex col-span-2 h-full">
-            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span className="hidden md:block">For you</span></button>
-            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span className="hidden md:block">Following</span></button>
-
-            {/* <button className="h-full" onClick={() => { navigate('/') }}> */}
-            {/* <img src="./Quickk.png" className="h-full"></img> */}
-            {/* </button> */}
+          <div className="hidden md:flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px] box-content">
+            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span>For you</span></button>
+            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span>Following</span></button>
           </div>
-          <div className="flex justify-center items-center col-span-1 h-full bg-blue-200">
-            <label className="flex items-center bg-gray-200 rounded w-full">
+          <div className="flex items-center justify-center p-2 md:hidden grow">
+            {
+              search_visible ?
+                <input className="bg-gray-200 rounded-full w-full h-full px-4 focus:outline-none" type="text" placeholder="Quick Search" />
+                :
+                <div className="md:hidden">
+                  <img src="./test.png" alt="" />
+                </div>
+            }
+          </div>
+
+          <div className="flex justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px]">
+            <label className="hidden lg:flex items-center bg-gray-200 rounded w-full h-9 px-3">
               <FaMagnifyingGlass color="black" className="mr-2" onClick={() => { setSearchActive(true) }} />
               <input className="grow bg-transparent focus:outline-none" type="text" placeholder="Quick Search" />
             </label>
+            <div className="flex lg:hidden h-full w-10 pr-3 justify-center items-center" onClick={() => { setSearchVisible(!search_visible) }}>
+              {
+                search_visible ?
+                  <RxCross2 color="black" className="w-6 h-6" />
+                  :
+                  <FaMagnifyingGlass color="black" className="w-6 h-6" />
+              }
+            </div>
+
             {/* <button className="" type="button">
               <FaMagnifyingGlass color="white" className="block md:hidden" onClick={() => { setSearchActive(true) }} />
               <BiLogOut color="black" className="hidden md:block" onClick={() => { so() }} />
             </button> */}
           </div>
-          {/* </div> */}
-          {/* </div> */}
+        </div>
+        <div className="flex md:hidden justify-center h-navbar-height">
+          <div className="flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px]">
+            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span>For you</span></button>
+            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span>Following</span></button>
+          </div>
         </div>
       </div>
     </>

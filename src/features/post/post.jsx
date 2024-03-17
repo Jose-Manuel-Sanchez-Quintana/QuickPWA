@@ -31,7 +31,7 @@ const relativeDate = (date) => {
 	} else if (diff < day * 2) {
 		return "1 day ago";
 	} else if (diff < week) {
-		return week + " days ago";
+		return Math.floor(diff / day) + " days ago";
 	} else if (diff < month) {
 		return Math.floor(diff / week) + " weeks ago";
 	} else if (diff < year) {
@@ -188,7 +188,7 @@ export const Post = ({ post, like, repost, unlike, unrepost, profile_user }) => 
 												<img src={file.url} className='rounded-md bg-black h-72 object-cover object-center w-full' alt="" />
 											))
 											:
-											post.media.length > 0 && <img src={post.media[0].url} className='rounded-md object-cover w- max-w-xs' alt="" />
+											post.media.length > 0 && <img src={post.media[0].url} className='bg-black w-auto h-72 object-contain' alt="" />
 									}
 								</div>
 								:

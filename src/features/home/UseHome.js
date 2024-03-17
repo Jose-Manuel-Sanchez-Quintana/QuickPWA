@@ -17,7 +17,7 @@ const UseHome = () => {
   const { user } = useContext(UserContext);
   const [user_name, setUserName] = useState("");
   const [user_avatar, setUserAvatar] = useState("");
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
 
   const getUserInfo = async () => {
     const doc_ref = doc(db, "users", user.uid);

@@ -15,38 +15,49 @@ export const Home = () => {
 
   return (
     <div className="
-      flex flex-col 
-      h-screen
-      bg-light-gray-0 dark:bg-quick7
-      overflow-y-scroll
+        flex flex-col 
+        h-screen
+        bg-light-pattern
+        dark:bg-quick7
+        overflow-y-scroll
       ">
       <NavBar />
+      {/* w-full lg:w-[1010px] xl:w-[1150px] */}
       <div className="
-          w-full md:w-[750px] lg:w-[900px] xl:w-[1200px]
-          grid grid-cols-1 md:grid-cols-4
+          flex
+          grow
+          justify-center
+          w-full lg:w-fit
+          bg-light-gray-0
           mx-auto
         ">
+
+        {/* w-[590px] max-w-[590px] md:min-w-[590px] */}
+
         {/* <Speed_Dial clickHandler={() => { setQtActive(true) }} /> */}
-        <div className="hidden lg:block row-span-1">
+        <div className="hidden md:block grow lg:w-[100px] xl:w-[250px]">
           <Profile name={user_name} avatar={user_avatar} />
         </div>
         <div className="
+            flex
+            justify-center md:justify-start lg:justify-center
+            w-[580px] max-w-[580px] md:min-w-[580px]
+            md:px-2
             text-xl 
-            col-span-1 sm:col-span-3 lg:col-span-3 xl:col-span-2
-            m-0
+            md:border-x border-light-grey-border
+            box-content
           ">
-          {/* <div className="hidden md:block"> */}
-          <Quick_Thought makePost={post} handleClose={() => { setQtActive(false) }} />
-          {/* </div> */}
-          {/* <div> */}
-          <Feed posts={posts} setPosts={setPosts} />
-          {/* </div> */}
+          <span className="w-full">
+            {
+              posts !== null && <Quick_Thought makePost={post} handleClose={() => { setQtActive(false) }} />
+            }
+            <Feed posts={posts} setPosts={setPosts} />
+          </span>
         </div>
-        <div className="hidden xl:flex row-span-1">
+        <aside className="hidden md:flex w-[300px] min-w-[300px] max-w-[300px]">
           <Suggestions />
-        </div>
+        </aside>
       </div>
-
       <Bottom_NavBar />
     </div>
   );

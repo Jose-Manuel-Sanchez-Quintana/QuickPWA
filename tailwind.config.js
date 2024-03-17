@@ -21,8 +21,20 @@ module.exports = {
       height: {
         'navbar-height': '4rem'
       },
+      width: {
+        'navbar-height': '4rem'
+      },
       inset: {
         'navbar-height': '4rem'
+      },
+      backgroundImage: {
+        'light-pattern': "url(./texture-test.png)"
+      },
+      screens: {
+        'md': '940px'
+      },
+      boxShadow: {
+        'navbar-shadow': '-1px 1px 2px 0px rgba(179,179,179,0.72)'
       }
     },
   },
