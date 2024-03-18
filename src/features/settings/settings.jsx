@@ -8,6 +8,7 @@ import Bottom_NavBar from "../bottom_navbar/Bottom_NavBar";
 import useHome from "../home/UseHome";
 import { IoIosSunny } from "react-icons/io";
 import { IoIosMoon } from "react-icons/io";
+import { Modal } from "../modal/Modal";
 
 
 export const Settings = () => {
@@ -67,6 +68,7 @@ export const Settings = () => {
     ]
     return (
         <>
+        <Modal />
             <div className="
         flex flex-col 
         h-screen
@@ -118,7 +120,7 @@ export const Settings = () => {
                                 <div className="w-full border dark:border-quick5 my-1"></div>
                                 <div className="font-semibold text-black dark:text-white w-full text-xs mb-3 lg:text-lg md:text-md sm:text-sm">Subscriptions</div>
                                 <BuyButton />
-                                <div className="w-full border dark:border-quick5 my-5"></div>
+                                <div className="w-full border dark:border-quick5 my-5"></div>                                
                             </div>
                         </div>
                     </div>
