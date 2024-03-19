@@ -21,7 +21,18 @@ export const Home = () => {
         dark:bg-quick7
         overflow-y-scroll
       ">
-      <NavBar />
+      <NavBar actions={[
+        {
+          label: 'For you',
+          callback: () => { },
+          selected: false
+        },
+        {
+          label: 'Following',
+          callback: () => { },
+          selected: false
+        }
+      ]} />
       {/* w-full lg:w-[1010px] xl:w-[1150px] */}
       <div className="
           flex
