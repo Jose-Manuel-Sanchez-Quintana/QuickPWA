@@ -21,6 +21,7 @@ import { auth } from './firebase';
 import GetQuicker from './features/get_quicker/GetQuicker';
 import axios from 'axios';
 import SubscriptionsSuccess from './features/subscriptions_success/SubscriptionsSuccess';
+import { Modal } from './features/modal/Modal';
 
 export const UserContext = React.createContext(null);
 
@@ -157,6 +158,12 @@ function App() {
                 // Change user to !user to make the route private
                 <PrivateRoute isAllowed={user} redirectTo='/'>
                   <GetQuicker />
+                </PrivateRoute>
+              } />
+              <Route exact path="/modal" element={
+                // Change user to !user to make the route private
+                <PrivateRoute isAllowed={user} redirectTo='/modal'>
+                  <Modal />
                 </PrivateRoute>
               } />
             </Routes>
