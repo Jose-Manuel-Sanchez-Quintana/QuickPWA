@@ -12,7 +12,7 @@ export const Suggestions = () => {
 				sticky
 				top-navbar-height
 				h-fit
-        w-full dark:bg-quick4 dark:text-white lg:dark:bg-quick4 z-10">
+        w-full dark:bg-quick4 dark:text-white lg:dark:bg-quick4">
 				{/* <h1 className="text-black dark:text-white dark:border-quick5 border-b">Suggestions</h1> */}
 				<div className="
 				m-2

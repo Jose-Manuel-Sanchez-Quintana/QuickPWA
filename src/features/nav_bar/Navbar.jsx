@@ -30,8 +30,9 @@ import {
 import { UserContext } from "../../App";
 import NavDrawer from "../nav_drawer/NavDrawer";
 import { RxCross2 } from "react-icons/rx";
+import NavbarTab from "../chat/navbar_tab/NavbarTab";
 
-export const NavBar = () => {
+export const NavBar = ({ tab_group }) => {
   const [search_visible, setSearchVisible] = useState(false)
   const { searchUsers, search_results } = UseNavbar();
   const [search_value, setSearchValue] = useState("");
@@ -39,6 +40,7 @@ export const NavBar = () => {
   const { user } = useContext(UserContext)
   const [drawer_open, setDrawerOpen] = useState(false)
   const navigate = useNavigate()
+  const [tabs, setTab] = useState(tab_group)
 
   const so = () => {
     signOut(auth)
@@ -49,6 +51,13 @@ export const NavBar = () => {
         // An error happened.
       });
   };
+
+  const handleSetTab = (index) => {
+    tabs.map((tab) => (
+      tab.selected = tab.index === index
+    ))
+    setTab([...tabs])
+  }
 
   return (
     <>
@@ -104,7 +113,7 @@ export const NavBar = () => {
             <button className="flex items-center justify-center md:hidden h-full pl-3" onClick={() => { setDrawerOpen(true); setSearchVisible(false) }}>
               <img src={user.avatar} className="rounded w-10 h-10 bg-black object-contain" alt="" />
             </button>
-            <button className="hidden md:block" onClick={() => { setDrawerOpen(true) }}>
+            <button className="hidden md:block" onClick={() => { navigate('/') }}>
               <img src="./test.png" alt="" />
             </button>
           </div>
@@ -121,8 +130,18 @@ export const NavBar = () => {
           {/* <Search results={search_results} /> */}
 
           <div className="hidden md:flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px] box-content">
-            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span>For you</span></button>
-            <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span>Following</span></button>
+            {
+              tab_group && tab_group.map((tab) => (
+                <NavbarTab
+                  key={tab.index}
+                  index={tab.index}
+                  label={tab.label}
+                  callback={(index) => { handleSetTab(index); tab.callback(index) }}
+                  selected={tab.selected}
+                />
+              ))
+            }
+            {/* <button className="flex items-center px-3 hover:bg-gray-200" type="button"><span>Following</span></button> */}
           </div>
           <div className="flex items-center justify-center p-2 md:hidden grow">
             {

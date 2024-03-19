@@ -110,6 +110,7 @@ export const Chat = () => {
 
   return (
     <>
+      <NavBar />
       {search_user && <FollowerPicker current_chatroom={chatroom} handleAddParticipants={addParticipants} handleClose={HandlecloseSearchModal} />}
       <div className="w-full h-screen flex flex-col ">
         <input type='file' ref={file_input_ref} accept='image/*,video/mp4' multiple hidden onChange={(e) => { handleSetMessageMedia(e.target.files) }} />

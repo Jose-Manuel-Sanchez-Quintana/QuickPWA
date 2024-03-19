@@ -29,7 +29,8 @@ function BuyButton() {
                     <Button className='bg-green-700 mt-3 align-middle sm:mt-0 md:mt-0 lg:mt-0' onClick={a}>Quicker Monthly</Button>
                     :
                     <>
-                        <p className='m-0 mb-2 text-black dark:text-white'>You already have a Monthly Quicker subscription</p>
+                        <span className='font-semibold text-black dark:text-white text-sm'>Quicker</span>
+                        <span className='flex text-gray-500 dark:text-gray-400 text-sm mb-2'>You already have a Monthly Quicker subscription</span>
                         <Button className='bg-green-700 mt-3 align-middle sm:mt-0 md:mt-0 lg:mt-0' onClick={handleCancelSubscription}>Cancel subscription</Button>
                     </>
 
