@@ -46,13 +46,13 @@ export const Profile = ({ name, avatar }) => {
 							</span>
 						</button>
 					</div>
-					<button className="flex flex-col xl:flex-row items-center p-3 hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white w-full text-gray-600" onClick={() => { navigate("/dms?to=" + user.uid) }}>
+					<button className="flex flex-col xl:flex-row items-center p-3 hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white w-full text-gray-600" onClick={() => { navigate('/') }}>
 						<BsBellFill className="xl:mr-3" />
 						<span className='hidden lg:block'>
-							Notifications
+							Home
 						</span>
 					</button>
-					<button className="flex flex-col xl:flex-row items-center p-3 hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white` w-full text-gray-600" onClick={() => { navigate("/dms?to=" + user.uid) }}>
+					<button className="flex flex-col xl:flex-row items-center p-3 hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white` w-full text-gray-600" onClick={() => { navigate('/dms?to=' + user.uid) }}>
 						<BiSolidMessageRoundedDetail className="xl:mr-3" />
 						<span className='hidden lg:block'>
 							Messages

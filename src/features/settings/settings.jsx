@@ -17,7 +17,7 @@ export const Settings = () => {
 	const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "system");
 	const { user_name, user_avatar, posts, setPosts, post } = useHome();
 	const [setting_tab, setSettingTab] = useState(null)
-	const tabs = [
+	const [tabs, setTabs] = useState([
 		{
 			index: 0,
 			label: 'Appearance',
@@ -30,17 +30,23 @@ export const Settings = () => {
 			callback: (index) => { handleSetSettingTab(index) },
 			selected: false
 		}
-	]
+	])
 
 	const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 	const element = document.documentElement;
 
 	const handleSetSettingTab = (index) => {
-		// setSettingTab(index)
+		setTabs(tabs.map((tab) => {
+			return {
+				...tab,
+				selected: tab.index === index
+			}
+		}))
+
 		switch (index) {
 			case 0:
-				setSettingTab(<>
-					<div className="font-semibold text-md text-black dark:text-white mb-7">Appearance settings</div>
+				setSettingTab(<div className="border-x border-light-grey-border p-2 h-full">
+					<div className="font-semibold text-xl text-black dark:text-white mb-7">Appearance settings</div>
 					<div className="font-medium text-md text-black border-b dark:text-white w-full mb-2">Theme</div>
 					<div>
 						<span className='font-semibold text-black dark:text-white text-sm'>Dark/Light mode</span>
@@ -55,14 +61,14 @@ export const Settings = () => {
 							}
 						</span>
 					</div>
-				</>)
+				</div>)
 				break;
 			case 1:
-				setSettingTab(<>
-					<div className="font-semibold text-md text-black dark:text-white mb-7">Account settings</div>
-					<div className="font-medium text-md text-black border-b dark:text-white w-full mb-2">Subscritions</div>
+				setSettingTab(<div className="border-x border-light-grey-border p-2 h-full">
+					<div className="font-semibold text-xl text-black dark:text-white mb-7">Account settings</div>
+					<div className="font-medium text-md text-black border-b dark:text-white w-full mb-2">Subscriptions</div>
 					<BuyButton />
-				</>)
+				</div>)
 		}
 
 
@@ -150,15 +156,12 @@ export const Settings = () => {
 					<div className="
             md:border-x border-light-grey-border
 						md:px-2
-            box-content=
+            box-content
+						w-[580px] max-w-[580px] md:min-w-[580px]
 					">
 						<div className="
             h-full
 						justify-center md:justify-start lg:justify-center
-            w-[580px] max-w-[580px] md:min-w-[580px]
-            text-xl
-						p-2
-            md:border-x border-light-grey-border
           ">
 							{setting_tab}
 						</div>
