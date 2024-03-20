@@ -7,7 +7,7 @@ const Bottom_NavBar = () => {
 
 	return (
 		<>
-			<div className="sticky md:hidden bottom-0 left-0 z-40 w-full h-navbar-height shrink-0 bg-slate-300 border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+			<div className="sticky md:hidden bottom-0 left-0 z-10 w-full h-navbar-height shrink-0 bg-slate-300 border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
 				<div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium">
 					<button onClick={() => { navigate('/') }} type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
 						<FaHome className="text-gray-700 dark:text-white" />

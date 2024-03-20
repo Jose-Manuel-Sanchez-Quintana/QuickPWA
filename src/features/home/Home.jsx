@@ -12,6 +12,29 @@ import Bottom_NavBar from "../bottom_navbar/Bottom_NavBar";
 export const Home = () => {
   const { user_name, user_avatar, posts, setPosts, post } = useHome();
   const [qt_active, setQtActive] = useState(false)
+  const [tabs, setTabs] = useState([
+    {
+      index: 0,
+      label: 'Appearance',
+      callback: (index) => { handleSetSettingTab(index) },
+      selected: true
+    },
+    {
+      index: 1,
+      label: 'Account',
+      callback: (index) => { handleSetSettingTab(index) },
+      selected: false
+    }
+  ])
+
+  const handleSetSettingTab = (index) => {
+    setTabs(tabs.map((tab) => {
+      return {
+        ...tab,
+        selected: tab.index === index
+      }
+    }))
+  }
 
   return (
     <div className="
@@ -21,18 +44,7 @@ export const Home = () => {
         dark:bg-quick7
         overflow-y-scroll
       ">
-      <NavBar actions={[
-        {
-          label: 'For you',
-          callback: () => { },
-          selected: false
-        },
-        {
-          label: 'Following',
-          callback: () => { },
-          selected: false
-        }
-      ]} />
+      <NavBar tab_group={tabs} />
       {/* w-full lg:w-[1010px] xl:w-[1150px] */}
       <div className="
           flex
