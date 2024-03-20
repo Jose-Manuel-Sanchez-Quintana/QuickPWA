@@ -66,7 +66,7 @@ export const Profile = ({ name, avatar }) => {
 					</button>
 					{
 						user.role.indexOf('administrator') !== -1 &&
-						<button className="flex flex-col xl:flex-row items-center p-3  hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white` w-full text-gray-600" onClick={() => { navigate("/dms?to=" + user.uid) }}>
+						<button className="flex flex-col xl:flex-row items-center p-3  hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white` w-full text-gray-600" onClick={() => { navigate('/admintools') }}>
 							<FaWrench className="xl:mr-3" />
 							<span className='hidden lg:block'>
 								Administrator tools
