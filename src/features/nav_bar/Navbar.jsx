@@ -114,12 +114,13 @@ export const NavBar = ({ tab_group }) => {
             shrink-0
           ">
 
-          <div className="flex md:grow md:justify-center xl:justify-start items-center md:px-2 md:px-0 lg:w-[100px] xl:w-[250px]">
+          <div className="flex md:grow md:justify-center xl:justify-start items-center lg:w-[100px] xl:w-[250px]">
             <button className="flex items-center justify-center md:hidden h-full pl-3" onClick={() => { setDrawerOpen(true); setSearchVisible(false) }}>
               <img src={user.avatar} className="rounded w-10 h-10 bg-black object-contain" alt="" />
             </button>
-            <button className="hidden md:block" onClick={() => { navigate('/') }}>
-              <img src="./test.png" alt="" />
+            <button className="hidden md:flex items-center justify-center px-2 w-full h-full" onClick={() => { navigate('/') }}>
+              <img src="./quick_combo.png" className="hidden xl:block max-w-[170px]" alt="" />
+              <img src="./quick_picto.png" className="xl:hidden max-h-[30px]" alt="" />
             </button>
           </div>
 
