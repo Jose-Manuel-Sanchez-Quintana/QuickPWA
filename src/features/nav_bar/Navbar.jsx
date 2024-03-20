@@ -31,11 +31,12 @@ import { UserContext } from "../../App";
 import NavDrawer from "../nav_drawer/NavDrawer";
 import { RxCross2 } from "react-icons/rx";
 import NavbarTab from "../chat/navbar_tab/NavbarTab";
+import { Modal } from "../modal/Modal";
 
 export const NavBar = ({ tab_group }) => {
   const [search_visible, setSearchVisible] = useState(false)
   const { searchUsers, search_results } = UseNavbar();
-  const [search_value, setSearchValue] = useState("");
+  const [search_value, setSearchValue] = useState('');
   const [search_active, setSearchActive] = useState(false);
   const { user } = useContext(UserContext)
   const [drawer_open, setDrawerOpen] = useState(false)
@@ -59,16 +60,21 @@ export const NavBar = ({ tab_group }) => {
     setTab([...tabs])
   }
 
+  useEffect(() => {
+
+  }, [search_value])
+
   return (
     <>
       <NavDrawer open={drawer_open} setOpen={setDrawerOpen} />
       <div className={`
         sticky
         flex flex-col
+        top-0
         ${search_visible && 'h-screen'}
         shadow-navbar-shadow
-        overflow-hidden
         shrink-0
+        bg-white
         box-content
         z-20
         `}>
@@ -77,8 +83,6 @@ export const NavBar = ({ tab_group }) => {
             items-stretch
             w-full lg:w-fit h-navbar-height
             mx-auto
-        bg-white 
-
             shrink-0
           ">
 
@@ -107,7 +111,9 @@ export const NavBar = ({ tab_group }) => {
           <div className="flex items-center justify-center p-2 md:hidden grow">
             {
               search_visible ?
-                <input className="bg-gray-200 rounded-full w-full h-full px-4 focus:outline-none" type="text" placeholder="Quick Search" />
+                <input className="
+                  bg-gray-200 rounded-full w-full h-full px-4 focus:outline-none
+                " type="text" value={search_value} onChange={(e) => { setSearchValue(e.target.value) }} placeholder="Quick Search" />
                 :
                 <button className="md:hidden" type="button" onClick={() => { navigate('/') }}>
                   <img src="./test.png" alt="" />
@@ -115,13 +121,13 @@ export const NavBar = ({ tab_group }) => {
             }
           </div>
 
-          <div className="flex justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px]">
+          <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px]">
             <span className="relative w-full">
               <label className="hidden lg:flex items-center bg-gray-200 rounded h-9 px-3">
                 <FaMagnifyingGlass color="black" className="mr-2" onClick={() => { setSearchActive(true) }} />
                 <input className="grow bg-transparent focus:outline-none" type="text" placeholder="Quick Search" />
               </label>
-              <div className="hidden lg:block absolute left-0 w-full shadow-md bg-red-200">
+              <div className="absolute hidden lg:block left-0 w-full shadow-md bg-blue-200">
                 <ul>
                   <li>a</li>
                   <li>a</li>
