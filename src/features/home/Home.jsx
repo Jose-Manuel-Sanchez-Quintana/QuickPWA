@@ -15,13 +15,13 @@ export const Home = () => {
   const [tabs, setTabs] = useState([
     {
       index: 0,
-      label: 'Appearance',
+      label: 'For you',
       callback: (index) => { handleSetSettingTab(index) },
       selected: true
     },
     {
       index: 1,
-      label: 'Account',
+      label: 'Following',
       callback: (index) => { handleSetSettingTab(index) },
       selected: false
     }
