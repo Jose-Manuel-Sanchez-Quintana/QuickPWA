@@ -34,12 +34,12 @@ export const Profile = ({ name, avatar }) => {
 							<span className="xl:mr-3">
 								<img src={user.avatar} className="rounded bg-black h-12 w-12 object-contain" alt="" />
 							</span>
-							<span className="hidden xl:block text-left">
+							<span className="hidden xl:block text-left p-1">
 								<div className="flex font-semibold">
 									{user.name}
 									{user.subscriptions.indexOf('quicker') !== -1 && <span className='w-4 ml-1'><img src='quicker_badge.png' /></span>}
 								</div>
-								<div className="text-gray-500">400 Posts</div>
+								<div className="text-gray-500">{user.post_count} Posts</div>
 							</span>
 						</button>
 					</div>
