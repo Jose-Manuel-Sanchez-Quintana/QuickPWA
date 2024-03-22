@@ -81,89 +81,87 @@ export const AdminTools = () => {
               {/* <div className='hidden md:block h-screen w-auto bg-gray-400 dark:bg-quick7 p-4 grid grid-cols-1 gap-3 lg:grid-cols-1 lg:p-10 md:grid-cols-1 md:p-10 sm:grid-cols-1 sm:p-10 '> */}
               <div className="dark:bg-quick4 h-full p-2 dark:outline dark:outline-1 dark:outline-quick5">
                 <div className="font-semibold w-full mb-7 text-xl text-black dark:text-white">Flagged posts</div>
-                <div className="w-full gap-5">
-                  <Card className="h-full w-full overflow-scroll">
-                    <table className="w-full min-w-max table-auto text-left">
-                      <thead>
-                        <tr>
-                          {TABLE_HEAD.map((head) => (
-                            <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal leading-none opacity-70"
-                              >
-                                {head}
-                              </Typography>
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {table_rows !== null && table_rows.map((post) => (
-                          <tr key={post.id} className={`cursor-pointer ${post.active ? 'even:bg-slate-100 hover:bg-slate-200' : 'bg-red-100 hover:bg-red-200'}`}>
-                            <td className="p-4">
-                              <Typography variant="small" color="blue-gray" className="font-normal text-blue-800 hover:underline cursor-pointer"
-                                onClick={() => { setSelectedPost(post) }}
-                              >
-                                {post.id}
-                              </Typography>
-                            </td>
-                            <td className="p-4">
-                              <Typography variant="small" color="blue-gray" className="font-normal hover:underline cursor-pointer"
-                                onClick={() => { navigate('/profile?user=' + post.author.id) }}
-                              >
-                                {post.author.name}
-                              </Typography>
-                            </td>
-                            <td className="p-4">
-                              <Typography variant="small" color="blue-gray" className="font-normal">
-                                {new Date(post.date._seconds * 1000).toString()}
-                              </Typography>
-                            </td>
-                            <td className="p-4">
-                              {
-                                post.active && post.flagged_by.id === user.uid && <Button className='bg-yellow-600 mr-5'
-                                  onClick={() => {
-                                    axios.post(`https://quick-api-9c95.onrender.com/administration/unflag/post/${post.id}`, {}, {
-                                      params: {
-                                        requester_id: user.uid
-                                      }
-                                    }).then((response) => {
-                                      if (response.status === 200) {
-                                        const new_tr = [...table_rows]
-                                        new_tr.splice(table_rows.findIndex((e) => (e.id === post.id)), 1)
-                                        setTableRows(new_tr)
-                                      }
-                                    })
-                                  }}
-                                >
-                                  Unflag
-                                </Button>
-                              }
-                              {
-                                post.active && post.flagged_by.id === user.uid && <Button className='bg-red-800'
-                                  onClick={() => {
-                                    axios.post(`https://quick-api-9c95.onrender.com/administration/post/${post.id}/deactivate`).then((response) => {
-                                      if (response.status === 200) {
-                                        console.log(post)
-                                        // console.log(table_rows.findIndex((e) => (e.id === post.id)))
-                                        const new_tr = [...table_rows]
-                                        new_tr[table_rows.findIndex((e) => (e.id === post.id))].active = false
-                                        setTableRows(new_tr)
-                                      }
-                                    })
-                                  }}
-                                >
-                                  Deactivate
-                                </Button>
-                              }
-                            </td>
-                          </tr>
+                <div className="w-full gap-5 overflow-x-scroll">
+                  <table className="w-full border border-light-gray-0 min-w-max table-auto text-left">
+                    <thead>
+                      <tr>
+                        {TABLE_HEAD.map((head) => (
+                          <th key={head} className="bg-blue-gray-50">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-semibold leading-none opacity-70"
+                            >
+                              {head}
+                            </Typography>
+                          </th>
                         ))}
-                      </tbody>
-                    </table>
-                  </Card>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {table_rows !== null && table_rows.map((post) => (
+                        <tr key={post.id} className={`cursor-pointer ${post.active ? 'even:bg-slate-100 hover:bg-slate-200' : 'bg-red-100 hover:bg-red-200'}`}>
+                          <td className="border border-light-gray-0">
+                            <Typography variant="small" color="blue-gray" className="font-normal text-blue-800 hover:underline cursor-pointer"
+                              onClick={() => { setSelectedPost(post) }}
+                            >
+                              {post.id}
+                            </Typography>
+                          </td>
+                          <td className="border border-light-gray-0">
+                            <Typography variant="small" color="blue-gray" className="font-normal hover:underline cursor-pointer"
+                              onClick={() => { navigate('/profile?user=' + post.author.id) }}
+                            >
+                              {post.author.name}
+                            </Typography>
+                          </td>
+                          <td className="border border-light-gray-0">
+                            <Typography variant="small" color="blue-gray" className="font-normal">
+                              {new Date(post.date._seconds * 1000).toString()}
+                            </Typography>
+                          </td>
+                          <td className="border border-light-gray-0">
+                            {
+                              post.active && post.flagged_by.id === user.uid && <Button className='bg-yellow-600'
+                                onClick={() => {
+                                  axios.post(`https://quick-api-9c95.onrender.com/administration/unflag/post/${post.id}`, {}, {
+                                    params: {
+                                      requester_id: user.uid
+                                    }
+                                  }).then((response) => {
+                                    if (response.status === 200) {
+                                      const new_tr = [...table_rows]
+                                      new_tr.splice(table_rows.findIndex((e) => (e.id === post.id)), 1)
+                                      setTableRows(new_tr)
+                                    }
+                                  })
+                                }}
+                              >
+                                Unflag
+                              </Button>
+                            }
+                            {
+                              post.active && post.flagged_by.id === user.uid && <Button className='bg-red-800'
+                                onClick={() => {
+                                  axios.post(`https://quick-api-9c95.onrender.com/administration/post/${post.id}/deactivate`).then((response) => {
+                                    if (response.status === 200) {
+                                      console.log(post)
+                                      // console.log(table_rows.findIndex((e) => (e.id === post.id)))
+                                      const new_tr = [...table_rows]
+                                      new_tr[table_rows.findIndex((e) => (e.id === post.id))].active = false
+                                      setTableRows(new_tr)
+                                    }
+                                  })
+                                }}
+                              >
+                                Deactivate
+                              </Button>
+                            }
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
