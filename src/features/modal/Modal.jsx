@@ -1,18 +1,44 @@
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
 
-export const Modal = (props) => {
-	const [isopen, setIsopen] = useState(false);
+export const Modal = ({ title, message, callback }) => {
+  const [isopen, setIsopen] = useState(true);
 
-
-	return (
-		<>
-			{
-				isopen &&
-				<div className='fixed w-screen h-screen z-50 inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center '>
-					{props.children}
-				</div>
-			}
-		</>
-	)
-}
+  return (
+    <>
+      {isopen && (
+        <div className="fixed w-screen h-screen p-5 md:p-0 z-50 inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center ">
+          <div className="bg-white p-4 rounded-md max-w-2xl">
+            <div className="border-light-gray-border border-b pb-2">
+              <p className="font-bold text-center">{title}</p>
+            </div>
+            <div className="my-5">
+              <p>{message}</p>
+            </div>
+            <div className="flex gap-x-1">
+              <button
+                onClick={() => {
+                  // setIsopen(false);
+                  callback(true);
+                }}
+                className="border border-light-gray-border rounded-sm p-1 min-w-16"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => {
+                  callback(false);
+                  // setIsopen(false);
+                }}
+                className="border border-light-gray-borderrounded-sm p-1 min-w-16"
+              >
+                No
+              </button>
+            </div>
+          </div>
+          {/* {props.children} */}
+        </div>
+      )}
+    </>
+  );
+};
