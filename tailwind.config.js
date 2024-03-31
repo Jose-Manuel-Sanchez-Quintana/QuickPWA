@@ -8,7 +8,7 @@ module.exports = {
         'light-gray-0': '#f7f7f7',
         'light-gray-border': '#e1e8ed',
         'light-white-0': '#ffffff',
-        'quick1': '#6c8a91',
+        'light-gray-text-0': '#728089',
         'quick2': '#7a8d91',
         'quick3': '#586669',
         'quick4': '#222b32',
