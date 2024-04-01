@@ -97,6 +97,7 @@ function App() {
             uid: user.uid,
             ...response.data
           });
+          console.log(response.data)
         })
       }
     });
