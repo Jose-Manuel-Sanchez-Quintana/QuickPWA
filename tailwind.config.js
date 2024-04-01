@@ -5,37 +5,44 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'light-gray-0': '#f7f7f7',
-        'light-gray-border': '#e1e8ed',
-        'light-white-0': '#ffffff',
-        'light-gray-text-0': '#728089',
-        'quick2': '#7a8d91',
-        'quick3': '#586669',
-        'quick4': '#222b32',
-        'quick5': '#435164',
-        'quick6': '#8E9EB6',
-        'quick7': '#23272a',
-        'quick8': '#99aab5',
-        'quick9': '#2e2f33',
+        "light-gray-0": "#f7f7f7",
+        "light-gray-1": "#f2f2f2",
+        "light-gray-2": "#e6e6e6",
+        "light-gray-3": "#d9d9d9",
+        "light-error-0": "#fee6e6",
+        "light-error-1": "#fecaca",
+        "light-error-2": "#fdb4b4",
+        "light-error-3": "#fd9b9b",
+        "light-gray-border": "#e1e8ed",
+        "light-white-0": "#ffffff",
+        "light-gray-text-0": "#728089",
+        quick2: "#7a8d91",
+        quick3: "#586669",
+        quick4: "#222b32",
+        quick5: "#435164",
+        quick6: "#8E9EB6",
+        quick7: "#23272a",
+        quick8: "#99aab5",
+        quick9: "#2e2f33",
       },
       height: {
-        'navbar-height': '4rem'
+        "navbar-height": "4rem",
       },
       width: {
-        'navbar-height': '4rem'
+        "navbar-height": "4rem",
       },
       inset: {
-        'navbar-height': '4rem'
+        "navbar-height": "4rem",
       },
       backgroundImage: {
-        'light-pattern': "url(./texture-test.png)"
+        "light-pattern": "url(./texture-test.png)",
       },
       screens: {
-        'md': '940px'
+        md: "940px",
       },
       boxShadow: {
-        'navbar-shadow': '-1px 1px 2px 0px rgba(179,179,179,0.72)'
-      }
+        "navbar-shadow": "-1px 1px 2px 0px rgba(179,179,179,0.72)",
+      },
     },
   },
   plugins: [],
@@ -45,5 +52,4 @@ module.exports = {
         /(bg|text|border)-(transparent|current|white|purple|midnight|metal|tahiti|silver|bermuda)/,
     },
   ],
-}
-
+};

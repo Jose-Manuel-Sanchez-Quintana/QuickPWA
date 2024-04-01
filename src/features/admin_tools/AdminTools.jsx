@@ -98,19 +98,21 @@ export const AdminTools = () => {
           "
             >
               {/* <div className='hidden md:block h-screen w-auto bg-gray-400 dark:bg-quick7 p-4 grid grid-cols-1 gap-3 lg:grid-cols-1 lg:p-10 md:grid-cols-1 md:p-10 sm:grid-cols-1 sm:p-10 '> */}
-              <div className="dark:bg-quick4 h-full p-2 dark:outline dark:outline-1 dark:outline-quick5">
+              <div className="dark:bg-quick4 h-full border-x border-light-gray-border p-2">
                 <div className="font-semibold w-full mb-7 text-xl text-black dark:text-white">
                   Flagged posts
                 </div>
-                <div className="w-full gap-5 overflow-x-hidden">
+                <div className="w-full gap-5">
                   {
                     table_rows !== null &&
                       table_rows.map((post, i) => (
                         <div
                           key={post.id}
                           className={`cursor-pointer ${
-                            !post.active && "bg-red-200"
-                          } p-2 hover:bg-slate-300 border-b border-light-gray-border-0`}
+                            !post.active
+                              ? "bg-light-error-0 even:bg-light-error-1 hover:bg-light-error-3"
+                              : "even:bg-light-gray-1 hover:bg-light-gray-3"
+                          } p-2 border-b border-light-gray-border-0`}
                           onClick={() => {
                             setSelectedPost(post);
                           }}
@@ -128,79 +130,85 @@ export const AdminTools = () => {
                                 {post.author.name}
                               </p>
                             </span>
-                            <DropdownButton
-                              actions={[
-                                {
-                                  action: () => {
-                                    handleSetModal(
-                                      "Unflag post",
-                                      "This will unflag the post for all administrators, are you sure?",
-                                      (modal_response) => {
-                                        setModal(null);
-                                        if (modal_response) {
-                                          axios
-                                            .post(
-                                              `https://quick-api-9c95.onrender.com/administration/unflag/post/${post.id}`,
-                                              {},
-                                              {
-                                                params: {
-                                                  requester_id: user.uid,
-                                                },
-                                              }
-                                            )
-                                            .then((response) => {
-                                              if (response.status === 200) {
-                                                const new_tr = [...table_rows];
-                                                new_tr.splice(
-                                                  table_rows.findIndex(
-                                                    (e) => e.id === post.id
-                                                  ),
-                                                  1
-                                                );
-                                                setTableRows(new_tr);
-                                              }
-                                            });
+                            {post.active && (
+                              <DropdownButton
+                                actions={[
+                                  {
+                                    action: () => {
+                                      handleSetModal(
+                                        "Unflag post",
+                                        "This will unflag the post for all administrators, are you sure?",
+                                        (modal_response) => {
+                                          setModal(null);
+                                          if (modal_response) {
+                                            axios
+                                              .post(
+                                                `https://quick-api-9c95.onrender.com/administration/unflag/post/${post.id}`,
+                                                {},
+                                                {
+                                                  params: {
+                                                    requester_id: user.uid,
+                                                  },
+                                                }
+                                              )
+                                              .then((response) => {
+                                                if (response.status === 200) {
+                                                  const new_tr = [
+                                                    ...table_rows,
+                                                  ];
+                                                  new_tr.splice(
+                                                    table_rows.findIndex(
+                                                      (e) => e.id === post.id
+                                                    ),
+                                                    1
+                                                  );
+                                                  setTableRows(new_tr);
+                                                }
+                                              });
+                                          }
                                         }
-                                      }
-                                    );
+                                      );
+                                    },
+                                    label: "Unflag",
                                   },
-                                  label: "Unflag",
-                                },
-                                {
-                                  action: () => {
-                                    handleSetModal(
-                                      "Deactivate post",
-                                      "This will deactivate the post, making it unavailable for all users, are you sure?",
-                                      (modal_response) => {
-                                        setModal(null);
-                                        if (modal_response) {
-                                          axios
-                                            .post(
-                                              `https://quick-api-9c95.onrender.com/administration/post/${post.id}/deactivate`,
-                                              {},
-                                              {
-                                                params: {
-                                                  requester_id: user.uid,
-                                                },
-                                              }
-                                            )
-                                            .then((response) => {
-                                              if (response.status === 200) {
-                                                table_rows[i].active = false;
-                                                setTableRows([...table_rows]);
-                                              }
-                                            });
+                                  {
+                                    action: () => {
+                                      handleSetModal(
+                                        "Deactivate post",
+                                        "This will deactivate the post, making it unavailable for all users, are you sure?",
+                                        (modal_response) => {
+                                          setModal(null);
+                                          if (modal_response) {
+                                            axios
+                                              .post(
+                                                `https://quick-api-9c95.onrender.com/administration/post/${post.id}/deactivate`,
+                                                {},
+                                                {
+                                                  params: {
+                                                    requester_id: user.uid,
+                                                  },
+                                                }
+                                              )
+                                              .then((response) => {
+                                                if (response.status === 200) {
+                                                  table_rows[i].active = false;
+                                                  setTableRows([...table_rows]);
+                                                }
+                                              });
+                                          }
                                         }
-                                      }
-                                    );
+                                      );
+                                    },
+                                    label: "Deactivate",
                                   },
-                                  label: "Deactivate",
-                                },
-                              ]}
-                            />
+                                ]}
+                              />
+                            )}
                           </div>
-                          <div className="mt-2">
-                            <p>{post.content}</p>
+                          <div className="mt-2 ">
+                            <p className="text-ellipsis overflow-hidden white-nowrap">
+                              {post.content}
+                            </p>
                           </div>
                           <div className="text-sm text-light-gray-text-0">
                             <p>
@@ -446,10 +454,11 @@ export const AdminTools = () => {
             </div>
           </div>
           {/* </div> */}
-          <aside className="w-[300px] min-w-[300px] max-w-[300px] p-2">
-            <div className="text-xl font-semibold mb-7">Post preview</div>
-            <PostPreview post_data={selected_post} />
-
+          <aside className="w-[300px] min-w-[300px] max-w-[300px]">
+            <span className="sticky top-navbar-height">
+              <div className="text-xl p-2 font-semibold mb-7">Post preview</div>
+              <PostPreview post_data={selected_post} />
+            </span>
             {/* <Suggestions /> */}
           </aside>
         </div>
