@@ -270,7 +270,7 @@ export const Post = ({
                       post.original_post.content
                     ) : (
                       <p className="italic text-lg text-light-gray-5">
-                        This post has been removed by an administrator
+                        This post was removed by an administrator
                       </p>
                     )
                   ) : (

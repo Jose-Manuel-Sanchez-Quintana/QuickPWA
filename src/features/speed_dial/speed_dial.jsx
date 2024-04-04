@@ -15,11 +15,11 @@ import {
 
 export const Speed_Dial = ({ clickHandler }) => {
   return (
-    <div onClick={clickHandler} className="fixed z-0 end-6 bottom-20 group block sm:hidden">
+    <div onClick={clickHandler} className="fixed z-20 end-5 bottom-5 group">
       <SpeedDial>
-        <SpeedDialHandler className="h-20 w-20 bg-green-500">
+        <SpeedDialHandler className="h-16 w-16 bg-green-500">
           <IconButton size="lg" className="rounded-full">
-            <PlusIcon className="h-20 w-20 transition-transform group-hover:rotate-45" />
+            <PlusIcon className="h-12 w-12 transition-transform group-hover:rotate-45" />
           </IconButton>
         </SpeedDialHandler>
         {/* <SpeedDialContent>
