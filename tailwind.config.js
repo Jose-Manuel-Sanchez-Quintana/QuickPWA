@@ -11,6 +11,7 @@ module.exports = {
         "light-gray-2": "#e6e6e6",
         "light-gray-3": "#d9d9d9",
         "light-gray-4": "#bfbfbf",
+        "light-gray-5": "#999999",
         "light-warning-3": "#ff9966",
         "light-error-0": "#fee6e6",
         "light-error-1": "#fecaca",
@@ -46,6 +47,29 @@ module.exports = {
       },
       boxShadow: {
         "navbar-shadow": "-1px 1px 2px 0px rgba(179,179,179,0.72)",
+      },
+      keyframes: {
+        slide_down: {
+          "0%": {
+            transform: "translateY(0px)",
+          },
+
+          "100%": {
+            transform: "translateY(calc(100%))",
+          },
+        },
+        slide_up: {
+          "0%": {
+            transform: "translateY(calc(100%))",
+          },
+          "100%": {
+            transform: "translateY(0px)",
+          },
+        },
+      },
+      animation: {
+        slide_down: "slide_down 0.2s ease-out forwards",
+        slide_up: "slide_up 0.2s ease-out forwards",
       },
     },
   },
