@@ -167,7 +167,17 @@ export const Chat = () => {
               handleClose={HandlecloseSearchModal}
             />
           )}
-          <div className="w-full h-screen flex flex-col ">
+          <div
+            className="
+            flex
+            justify-center md:justify-start lg:justify-center
+            w-[580px] max-w-[580px] md:min-w-[580px]
+            md:px-2
+            text-xl 
+            md:border-x border-light-grey-border
+            box-content
+            "
+          >
             <input
               type="file"
               ref={file_input_ref}
@@ -179,84 +189,14 @@ export const Chat = () => {
               }}
             />
             {/* <NavBar/> */}
-            <div className="flex flex-grow max-h-max overflow-hidden dark:bg-quick5">
-              <div
-                className={`${
-                  chatroom === null && !new_recipient
-                    ? "block"
-                    : "hidden lg:block"
-                } w-screen sm:w-56 md:w-56 lg:w-56 pl-4 pr-4 bg-gray-100 dark:bg-quick4 border-r border-quick5`}
-              >
-                {/* Encabezado de Chats en la barra lateral izquierda */}
-                <div className="bg-gray-100 dark:bg-quick4 h-16 dark:text-white text-black flex items-center justify-between border-b border-quick5">
-                  <span className="flex items-center gap-5">
-                    <button
-                      onClick={() => {
-                        navigation(-1);
-                      }}
-                      className="block md:hidden"
-                    >
-                      <FaArrowLeft />
-                    </button>
-                    <h1 className="text-lg font-semibold">Chats</h1>
-                  </span>
-                </div>
-                {
-                  /* Contenido de la barra lateral izquierda */
-                  chatroom_list !== null &&
-                    chatroom_list.map((chatroom) => (
-                      <div
-                        key={chatroom.id}
-                        className={`flex items-center gap-2 p-2 cursor-pointer dark:hover:bg-quick5`}
-                        onClick={() => {
-                          setChatroom(chatroom);
-                        }}
-                      >
-                        <div className="flex ">
-                          {chatroom.participants.length > 2 ? (
-                            chatroom.participants
-                              .slice(0, 2)
-                              .map(({ profile_picture }) => (
-                                <img
-                                  src={profile_picture}
-                                  className="rounded-full w-10 h-10 last:-ml-4 border-2 border-gray-100"
-                                />
-                              ))
-                          ) : (
-                            <img
-                              src={
-                                chatroom.participants.filter(
-                                  ({ id }) => id !== user.uid
-                                )[0].avatar
-                              }
-                              className="rounded-full w-10 h-10 border-2 border-gray-100"
-                            />
-                          )}
-                        </div>
-                        <p className="truncate dark:text-white">
-                          {chatroom.participants.length > 2
-                            ? chatroom.participants
-                                .map(({ name }) => name)
-                                .join(", ")
-                            : chatroom.participants.filter(
-                                ({ id }) => id !== user.uid
-                              )[0].name}
-                        </p>
-                        {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
-                        {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
-                        {/* <span>{chat.name}</span> */}
-                      </div>
-                    ))
-                }
-              </div>
-
+            <div className="max-h-max overflow-hidden dark:bg-quick5">
               <div
                 className={`${
                   chatroom === null && !new_recipient ? "hidden" : "block"
                 } w-full flex flex-col max-h-max overflow-hidden dark:bg-quick4`}
               >
                 {/* Rectángulo superior */}
-                <div className="flex pl-4 pr-4 h-16 dark:text-white shrink-0 justify-between items-center dark:border-b dark:border-quick5">
+                <div className="flex sticky top-0 dark:text-white m-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5">
                   {chatroom === null ? (
                     new_recipient ? (
                       <span className="flex items-center gap-5">
@@ -315,7 +255,7 @@ export const Chat = () => {
                 </div>
                 <div
                   ref={messages_end_ref}
-                  className="p-4 grow bg-gray-100 dark:bg-neutral-800 overflow-y-auto"
+                  className="p-4 grow overflow-y-auto"
                 >
                   {chatroom === null ? (
                     <img
@@ -340,62 +280,117 @@ export const Chat = () => {
                 {/* {user.uid !== search_params.get("to") && */}
                 {(chatroom !== null || new_recipient) && (
                   <>
-                    <div className="flex">
-                      {message_media &&
-                        message_media.map((media) => (
-                          <div className="flex p-1">
-                            <img
-                              src={media.preview}
-                              className="bg-black rounded-md w-24 h-24"
-                              alt=""
-                            />
-                            <span className="absolute text-white cursor-pointer p-1">
-                              <button
-                                className="rounded relative h-8 max-h-[40px] w-8 max-w-[40px] select-none text-center align-middle font-sans text-xs font-medium uppercase dark:text-white transition-all hover:bg-gray-900/60 active:bg-gray-900/70 bg-gray-900/50 disabled:pointer-events-none disabled:opacity-80 disabled:shadow-none"
-                                type="button"
-                                onClick={() => {
-                                  removeMessageMedia(media.file.name);
-                                }}
-                              >
-                                <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                  <IoIosClose size={40} />
+                    <div className="bg-red-200">
+                      <div>
+                        <div className="flex">
+                          {message_media &&
+                            message_media.map((media) => (
+                              <div className="flex">
+                                <img
+                                  src={media.preview}
+                                  className="bg-black rounded-md w-24 h-24"
+                                  alt=""
+                                />
+                                <span className="absolute text-white cursor-pointer p-1">
+                                  <button
+                                    className="rounded relative h-8 max-h-[40px] w-8 max-w-[40px] select-none text-center align-middle font-sans text-xs font-medium uppercase dark:text-white transition-all hover:bg-gray-900/60 active:bg-gray-900/70 bg-gray-900/50 disabled:pointer-events-none disabled:opacity-80 disabled:shadow-none"
+                                    type="button"
+                                    onClick={() => {
+                                      removeMessageMedia(media.file.name);
+                                    }}
+                                  >
+                                    <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                      <IoIosClose size={40} />
+                                    </span>
+                                  </button>
                                 </span>
-                              </button>
-                            </span>
-                          </div>
-                        ))}
-                    </div>
-                    <div className="flex gap-4 mt-4 mb-4 ml-4 mr-4 bg-[#] text-gray">
-                      <button
-                        className="bg-[#64DE92] hover:bg-[#397850] text-white py-2 px-4 rounded flex items-center cursor-pointer"
-                        onClick={() => {
-                          file_input_ref.current.click();
-                        }}
-                      >
-                        <FaImage />
-                      </button>
-                      <input
-                        type="text"
-                        className="w-full py-2 px-3 rounded border border-gray-300"
-                        placeholder="Escribe tu mensaje..."
-                        value={newMessage}
-                        onChange={(e) => handleSetNewMessage(e.target.value)}
-                      />
-                      <button
-                        className="bg-[#64DE92] disabled:bg-quick4 enabled:hover:bg-[#397850] text-white py-2 px-4 rounded"
-                        onClick={handleSendMessage}
-                        disabled={!message_enabled}
-                      >
-                        <FaPaperPlane />
-                      </button>
+                              </div>
+                            ))}
+                        </div>
+                        <div className="flex">
+                          <button
+                            className="bg-[#64DE92] hover:bg-[#397850] text-white py-2 px-4 rounded flex items-center cursor-pointer"
+                            onClick={() => {
+                              file_input_ref.current.click();
+                            }}
+                          >
+                            <FaImage />
+                          </button>
+                          <input
+                            type="text"
+                            className="w-full py-2 px-3 rounded border border-gray-300"
+                            placeholder="Escribe tu mensaje..."
+                            value={newMessage}
+                            onChange={(e) =>
+                              handleSetNewMessage(e.target.value)
+                            }
+                          />
+                          <button
+                            className="bg-[#64DE92] disabled:bg-quick4 enabled:hover:bg-[#397850] text-white py-2 px-4 rounded"
+                            onClick={handleSendMessage}
+                            disabled={!message_enabled}
+                          >
+                            <FaPaperPlane />
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </>
                 )}
               </div>
             </div>
           </div>
-          <aside className="hidden md:flex w-[300px] min-w-[300px] max-w-[300px]">
-            <Suggestions />
+          <aside className="hidden md:block w-[300px] min-w-[300px] max-w-[300px]">
+            <div className="sticky top-navbar-height">
+              <div className="font-semibold text-xl p-2">
+                <p>Chats</p>
+              </div>
+              {chatroom_list !== null &&
+                chatroom_list.map((chatroom) => (
+                  <div
+                    key={chatroom.id}
+                    className={`flex items-center gap-2 p-2 cursor-pointer dark:hover:bg-quick5`}
+                    onClick={() => {
+                      setChatroom(chatroom);
+                    }}
+                  >
+                    <div className="flex ">
+                      {chatroom.participants.length > 2 ? (
+                        chatroom.participants
+                          .slice(0, 2)
+                          .map(({ profile_picture }) => (
+                            <img
+                              src={profile_picture}
+                              className="rounded-full w-10 h-10 last:-ml-4 border-2 border-gray-100"
+                            />
+                          ))
+                      ) : (
+                        <img
+                          src={
+                            chatroom.participants.filter(
+                              ({ id }) => id !== user.uid
+                            )[0].avatar
+                          }
+                          className="rounded-full w-10 h-10 border-2 border-gray-100"
+                        />
+                      )}
+                    </div>
+                    <p className="truncate dark:text-white">
+                      {chatroom.participants.length > 2
+                        ? chatroom.participants
+                            .map(({ name }) => name)
+                            .join(", ")
+                        : chatroom.participants.filter(
+                            ({ id }) => id !== user.uid
+                          )[0].name}
+                    </p>
+                    {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
+                    {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
+                    {/* <span>{chat.name}</span> */}
+                  </div>
+                ))}
+              {/* <Suggestions /> */}
+            </div>
           </aside>
         </div>
         <Bottom_NavBar />
