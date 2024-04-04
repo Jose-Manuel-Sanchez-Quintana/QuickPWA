@@ -10,10 +10,14 @@ import { Profile } from "../profile/Profile";
 import { Suggestions } from "../suggestions/Suggestions";
 import { Modal } from "../modal/Modal";
 import PostPreview from "../post_preview/PostPreview";
-import { IoMdArrowDropdown } from "react-icons/io";
 import DropdownButton from "../dropdown_button/DropdownButton";
+import { IoMdDownload } from "react-icons/io";
+import * as XLSX from "xlsx/xlsx.mjs";
+import * as fs from "fs";
 
 export const AdminTools = () => {
+  XLSX.set_fs(fs);
+
   const [selected_post, setSelectedPost] = useState(null);
   const [table_rows, setTableRows] = useState(null);
   const TABLE_HEAD = ["ID", "Author", "Date", "Actions"];
@@ -99,8 +103,24 @@ export const AdminTools = () => {
             >
               {/* <div className='hidden md:block h-screen w-auto bg-gray-400 dark:bg-quick7 p-4 grid grid-cols-1 gap-3 lg:grid-cols-1 lg:p-10 md:grid-cols-1 md:p-10 sm:grid-cols-1 sm:p-10 '> */}
               <div className="dark:bg-quick4 h-full border-x border-light-gray-border p-2">
-                <div className="font-semibold w-full mb-7 text-xl text-black dark:text-white">
-                  Flagged posts
+                <div className="flex justify-between border-b-2 border-dashed border-light-gray-border font-semibold w-full pb-5 text-xl text-black dark:text-white">
+                  <p>Flagged & inactive posts</p>
+                  <button
+                    onClick={() => {
+                      // Extract Data (create a workbook object from the table)
+                      var ws = XLSX.utils.json_to_sheet(table_rows);
+                      var wb = XLSX.utils.book_new();
+                      XLSX.utils.book_append_sheet(wb, ws, "People");
+                      XLSX.writeFile(
+                        wb,
+                        "flagged_and_inactive_posts" +
+                          new Date().toISOString() +
+                          ".xlsx"
+                      );
+                    }}
+                  >
+                    <IoMdDownload />
+                  </button>
                 </div>
                 <div className="w-full gap-5">
                   {
@@ -456,7 +476,7 @@ export const AdminTools = () => {
           {/* </div> */}
           <aside className="w-[300px] min-w-[300px] max-w-[300px]">
             <span className="sticky top-navbar-height">
-              <div className="text-xl p-2 font-semibold mb-7">Post preview</div>
+              <div className="text-xl p-2 font-semibold mb-2">Post preview</div>
               <PostPreview post_data={selected_post} />
             </span>
             {/* <Suggestions /> */}
