@@ -290,14 +290,14 @@ export const Post = ({
                               .map((file) => (
                                 <img
                                   src={file.url}
-                                  className="rounded-md bg-black h-72 object-cover object-center w-full"
+                                  className="rounded-md bg-black aspect-square object-cover object-center w-full"
                                   alt=""
                                 />
                               ))
                           : post.media.length > 0 && (
                               <img
                                 src={post.media[0].url}
-                                className="bg-black w-auto h-72 object-contain"
+                                className="rounded-md bg-black w-auto max-h-72 object-contain"
                                 alt=""
                               />
                             )}
@@ -311,19 +311,19 @@ export const Post = ({
                         }
                       >
                         {post.original_post.media.length > 1
-                          ? post.media
+                          ? post.original_post.media
                               .slice(0, 4)
                               .map((file) => (
                                 <img
                                   src={file.url}
-                                  className="rounded-md bg-black h-72 object-cover object-center w-full"
+                                  className="rounded-md bg-black aspect-square object-cover object-center w-full"
                                   alt=""
                                 />
                               ))
                           : post.original_post.media.length > 0 && (
                               <img
                                 src={post.original_post.media[0].url}
-                                className="rounded-md object-cover w- max-w-xs"
+                                className="rounded-md object-cover max-w-xs"
                                 alt=""
                               />
                             )}

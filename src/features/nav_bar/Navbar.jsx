@@ -220,7 +220,7 @@ export const NavBar = ({ tab_group }) => {
 
           <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px]">
             <span className="relative w-full" ref={search_area_ref}>
-              <label className="hidden lg:flex items-center bg-gray-200 rounded h-9 px-3">
+              <label className="hidden md:flex items-center bg-gray-200 rounded h-9 px-3">
                 <FaMagnifyingGlass color="black" className="mr-2" />
                 <input
                   value={search_value}
@@ -236,7 +236,7 @@ export const NavBar = ({ tab_group }) => {
                 />
               </label>
               {search_active && search_results.length > 0 && (
-                <div className="absolute hidden lg:block left-0 w-full shadow-md bg-light-gray-0">
+                <div className="absolute hidden md:block left-0 w-full shadow-md bg-light-gray-0">
                   {/* <div className="p-2">
                     Posts containing <i>{search_value}</i>
                   </div> */}
@@ -273,7 +273,7 @@ export const NavBar = ({ tab_group }) => {
               )}
             </span>
             <div
-              className="flex lg:hidden h-full w-10 pr-3 justify-center items-center"
+              className="flex md:hidden h-full w-10 pr-3 justify-center items-center"
               onClick={() => {
                 setSearchVisible(!search_visible);
                 if (!search_visible) {

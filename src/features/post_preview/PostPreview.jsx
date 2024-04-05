@@ -3,10 +3,8 @@ const PostPreview = ({ post_data }) => {
     <>
       {post_data !== null && (
         <div className="w-full p-2 break-all">
-          {post_data.original_post !== undefined && (
-            <p>This is a repost of {post_data.original_post.id}</p>
-          )}
-          <p className="text-gray-600 font-serif dark:text-white lg:pb-8 content-start">
+          <p className="italic text-light-gray-5 mb-4">{post_data.id}</p>
+          <p className="text-gray-600 font-serif dark:text-white content-start">
             {post_data.is_repost
               ? post_data.original_post.content
               : post_data.content}

@@ -227,7 +227,11 @@ export const AdminTools = () => {
                           </div>
                           <div className="mt-2 ">
                             <p className="text-ellipsis overflow-hidden white-nowrap">
-                              {post.content}
+                              {post.content === "" ? (
+                                <i>Media only</i>
+                              ) : (
+                                post.content
+                              )}
                             </p>
                           </div>
                           <div className="text-sm text-light-gray-text-0">
@@ -476,7 +480,7 @@ export const AdminTools = () => {
           {/* </div> */}
           <aside className="w-[300px] min-w-[300px] max-w-[300px]">
             <span className="sticky top-navbar-height">
-              <div className="text-xl p-2 font-semibold mb-2">Post preview</div>
+              <div className="text-xl p-2 font-semibold">Post preview</div>
               <PostPreview post_data={selected_post} />
             </span>
             {/* <Suggestions /> */}
