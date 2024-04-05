@@ -190,11 +190,13 @@ export const Home = () => {
             <Suggestions />
           </aside>
         </div>
-        <Speed_Dial
-          clickHandler={() => {
-            setFullThoughtOpen(true);
-          }}
-        />
+        <span className="block md:hidden">
+          <Speed_Dial
+            clickHandler={() => {
+              setFullThoughtOpen(true);
+            }}
+          />
+        </span>
         <Bottom_NavBar />
       </div>
     </>
