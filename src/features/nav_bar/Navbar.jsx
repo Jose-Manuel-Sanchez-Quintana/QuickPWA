@@ -197,7 +197,7 @@ export const NavBar = ({ tab_group }) => {
           <div className="flex items-center justify-center p-2 md:hidden grow">
             {search_visible ? (
               <input
-                className="bg-gray-200 rounded-full w-full h-full px-4 focus:outline-none"
+                className="bg-light-gray-2 rounded-full w-full h-full px-4 focus:outline-none"
                 type="text"
                 value={search_value}
                 onChange={(e) => {
@@ -220,7 +220,7 @@ export const NavBar = ({ tab_group }) => {
 
           <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px]">
             <span className="relative w-full" ref={search_area_ref}>
-              <label className="hidden md:flex items-center bg-gray-200 rounded h-9 px-3">
+              <label className="hidden md:flex items-center bg-light-gray-2 rounded h-9 px-3">
                 <FaMagnifyingGlass color="black" className="mr-2" />
                 <input
                   value={search_value}
@@ -240,13 +240,13 @@ export const NavBar = ({ tab_group }) => {
                   {/* <div className="p-2">
                     Posts containing <i>{search_value}</i>
                   </div> */}
-                  <div className="p-2 bg-gray-300">People</div>
+                  <div className="p-2 bg-light-gray-2">People</div>
                   <ul>
                     {search_results.map((user) => {
                       return (
                         <>
                           <li
-                            className="text p-2 font-semibold hover:bg-gray-200 cursor-pointer dark:hover:bg-quick5 dark:text-white flex"
+                            className="text p-2 font-semibold hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5 dark:text-white flex"
                             key={user.id}
                             onMouseDown={(e) => {
                               e.preventDefault();
@@ -294,22 +294,21 @@ export const NavBar = ({ tab_group }) => {
             </button> */}
           </div>
         </div>
-        {!search_visible && (
+        {!search_visible && tab_group && (
           <div className="flex md:hidden justify-center h-navbar-height bg-white">
             <div className="flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px]">
-              {tab_group &&
-                tab_group.map((tab) => (
-                  <NavbarTab
-                    key={tab.index}
-                    index={tab.index}
-                    label={tab.label}
-                    callback={(index) => {
-                      handleSetTab(index);
-                      tab.callback(index);
-                    }}
-                    selected={tab.selected}
-                  />
-                ))}
+              {tab_group.map((tab) => (
+                <NavbarTab
+                  key={tab.index}
+                  index={tab.index}
+                  label={tab.label}
+                  callback={(index) => {
+                    handleSetTab(index);
+                    tab.callback(index);
+                  }}
+                  selected={tab.selected}
+                />
+              ))}
             </div>
           </div>
         )}
@@ -318,13 +317,13 @@ export const NavBar = ({ tab_group }) => {
             {/* <div className="p-2">
               Posts containing <i>{search_value}</i>
             </div> */}
-            <div className="p-2 bg-gray-300">People</div>
+            <div className="p-2 bg-light-gray-2">People</div>
             <ul>
               {search_results.map((user) => {
                 return (
                   <>
                     <li
-                      className="text p-2 font-semibold hover:bg-gray-200 cursor-pointer dark:hover:bg-quick5 dark:text-white flex"
+                      className="text p-2 font-semibold hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5 dark:text-white flex"
                       key={user.id}
                       onMouseDown={(e) => {
                         e.preventDefault();

@@ -14,7 +14,7 @@ const UserCard = ({ profile_user }) => {
 
   return (
     <li
-      className="text p-2 font-semibold hover:bg-gray-200 cursor-pointer dark:hover:bg-quick5 dark:text-white flex"
+      className="text p-2 font-semibold hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5 dark:text-white flex"
       key={profile_user.id}
       onClick={(e) => {
         e.stopPropagation();

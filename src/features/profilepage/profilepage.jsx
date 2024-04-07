@@ -24,7 +24,7 @@ export const ProfilePage = ({ name, avatar }) => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const [search_params] = useSearchParams();
-  const [qt_active, setQtActive] = useState(false)
+  const [qt_active, setQtActive] = useState(false);
 
   const {
     user_name,
@@ -43,8 +43,8 @@ export const ProfilePage = ({ name, avatar }) => {
   } = UseProfile();
 
   const qtClose = () => {
-    setQtActive(false)
-  }
+    setQtActive(false);
+  };
 
   const handleChange = (e) => {
     const file = e.target.files[0];
@@ -54,24 +54,27 @@ export const ProfilePage = ({ name, avatar }) => {
     }
   };
   return (
-    <div className="
+    <div
+      className="
     flex flex-col 
     h-screen
     bg-light-pattern
     dark:bg-quick7
     overflow-y-scroll
-  ">
+  "
+    >
       <NavBar />
       {/* w-full lg:w-[1010px] xl:w-[1150px] */}
-      <div className="
+      <div
+        className="
       flex
       grow
       justify-center
       w-full lg:w-fit
       bg-light-gray-0
       mx-auto
-    ">
-
+    "
+      >
         {/* w-[590px] max-w-[590px] md:min-w-[590px] */}
 
         {/* <Speed_Dial clickHandler={() => { setQtActive(true) }} /> */}
@@ -79,7 +82,13 @@ export const ProfilePage = ({ name, avatar }) => {
           <Profile name={user_name} avatar={user_avatar} />
         </div>
         <div className="min-h-screen bg-gray-400 dark:bg-quick7 overflow-hidden">
-          {user.uid === search_params.get("user") ? <Speed_Dial clickHandler={() => { setQtActive(true) }} /> : null}
+          {user.uid === search_params.get("user") ? (
+            <Speed_Dial
+              clickHandler={() => {
+                setQtActive(true);
+              }}
+            />
+          ) : null}
 
           <div className="bg-white w-full " />
 
@@ -124,10 +133,21 @@ export const ProfilePage = ({ name, avatar }) => {
             <div className="mt-8 ml-8 lg:mt-8 lg:ml-8 md:mt-8 md:ml-8 sm:mt-8 sm:ml-8 left-40">
               <span className="flex items-center">
                 <p className="flex text-md font-semibold text-black dark:text-white p-0 lg:text-2xl md:text-2xl sm:text-2xl mr-5">
-                  {user_name} {user_subscriptions.indexOf('quicker') !== -1 && <span className='w-4 ml-1'><img src='quicker_badge.png' /></span>}
+                  {user_name}{" "}
+                  {user_subscriptions.indexOf("quicker") !== -1 && (
+                    <span className="w-4 ml-1">
+                      <img src="quicker_badge.png" />
+                    </span>
+                  )}
                 </p>
                 <div>
-                  {follows_you && user.uid !== search_params.get("user") && <Chip variant="outlined" value="Follows You" className="static text-black dark:text-white bg-slate-200 dark:bg-slate-700 p-1"></Chip>}
+                  {follows_you && user.uid !== search_params.get("user") && (
+                    <Chip
+                      variant="outlined"
+                      value="Follows You"
+                      className="static text-black dark:text-white bg-slate-200 dark:bg-slate-700 p-1"
+                    ></Chip>
+                  )}
                 </div>
               </span>
               <span className="text-md text-black dark:text-white block lg:text-lg md:text-lg sm:text-lg mt-1">
@@ -136,24 +156,33 @@ export const ProfilePage = ({ name, avatar }) => {
                     {followers != null && <>{followers} followers</>}
                   </h1>
                   <div className="mt-1">
-                    {
-                      following !== null && user.uid !== search_params.get("user") &&
-                      <button
-                        type="button"
-                        onClick={followUser}
-                        className={`shadow-2xl p-1 rounded-lg ${following ? 'bg-yellow-900 hover:bg-yellow-800' : 'bg-green-800 hover:bg-green-700'} outline-none focus:outline-none`}
+                    {following !== null &&
+                      user.uid !== search_params.get("user") && (
+                        <button
+                          type="button"
+                          onClick={followUser}
+                          className={`shadow-2xl p-1 rounded-lg ${
+                            following
+                              ? "bg-yellow-900 hover:bg-yellow-800"
+                              : "bg-green-800 hover:bg-green-700"
+                          } outline-none focus:outline-none`}
+                        >
+                          <h1 className="text-white">
+                            {following ? "Unfollow" : "Follow"}
+                          </h1>
+                        </button>
+                      )}
+                    {follows_you && (
+                      <Button
+                        color="green"
+                        onClick={() => {
+                          navigate("/dms?to=" + search_params.get("user"));
+                        }}
+                        className="inline-block md:hidden ml-5"
                       >
-                        <h1 className="text-white">
-                          {following ? "Unfollow" : "Follow"}
-                        </h1>
-                      </button>
-                    }
-                    {
-                      follows_you &&
-                      <Button color="green" onClick={() => { navigate('/dms?to=' + search_params.get('user')) }} className="inline-block md:hidden ml-5">
                         <FaPaperPlane />
                       </Button>
-                    }
+                    )}
                   </div>
                 </span>
               </span>
@@ -166,35 +195,50 @@ export const ProfilePage = ({ name, avatar }) => {
               <div className="flex flex-col hover:cursor-pointer">
                 <button
                   disabled={follows_you === null || !follows_you}
-                  className="dark:disabled:text-slate-500 disabled:text-gray-400 disabled:bg-gray-200 dark:disabled:bg-quick4 hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold rounded-lg rounded-b-none"
-                  onClick={() => { navigate('/dms?to=' + search_params.get("user")) }}
+                  className="dark:disabled:text-slate-500 disabled:text-gray-400 disabled:bg-light-gray-2 dark:disabled:bg-quick4 hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold rounded-lg rounded-b-none"
+                  onClick={() => {
+                    navigate("/dms?to=" + search_params.get("user"));
+                  }}
                 >
-                  {user.uid === search_params.get("user") ? 'Messages' : 'Send message'}
+                  {user.uid === search_params.get("user")
+                    ? "Messages"
+                    : "Send message"}
                 </button>
                 <button
-                  className={`hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white border-t dark:border-quick3 p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold border-black ${(user.role.indexOf('administrator') === -1 || user.uid !== search_params.get("user")) && 'rounded rounded-t-none'}`}
-                  onClick={() => { navigate('/settings') }}
+                  className={`hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white border-t dark:border-quick3 p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold border-black ${
+                    (user.role.indexOf("administrator") === -1 ||
+                      user.uid !== search_params.get("user")) &&
+                    "rounded rounded-t-none"
+                  }`}
+                  onClick={() => {
+                    navigate("/settings");
+                  }}
                 >
                   Settings
                 </button>
-                {
-                  user.uid === search_params.get("user") && user.role.indexOf('administrator') !== -1 &&
-                  <button className="hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white border-t dark:border-quick3 p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold rounded-lg rounded-t-none border-black"
-                    onClick={() => { navigate('/admintools') }}
-                  >Administrator tools
-                  </button>
-                }
+                {user.uid === search_params.get("user") &&
+                  user.role.indexOf("administrator") !== -1 && (
+                    <button
+                      className="hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white border-t dark:border-quick3 p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold rounded-lg rounded-t-none border-black"
+                      onClick={() => {
+                        navigate("/admintools");
+                      }}
+                    >
+                      Administrator tools
+                    </button>
+                  )}
               </div>
             </div>
             {/* POST Quick Thought */}
             <div className="col-span-3">
               <div className="text-xl rounded-lg col-span-2 grid gap-3">
-                {
-                  search_params.get("user") === user.uid &&
-                  <span className={`${qt_active ? 'block' : 'hidden'} md:block`}>
+                {search_params.get("user") === user.uid && (
+                  <span
+                    className={`${qt_active ? "block" : "hidden"} md:block`}
+                  >
                     <Quick_Thought makePost={post} handleClose={qtClose} />
                   </span>
-                }
+                )}
                 <div>
                   <Feed posts={posts} setPosts={setPosts} />
                 </div>
