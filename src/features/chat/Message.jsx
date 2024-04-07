@@ -5,7 +5,7 @@ const Message = ({ index, content, by_user }) => {
   return (
     <div
       key={index}
-      className={`text-sm mb-2 ${
+      className={`text-sm mb-2 bg-quick-green-0 rounded-md ${
         by_user ? "self-end message-bubble" : "self-start message-bubble other"
       }`}
     >

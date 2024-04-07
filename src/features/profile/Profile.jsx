@@ -14,9 +14,8 @@ export const Profile = ({ name, avatar }) => {
     <>
       {/* Profile */}
       <div
-        className="
-        sticky
-				top-navbar-height
+        className={`
+        ${window.location.pathname !== "/dms" && "sticky top-navbar-height"}
 				overflow-hidden
 				w-full h-fit
 				dark:bg-quick4 
@@ -24,7 +23,7 @@ export const Profile = ({ name, avatar }) => {
 				lg:row-span-3
 				dark:bg-quick4 md:dark:outline md:dark:outline-1 
 				md:dark:outline-quick5 md:row-span-3
-			"
+			`}
       >
         <div
           className="

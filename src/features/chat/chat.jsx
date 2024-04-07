@@ -138,9 +138,11 @@ export const Chat = () => {
         flex flex-col 
         h-screen
         bg-light-pattern
-        dark:bg-quick7
         overflow-y-scroll
-      "
+
+        dark:bg-quick7
+        "
+        // overflow-y-scroll
       >
         <NavBar />
         {/* w-full lg:w-[1010px] xl:w-[1150px] */}
@@ -149,6 +151,7 @@ export const Chat = () => {
           flex
           grow
           justify-center
+          overflow-hidden
           w-full lg:w-fit
           bg-light-gray-0
           mx-auto
@@ -169,9 +172,9 @@ export const Chat = () => {
           )}
           <div
             className="
-            flex
-            justify-center md:justify-start lg:justify-center
-            w-[580px] max-w-[580px] md:min-w-[580px]
+            flex flex-col
+            justify-start lg:justify-center
+            w-full md:max-w-[580px] md:min-w-[580px] h-full
             md:px-2
             text-xl 
             md:border-x border-light-grey-border
@@ -189,14 +192,73 @@ export const Chat = () => {
               }}
             />
             {/* <NavBar/> */}
-            <div className="max-h-max overflow-hidden dark:bg-quick5">
-              <div
-                className={`${
-                  chatroom === null && !new_recipient ? "hidden" : "block"
-                } w-full flex flex-col max-h-max overflow-hidden dark:bg-quick4`}
-              >
-                {/* Rectángulo superior */}
-                <div className="flex sticky top-0 dark:text-white m-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5">
+            {/* </div> */}
+            {/* <div className="max-h-max overflow-hidden dark:bg-quick5"> */}
+            {/* <div
+              className={`${
+                chatroom === null && !new_recipient ? "hidden" : "block"
+              } w-full flex flex-col h-full overflow-hidden dark:bg-quick4`}
+            >
+              <h1>aaa</h1>
+            </div> */}
+            {/* Rectángulo superior */}
+            {/* CHATLIST IN MOBILE */}
+            {chatroom === null ? (
+              <span className="md:hidden">
+                <div className="overflow-y-scroll h-full">
+                  <div className="font-semibold text-xl p-2">
+                    <p>Chats</p>
+                  </div>
+                  {chatroom_list !== null &&
+                    chatroom_list.map((chatroom) => (
+                      <div
+                        key={chatroom.id}
+                        className={`flex items-center gap-2 p-2 cursor-pointer dark:hover:bg-quick5`}
+                        onClick={() => {
+                          setChatroom(chatroom);
+                        }}
+                      >
+                        <div className="flex ">
+                          {chatroom.participants.length > 2 ? (
+                            chatroom.participants
+                              .slice(1, 3)
+                              .map(({ avatar }) => (
+                                <img
+                                  src={avatar}
+                                  className="rounded-full w-10 h-10 last:-ml-4 border-2 border-gray-100"
+                                />
+                              ))
+                          ) : (
+                            <img
+                              src={
+                                chatroom.participants.filter(
+                                  ({ id }) => id !== user.uid
+                                )[0].avatar
+                              }
+                              className="rounded-full w-10 h-10 border-2 border-gray-100"
+                            />
+                          )}
+                        </div>
+                        <p className="truncate dark:text-white">
+                          {chatroom.participants.length > 2
+                            ? chatroom.participants
+                                .map(({ name }) => name)
+                                .join(", ")
+                            : chatroom.participants.filter(
+                                ({ id }) => id !== user.uid
+                              )[0].name}
+                        </p>
+                        {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
+                        {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
+                        {/* <span>{chat.name}</span> */}
+                      </div>
+                    ))}
+                  {/* <Suggestions /> */}
+                </div>
+              </span>
+            ) : (
+              <span className="flex md:hidden flex-col border-x h-full border-ligt-gray-border">
+                <div className="flex dark:text-white p-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border border-light-gray-border">
                   {chatroom === null ? (
                     new_recipient ? (
                       <span className="flex items-center gap-5">
@@ -251,36 +313,39 @@ export const Chat = () => {
                       )}
                     </>
                   )}
-                  {/* <p>{user.uid === search_params.get("to") ? "Select a user to start a conversation" : chat_name}</p> */}
                 </div>
                 <div
                   ref={messages_end_ref}
-                  className="p-4 grow overflow-y-auto"
-                >
-                  {chatroom === null ? (
+                  className="hidden p-4 h-full overflow-y-scroll"
+                ></div>
+                {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+                {chatroom === null ? (
+                  <div className="flex justify-center items-center h-full overflow-y-scroll">
                     <img
                       src={"./quicker.png"}
-                      className="h-full w-full object-contain"
+                      className="h-1/2 w-1/2 opacity-70 object-contain"
                     />
-                  ) : (
-                    <div className="flex flex-col-reverse">
-                      {messages.map((message, index) => (
-                        <Message
-                          key={message.id}
-                          index={index}
-                          content={message}
-                          by_user={message.from_user === user.uid}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col-reverse h-full overflow-y-scroll">
+                    {messages.map((message, index) => (
+                      <Message
+                        key={message.id}
+                        index={index}
+                        content={message}
+                        by_user={message.from_user === user.uid}
+                      />
+                    ))}
+                  </div>
+                )}
 
                 {/* Rectángulo inferior */}
                 {/* {user.uid !== search_params.get("to") && */}
+                {/* </div> */}
+                {/* </div> */}
                 {(chatroom !== null || new_recipient) && (
                   <>
-                    <div className="bg-red-200">
+                    <div className="bg-light-gray-2">
                       <div>
                         <div className="flex">
                           {message_media &&
@@ -307,9 +372,9 @@ export const Chat = () => {
                               </div>
                             ))}
                         </div>
-                        <div className="flex">
+                        <div className="flex gap-2 p-2">
                           <button
-                            className="bg-[#64DE92] hover:bg-[#397850] text-white py-2 px-4 rounded flex items-center cursor-pointer"
+                            className="text-light-gray-5 cursor-pointer"
                             onClick={() => {
                               file_input_ref.current.click();
                             }}
@@ -318,7 +383,7 @@ export const Chat = () => {
                           </button>
                           <input
                             type="text"
-                            className="w-full py-2 px-3 rounded border border-gray-300"
+                            className="grow text-lg p-2 rounded bg-light-gray-2 focus:outline-none"
                             placeholder="Escribe tu mensaje..."
                             value={newMessage}
                             onChange={(e) =>
@@ -326,7 +391,7 @@ export const Chat = () => {
                             }
                           />
                           <button
-                            className="bg-[#64DE92] disabled:bg-quick4 enabled:hover:bg-[#397850] text-white py-2 px-4 rounded"
+                            className="text-light-gray-5 disabled:text-light-gray-2"
                             onClick={handleSendMessage}
                             disabled={!message_enabled}
                           >
@@ -337,11 +402,156 @@ export const Chat = () => {
                     </div>
                   </>
                 )}
+              </span>
+            )}
+            {/* MESSAGES */}
+            <span className="hidden md:flex flex-col border-x h-full border-ligt-gray-border">
+              <div className="flex dark:text-white p-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border-b border-light-gray-border">
+                {chatroom === null ? (
+                  new_recipient ? (
+                    <span className="flex items-center gap-5">
+                      <button
+                        onClick={() => {
+                          navigation(-1);
+                        }}
+                        className="block md:hidden"
+                      >
+                        <FaArrowLeft />
+                      </button>
+                      <p>{`New chat with ${chat_name}`}</p>
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-5">
+                      <button
+                        onClick={() => {
+                          navigation(-1);
+                        }}
+                        className="block md:hidden"
+                      >
+                        <FaArrowLeft />
+                      </button>
+                      <p>Select a chatroom to start chatting!</p>
+                    </span>
+                  )
+                ) : (
+                  <>
+                    <span className="flex items-center gap-5">
+                      <button
+                        onClick={() => {
+                          setChatroom(null);
+                        }}
+                        className="block md:hidden"
+                      >
+                        <FaArrowLeft />
+                      </button>
+                      <p>{chat_name}</p>
+                    </span>
+                    {chatroom.participants.find(
+                      (participant) => participant.id === user.uid
+                    ).chatroom_role === "owner" && (
+                      <>
+                        <button
+                          onClick={() => {
+                            setSearchUser(true);
+                          }}
+                        >
+                          <IoMdPersonAdd />
+                        </button>
+                      </>
+                    )}
+                  </>
+                )}
               </div>
-            </div>
+              <div
+                ref={messages_end_ref}
+                className="hidden p-4 h-full overflow-y-scroll"
+              ></div>
+              {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+              {chatroom === null ? (
+                <div className="flex justify-center items-center h-full overflow-y-scroll">
+                  <img
+                    src={"./quicker.png"}
+                    className="h-1/2 w-1/2 opacity-70 object-contain"
+                  />
+                </div>
+              ) : (
+                <div className="flex flex-col-reverse h-full overflow-y-scroll">
+                  {messages.map((message, index) => (
+                    <Message
+                      key={message.id}
+                      index={index}
+                      content={message}
+                      by_user={message.from_user === user.uid}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Rectángulo inferior */}
+              {/* {user.uid !== search_params.get("to") && */}
+              {/* </div> */}
+              {/* </div> */}
+              {(chatroom !== null || new_recipient) && (
+                <>
+                  <div className="bg-light-gray-2">
+                    <div>
+                      <div className="flex">
+                        {message_media &&
+                          message_media.map((media) => (
+                            <div className="flex">
+                              <img
+                                src={media.preview}
+                                className="bg-black rounded-md w-24 h-24"
+                                alt=""
+                              />
+                              <span className="absolute text-white cursor-pointer p-1">
+                                <button
+                                  className="rounded relative h-8 max-h-[40px] w-8 max-w-[40px] select-none text-center align-middle font-sans text-xs font-medium uppercase dark:text-white transition-all hover:bg-gray-900/60 active:bg-gray-900/70 bg-gray-900/50 disabled:pointer-events-none disabled:opacity-80 disabled:shadow-none"
+                                  type="button"
+                                  onClick={() => {
+                                    removeMessageMedia(media.file.name);
+                                  }}
+                                >
+                                  <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                    <IoIosClose size={40} />
+                                  </span>
+                                </button>
+                              </span>
+                            </div>
+                          ))}
+                      </div>
+                      <div className="flex gap-2 p-2">
+                        <button
+                          className="text-light-gray-5 cursor-pointer"
+                          onClick={() => {
+                            file_input_ref.current.click();
+                          }}
+                        >
+                          <FaImage />
+                        </button>
+                        <input
+                          type="text"
+                          className="grow text-lg p-2 rounded bg-light-gray-2 focus:outline-none"
+                          placeholder="Escribe tu mensaje..."
+                          value={newMessage}
+                          onChange={(e) => handleSetNewMessage(e.target.value)}
+                        />
+                        <button
+                          className="text-light-gray-5 disabled:text-light-gray-2"
+                          onClick={handleSendMessage}
+                          disabled={!message_enabled}
+                        >
+                          <FaPaperPlane />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </span>
           </div>
           <aside className="hidden md:block w-[300px] min-w-[300px] max-w-[300px]">
-            <div className="sticky top-navbar-height">
+            <div className="overflow-y-scroll h-full">
               <div className="font-semibold text-xl p-2">
                 <p>Chats</p>
               </div>
@@ -357,10 +567,10 @@ export const Chat = () => {
                     <div className="flex ">
                       {chatroom.participants.length > 2 ? (
                         chatroom.participants
-                          .slice(0, 2)
-                          .map(({ profile_picture }) => (
+                          .slice(1, 3)
+                          .map(({ avatar }) => (
                             <img
-                              src={profile_picture}
+                              src={avatar}
                               className="rounded-full w-10 h-10 last:-ml-4 border-2 border-gray-100"
                             />
                           ))
@@ -393,7 +603,7 @@ export const Chat = () => {
             </div>
           </aside>
         </div>
-        <Bottom_NavBar />
+        {/* <Bottom_NavBar /> */}
       </div>
     </>
   );
