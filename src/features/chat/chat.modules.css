@@ -7,11 +7,9 @@
 
 /* Agrega estos estilos a tu archivo CSS o en línea en el componente */
 .message-bubble {
-  background-color: rgb(40, 116, 90);
   /* Color de fondo del mensaje enviado */
   color: white;
   /* Color del texto en el mensaje enviado */
-  border-radius: 10px;
   /* Bordes redondeados */
   padding: 8px 12px;
   /* Espacio interno del mensaje */
@@ -24,11 +22,10 @@
 }
 
 .message-bubble.other {
-  background-color: #E1E1E1; /* Color de fondo del mensaje recibido */
+  background-color: #e1e1e1; /* Color de fondo del mensaje recibido */
   color: black; /* Color del texto en el mensaje recibido */
   align-self: flex-end; /* Alinea el mensaje recibido a la izquierda */
 }
-
 
 .message-bubble {
   max-width: 70%;
@@ -39,16 +36,14 @@
 }
 
 .message-bubble.self-end {
-  background-color: #64DE92;
   color: white;
   align-self: flex-end;
 }
 
 .message-bubble.self-start {
-  background-color: #397850;
   color: white;
   align-self: flex-end;
-  background-color: #E1E1E1;
+  background-color: #e1e1e1;
   /* Color de fondo del mensaje recibido */
   color: black;
   /* Color del texto en el mensaje recibido */

@@ -24,7 +24,7 @@ export const ProfilePage = ({ name, avatar }) => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const [search_params] = useSearchParams();
-  const [qt_active, setQtActive] = useState(false)
+  const [qt_active, setQtActive] = useState(false);
 
   const {
     user_name,
@@ -43,8 +43,8 @@ export const ProfilePage = ({ name, avatar }) => {
   } = UseProfile();
 
   const qtClose = () => {
-    setQtActive(false)
-  }
+    setQtActive(false);
+  };
 
   const handleChange = (e) => {
     const file = e.target.files[0];
@@ -54,149 +54,170 @@ export const ProfilePage = ({ name, avatar }) => {
     }
   };
   return (
-    <div className="
+    <div
+      className="
     flex flex-col 
     h-screen
     bg-light-pattern
     dark:bg-quick7
     overflow-y-scroll
-  ">
+  "
+    >
       <NavBar />
       {/* w-full lg:w-[1010px] xl:w-[1150px] */}
-      <div className="
+      <div
+        className="
       flex
       grow
       justify-center
       w-full lg:w-fit
       bg-light-gray-0
       mx-auto
-    ">
-
+    "
+      >
         {/* w-[590px] max-w-[590px] md:min-w-[590px] */}
-
         {/* <Speed_Dial clickHandler={() => { setQtActive(true) }} /> */}
         <div className="hidden md:block grow lg:w-[100px] xl:w-[250px]">
           <Profile name={user_name} avatar={user_avatar} />
         </div>
-        <div className="min-h-screen bg-gray-400 dark:bg-quick7 overflow-hidden">
-          {user.uid === search_params.get("user") ? <Speed_Dial clickHandler={() => { setQtActive(true) }} /> : null}
-
-          <div className="bg-white w-full " />
-
-          <input
-            className="hidden"
-            id="default_size"
-            ref={ref}
-            onChange={handleChange}
-            type="file"
-          />
-
-          {/* Avatar */}
-          <div className="flex flex-col items-center flex-row sm:justify-center">
+        <div
+          className="
+          flex
+          justify-center md:justify-start lg:justify-center
+          w-[580px] max-w-[580px] md:min-w-[580px]
+          md:px-2
+          text-xl 
+          md:border-x border-light-grey-border
+          box-content
+        "
+        >
+          <div className="w-full bg-white dark:bg-quick7 overflow-hidden">
             {user.uid === search_params.get("user") ? (
-              <div
-                className="top-24 lg:z-40 lg:left-24
-            cursor-pointer rounded-full h-40 w-40 mt-2 border-gray-400 dark:border-quick7 border-8 bg-cover bg-center"
-                style={{ backgroundImage: `url("${user_avatar}")` }}
-                onClick={handleClick}
-                alt="user avatar"
-                title="Upload Image"
-                loading="lazy"
-              >
-                <div className="flex rounded-full justify-center h-full w-full items-center bg-gray-600/30 dark:bg-quick7/30 backdrop-brightness-75 opacity-0 hover:opacity-70">
-                  <span className="text-white text-lg text-center">
-                    Upload Image
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div
-                className="top-24 lg:z-40 lg:left-24
-            cursor-pointer rounded-full h-40 w-40 mt-2 border-gray-400 dark:border-quick7 border-8 bg-cover bg-center"
-                style={{ backgroundImage: `url("${user_avatar}")` }}
-                alt="user avatar"
-                title="Upload Image"
-                loading="lazy"
-              ></div>
-            )}
+              <Speed_Dial
+                clickHandler={() => {
+                  setQtActive(true);
+                }}
+              />
+            ) : null}
 
-            {/* Username and folowwers */}
-            <div className="mt-8 ml-8 lg:mt-8 lg:ml-8 md:mt-8 md:ml-8 sm:mt-8 sm:ml-8 left-40">
-              <span className="flex items-center">
-                <p className="flex text-md font-semibold text-black dark:text-white p-0 lg:text-2xl md:text-2xl sm:text-2xl mr-5">
-                  {user_name} {user_subscriptions.indexOf('quicker') !== -1 && <span className='w-4 ml-1'><img src='quicker_badge.png' /></span>}
-                </p>
-                <div>
-                  {follows_you && user.uid !== search_params.get("user") && <Chip variant="outlined" value="Follows You" className="static text-black dark:text-white bg-slate-200 dark:bg-slate-700 p-1"></Chip>}
+            <div className="bg-white w-full " />
+
+            <input
+              className="hidden"
+              id="default_size"
+              ref={ref}
+              onChange={handleChange}
+              type="file"
+            />
+
+            {/* Avatar */}
+            <div className="bg-profile-banner w-full h-44 border-x border-light-gray-border"></div>
+            <div className="p-5 border-x border-light-gray-border">
+              {user.uid === search_params.get("user") ? (
+                <div
+                  className="-mt-20 cursor-pointer overflow-hidden rounded-2xl h-40 w-40 border-white border-8 bg-cover bg-center"
+                  style={{ backgroundImage: `url("${user_avatar}")` }}
+                  onClick={handleClick}
+                  alt="user avatar"
+                  title="Upload Image"
+                  loading="lazy"
+                >
+                  <div className="flex justify-center h-full w-full items-center bg-black backdrop-brightness-75 opacity-0 hover:opacity-70">
+                    <span className="text-white text-lg text-center">
+                      Upload Image
+                    </span>
+                  </div>
                 </div>
-              </span>
-              <span className="text-md text-black dark:text-white block lg:text-lg md:text-lg sm:text-lg mt-1">
-                <span className="flex gap-5">
-                  <h1 className="flex items-center space-x-1 text-black dark:text-white">
-                    {followers != null && <>{followers} followers</>}
-                  </h1>
-                  <div className="mt-1">
-                    {
-                      following !== null && user.uid !== search_params.get("user") &&
+              ) : (
+                <div className="flex justify-between">
+                  <div
+                    className="-mt-20 cursor-pointer overflow-hidden rounded-2xl h-40 w-40 border-white border-8 bg-cover bg-center"
+                    style={{ backgroundImage: `url("${user_avatar}")` }}
+                    alt="user avatar"
+                    title="Upload Image"
+                    loading="lazy"
+                  ></div>
+                  <div className="h-10 flex gap-2">
+                    {follows_you && (
                       <button
-                        type="button"
-                        onClick={followUser}
-                        className={`shadow-2xl p-1 rounded-lg ${following ? 'bg-yellow-900 hover:bg-yellow-800' : 'bg-green-800 hover:bg-green-700'} outline-none focus:outline-none`}
+                        onClick={() => {
+                          navigate("/dms?to=" + search_params.get("user"));
+                        }}
+                        className="flex items-center text-quick-green-0 hover:bg-light-gray-0 justify-center rounded-md bg-white border border-light-gray-border h-full aspect-square"
                       >
-                        <h1 className="text-white">
-                          {following ? "Unfollow" : "Follow"}
-                        </h1>
-                      </button>
-                    }
-                    {
-                      follows_you &&
-                      <Button color="green" onClick={() => { navigate('/dms?to=' + search_params.get('user')) }} className="inline-block md:hidden ml-5">
                         <FaPaperPlane />
-                      </Button>
-                    }
+                      </button>
+                    )}
+                    {following !== null &&
+                      user.uid !== search_params.get("user") && (
+                        <button
+                          type="button"
+                          onClick={followUser}
+                          className={`shadow-2xl p-1 rounded-md h-full ${
+                            following
+                              ? "bg-yellow-900 hover:bg-yellow-800"
+                              : "bg-green-800 hover:bg-green-700"
+                          } outline-none focus:outline-none`}
+                        >
+                          <h1 className="text-white">
+                            {following ? "Unfollow" : "Follow"}
+                          </h1>
+                        </button>
+                      )}
+                  </div>
+                </div>
+              )}
+
+              {/* Username and folowwers */}
+              <div className="">
+                <span className="flex items-center">
+                  <p className="flex text-md font-semibold text-black dark:text-white p-0 lg:text-2xl md:text-2xl sm:text-2xl mr-5">
+                    {user_name}{" "}
+                    {user_subscriptions.indexOf("quicker") !== -1 && (
+                      <span className="w-4 ml-1">
+                        <img src="quicker_badge.png" />
+                      </span>
+                    )}
+                  </p>
+                  <div>
+                    {follows_you && user.uid !== search_params.get("user") && (
+                      <Chip
+                        variant="outlined"
+                        value="Follows You"
+                        className="static text-black dark:text-white bg-slate-200 dark:bg-slate-700 p-1"
+                      ></Chip>
+                    )}
                   </div>
                 </span>
-              </span>
-            </div>
-          </div>
-
-          {/* Settings and messagges */}
-          <div className="lg-p-10 p-5 grid grid-cols-1 lg:grid-cols-4 lg:gap-3">
-            <div className="bg-white text-white text-3xl rounded-lg row-span-3 max-h-24 hidden lg:block">
-              <div className="flex flex-col hover:cursor-pointer">
-                <button
-                  disabled={follows_you === null || !follows_you}
-                  className="dark:disabled:text-slate-500 disabled:text-gray-400 disabled:bg-gray-200 dark:disabled:bg-quick4 hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold rounded-lg rounded-b-none"
-                  onClick={() => { navigate('/dms?to=' + search_params.get("user")) }}
-                >
-                  {user.uid === search_params.get("user") ? 'Messages' : 'Send message'}
-                </button>
-                <button
-                  className={`hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white border-t dark:border-quick3 p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold border-black ${(user.role.indexOf('administrator') === -1 || user.uid !== search_params.get("user")) && 'rounded rounded-t-none'}`}
-                  onClick={() => { navigate('/settings') }}
-                >
-                  Settings
-                </button>
-                {
-                  user.uid === search_params.get("user") && user.role.indexOf('administrator') !== -1 &&
-                  <button className="hover:bg-gray-300 dark:hover:bg-quick5 dark:outline dark:outline-1 dark:outline-quick5 bg-white border-t dark:border-quick3 p-3 w-full text-xl text-left text-black dark:bg-quick4 dark:text-white font-semibold rounded-lg rounded-t-none border-black"
-                    onClick={() => { navigate('/admintools') }}
-                  >Administrator tools
-                  </button>
-                }
+                <span className="text-md text-black dark:text-white block lg:text-lg md:text-lg sm:text-lg mt-1">
+                  <span className="flex gap-5">
+                    <h1 className="flex items-center space-x-1 text-black dark:text-white">
+                      {followers != null && <>{followers} followers</>}
+                    </h1>
+                  </span>
+                </span>
               </div>
             </div>
-            {/* POST Quick Thought */}
-            <div className="col-span-3">
-              <div className="text-xl rounded-lg col-span-2 grid gap-3">
-                {
-                  search_params.get("user") === user.uid &&
-                  <span className={`${qt_active ? 'block' : 'hidden'} md:block`}>
-                    <Quick_Thought makePost={post} handleClose={qtClose} />
-                  </span>
-                }
-                <div>
-                  <Feed posts={posts} setPosts={setPosts} />
+
+            {/* Settings and messagges */}
+            <div
+              className={`h-full ${
+                posts && posts.length < 1 && "border-x border-light-gray-border"
+              }`}
+            >
+              {/* POST Quick Thought */}
+              <div className="col-span-3">
+                <div className="">
+                  {posts && search_params.get("user") === user.uid && (
+                    <span
+                      className={`${qt_active ? "block" : "hidden"} md:block`}
+                    >
+                      <Quick_Thought makePost={post} handleClose={qtClose} />
+                    </span>
+                  )}
+                  <div>
+                    <Feed posts={posts} setPosts={setPosts} />
+                  </div>
                 </div>
               </div>
             </div>

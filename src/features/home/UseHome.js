@@ -12,12 +12,13 @@ import {
   query,
 } from "firebase/firestore";
 import axios from "axios";
+import useStateRef from "react-usestateref";
 
 const UseHome = () => {
   const { user } = useContext(UserContext);
   const [user_name, setUserName] = useState("");
   const [user_avatar, setUserAvatar] = useState("");
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts, posts_ref] = useStateRef(null);
 
   const getUserInfo = async () => {
     const doc_ref = doc(db, "users", user.uid);
@@ -28,19 +29,23 @@ const UseHome = () => {
   };
 
   const getPosts = () => {
-    axios.get('https://quick-api-9c95.onrender.com/posts', {
-      params: {
-        before_date: 170227262,
-        limit: 222,
-        requester_id: user.uid
-      }
-    }).then((response) => {
-      if (response.status === 200) {
-        setPosts(response.data);
-      }
-    }).catch((error) => {
-      console.log(error);
-    })
+    axios
+      .get("https://quick-api-9c95.onrender.com/posts", {
+        params: {
+          before_date: 170227262,
+          limit: 222,
+          requester_id: user.uid,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          setPosts(response.data);
+          console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // const docSnap = await getDocs(collection(db, "posts"));
 
     // setPosts(
@@ -59,19 +64,30 @@ const UseHome = () => {
     // );
   };
 
-  const post = async (message, media) => {
-    const form_data = new FormData();
+  const post = (message, media) => {
+    return new Promise((resolve, reject) => {
+      const form_data = new FormData();
 
-    form_data.append('message', message);
+      form_data.append("message", message);
 
-    media.forEach(media_file => {
-      form_data.append('media', media_file.file);
+      media.forEach((media_file) => {
+        form_data.append("media", media_file.file);
+      });
+
+      axios
+        .post(
+          `https://quick-api-9c95.onrender.com/posts/${user.uid}`,
+          form_data
+        )
+        .then((response) => {
+          setPosts([response.data, ...posts]);
+          resolve(true);
+          // console.log(response.data);
+        })
+        .catch(() => {
+          reject(false);
+        });
     });
-
-    axios.post(`https://quick-api-9c95.onrender.com/posts/${user.uid}`, form_data, {}).then(response => {
-      console.log(response.data)
-      setPosts([response.data, ...posts])
-    })
     // try {
     //   const user_ref = doc(db, "users", user.uid);
     //   await addDoc(collection(db, "posts"), {
@@ -100,7 +116,7 @@ const UseHome = () => {
     // } catch (e) {
     //   console.error("Error adding document: ", e);
     // }
-  }
+  };
 
   useEffect(() => {
     getUserInfo();
@@ -113,6 +129,7 @@ const UseHome = () => {
     post,
     setPosts,
     posts,
+    posts_ref,
   };
 };
 
