@@ -77,6 +77,9 @@ export const Post = ({
     useEffect(() => {
       setUpdatingLikes(false);
     }, [post.original_post.liked]);
+    useEffect(() => {
+      setUpdatingReposts(false);
+    }, [post.original_post.reposted]);
 
     useEffect(() => {
       setUpdatingFlagged(false);
@@ -91,11 +94,11 @@ export const Post = ({
     useEffect(() => {
       setUpdatingLikes(false);
     }, [post.liked]);
-  }
 
-  useEffect(() => {
-    setUpdatingReposts(false);
-  }, [post.reposted]);
+    useEffect(() => {
+      setUpdatingReposts(false);
+    }, [post.reposted]);
+  }
 
   useEffect(() => {
     if (is_repost) {
@@ -118,7 +121,7 @@ export const Post = ({
             {/* Div para la foto de perfil, nombre y numero de followers */}
             {is_repost && (
               <div className="h-6">
-                <span className="flex h-full justify-between items-center">
+                <span className="flex h-full justify-between items-center mt-3">
                   <span className="flex h-full items-center">
                     {is_repost && <BiRepost color="green" className="h-5" />}
                     <p
@@ -140,7 +143,7 @@ export const Post = ({
             <div
               className={
                 is_repost
-                  ? "rounded-md border border-light-gray-border p-2 mt-5"
+                  ? "rounded-md border border-light-gray-border p-2 mt-1"
                   : "p-2"
               }
             >

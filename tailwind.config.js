@@ -12,6 +12,9 @@ module.exports = {
         "light-gray-3": "#d9d9d9",
         "light-gray-4": "#bfbfbf",
         "light-gray-5": "#999999",
+        "light-gray-6": "#808080",
+        "light-gray-7": "#666666",
+        "light-gray-8": "#4d4d4d",
         "light-warning-3": "#ff9966",
         "light-error-0": "#fee6e6",
         "light-error-1": "#fecaca",
@@ -40,8 +43,8 @@ module.exports = {
         "navbar-height": "4rem",
       },
       backgroundImage: {
-        "light-pattern": "url(./texture-test.png)",
-        "profile-banner": "url(./bg.png)",
+        "light-pattern": "url(/texture-test.png)",
+        "profile-banner": "url(/bg.png)",
       },
       screens: {
         md: "940px",
