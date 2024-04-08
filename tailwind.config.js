@@ -40,8 +40,8 @@ module.exports = {
         "navbar-height": "4rem",
       },
       backgroundImage: {
-        "light-pattern": "url(./texture-test.png)",
-        "profile-banner": "url(./bg.png)",
+        "light-pattern": "url(/texture-test.png)",
+        "profile-banner": "url(/bg.png)",
       },
       screens: {
         md: "940px",
