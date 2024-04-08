@@ -211,8 +211,16 @@ export const AdminTools = () => {
                                               )
                                               .then((response) => {
                                                 if (response.status === 200) {
-                                                  table_rows[i].active = false;
-                                                  setTableRows([...table_rows]);
+                                                  const w = table_rows.map(
+                                                    (t) => {
+                                                      if (t.id === post.id) {
+                                                        t.active = false;
+                                                      }
+                                                      return t;
+                                                    }
+                                                  );
+                                                  // table_rows[i].active = false;
+                                                  setTableRows([...w]);
                                                 }
                                               });
                                           }
