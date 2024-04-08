@@ -39,7 +39,7 @@ export const Profile = ({ name, avatar }) => {
 									{user.name}
 									{user.subscriptions.indexOf('quicker') !== -1 && <span className='w-4 ml-1'><img src='quicker_badge.png' /></span>}
 								</div>
-								<div className="text-gray-500">{user.post_count} Posts</div>
+								<div className="text-gray-500">{user.post_count} Post{user.post_count > 1 && 's'}</div>
 							</span>
 						</button>
 					</div>
