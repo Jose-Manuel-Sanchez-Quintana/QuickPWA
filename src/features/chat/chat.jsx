@@ -207,20 +207,30 @@ export const Chat = () => {
               <span className="md:hidden">
                 <div className="overflow-y-scroll h-full">
                   <div className="font-semibold text-xl p-2">
-                    <p>Chats</p>
+                    <span className="flex items-center gap-5 border-b border-light-gray-border">
+                      <button
+                        onClick={() => {
+                          navigation(-1);
+                        }}
+                        className="block md:hidden"
+                      >
+                        <FaArrowLeft />
+                      </button>
+                      <p>Chats</p>
+                    </span>
                   </div>
                   {chatroom_list !== null &&
-                    chatroom_list.map((chatroom) => (
+                    chatroom_list.map((chatroom_c) => (
                       <div
-                        key={chatroom.id}
-                        className={`flex items-center gap-2 p-2 cursor-pointer dark:hover:bg-quick5`}
+                        key={chatroom_c.id}
+                        className={`flex items-center gap-2 p-2 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
                         onClick={() => {
-                          setChatroom(chatroom);
+                          setChatroom(chatroom_c);
                         }}
                       >
                         <div className="flex ">
-                          {chatroom.participants.length > 2 ? (
-                            chatroom.participants
+                          {chatroom_c.participants.length > 2 ? (
+                            chatroom_c.participants
                               .slice(1, 3)
                               .map(({ avatar }) => (
                                 <img
@@ -231,7 +241,7 @@ export const Chat = () => {
                           ) : (
                             <img
                               src={
-                                chatroom.participants.filter(
+                                chatroom_c.participants.filter(
                                   ({ id }) => id !== user.uid
                                 )[0].avatar
                               }
@@ -240,11 +250,11 @@ export const Chat = () => {
                           )}
                         </div>
                         <p className="truncate dark:text-white">
-                          {chatroom.participants.length > 2
-                            ? chatroom.participants
+                          {chatroom_c.participants.length > 2
+                            ? chatroom_c.participants
                                 .map(({ name }) => name)
                                 .join(", ")
-                            : chatroom.participants.filter(
+                            : chatroom_c.participants.filter(
                                 ({ id }) => id !== user.uid
                               )[0].name}
                         </p>
@@ -556,17 +566,21 @@ export const Chat = () => {
                 <p>Chats</p>
               </div>
               {chatroom_list !== null &&
-                chatroom_list.map((chatroom) => (
+                chatroom_list.map((chatroom_c) => (
                   <div
-                    key={chatroom.id}
-                    className={`flex items-center gap-2 p-2 cursor-pointer dark:hover:bg-quick5`}
+                    key={chatroom_c.id}
+                    className={`${
+                      chatroom &&
+                      chatroom.id === chatroom_c.id &&
+                      "bg-light-gray-3"
+                    } flex items-center gap-2 p-2 hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5`}
                     onClick={() => {
-                      setChatroom(chatroom);
+                      setChatroom(chatroom_c);
                     }}
                   >
                     <div className="flex ">
-                      {chatroom.participants.length > 2 ? (
-                        chatroom.participants
+                      {chatroom_c.participants.length > 2 ? (
+                        chatroom_c.participants
                           .slice(1, 3)
                           .map(({ avatar }) => (
                             <img
@@ -577,7 +591,7 @@ export const Chat = () => {
                       ) : (
                         <img
                           src={
-                            chatroom.participants.filter(
+                            chatroom_c.participants.filter(
                               ({ id }) => id !== user.uid
                             )[0].avatar
                           }
@@ -586,11 +600,11 @@ export const Chat = () => {
                       )}
                     </div>
                     <p className="truncate dark:text-white">
-                      {chatroom.participants.length > 2
-                        ? chatroom.participants
+                      {chatroom_c.participants.length > 2
+                        ? chatroom_c.participants
                             .map(({ name }) => name)
                             .join(", ")
-                        : chatroom.participants.filter(
+                        : chatroom_c.participants.filter(
                             ({ id }) => id !== user.uid
                           )[0].name}
                     </p>

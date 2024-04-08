@@ -267,7 +267,7 @@ export const Post = ({
                 )}
               </div>
               <div className="">
-                <p className="text-gray-600 text-xl font-serif dark:text-white pt-5 pb-5 content-start">
+                <p className="text-gray-700 text-xl font-serif dark:text-white pt-5 pb-5 content-start">
                   {is_repost ? (
                     post.original_post.active === true ? (
                       post.original_post.content

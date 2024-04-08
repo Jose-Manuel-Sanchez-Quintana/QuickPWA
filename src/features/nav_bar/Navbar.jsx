@@ -253,7 +253,6 @@ export const NavBar = ({ tab_group }) => {
                             }}
                             onClick={() => {
                               navigate("/profile?user=" + user.id);
-                              window.location.reload();
                             }}
                           >
                             <div>
@@ -330,7 +329,6 @@ export const NavBar = ({ tab_group }) => {
                       }}
                       onClick={() => {
                         navigate("/profile?user=" + user.id);
-                        window.location.reload();
                       }}
                     >
                       <div>
