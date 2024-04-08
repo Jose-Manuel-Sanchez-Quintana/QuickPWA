@@ -128,9 +128,16 @@ export const Feed = ({ posts, setPosts }) => {
         if (response.status === 200 && response.data === true) {
           setPosts(
             posts.map((post) => {
-              if (post.id === post_id) {
-                post.reposts += 1;
-                post.reposted = true;
+              if (post.original_post === undefined) {
+                if (post.id === post_id) {
+                  post.reposts += 1;
+                  post.reposted = true;
+                }
+              } else {
+                if (post.original_post.id === post_id) {
+                  post.original_post.reposts += 1;
+                  post.original_post.reposted = true;
+                }
               }
               return post;
             })
