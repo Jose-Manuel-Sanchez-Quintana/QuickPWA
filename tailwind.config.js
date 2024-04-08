@@ -41,6 +41,7 @@ module.exports = {
       },
       backgroundImage: {
         "light-pattern": "url(./texture-test.png)",
+        "profile-banner": "url(./bg.png)",
       },
       screens: {
         md: "940px",

@@ -36,7 +36,7 @@ export const Profile = ({ name, avatar }) => {
             <button
               className="flex flex-row p-2 justify-center xl:justify-start text-sm hover:bg-gray-300 dark:hover:bg-quick5 dark:text-white w-full"
               onClick={() => {
-                navigate("/dms?to=" + user.uid);
+                navigate("/profile?user=" + user.uid);
               }}
             >
               <span className="xl:mr-3">
