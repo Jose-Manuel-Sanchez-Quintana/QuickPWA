@@ -175,7 +175,7 @@ export const Post = ({
                       {
                         is_repost ? (
                           <h1
-                            className="text-xl font-sembold text-black dark:text-white hover:underline cursor-pointer"
+                            className="font-sembold text-black dark:text-white hover:underline cursor-pointer"
                             onClick={() => {
                               navigate(
                                 "/profile?user=" + post.original_post.author.id

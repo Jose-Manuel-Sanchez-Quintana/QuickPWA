@@ -136,11 +136,11 @@ export const Home = () => {
       </span>
       <div
         className="
-      flex flex-col 
-      h-screen
-      bg-light-pattern
-      dark:bg-quick7
-      overflow-y-scroll
+        flex flex-col 
+        h-screen
+        bg-light-pattern
+        dark:bg-quick7
+        overflow-y-scroll
       "
       >
         <NavBar tab_group={tabs} />

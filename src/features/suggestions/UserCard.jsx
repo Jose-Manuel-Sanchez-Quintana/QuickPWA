@@ -19,7 +19,6 @@ const UserCard = ({ profile_user }) => {
       onClick={(e) => {
         e.stopPropagation();
         navigate("/profile?user=" + profile_user.id);
-        window.location.reload();
       }}
     >
       <div>
