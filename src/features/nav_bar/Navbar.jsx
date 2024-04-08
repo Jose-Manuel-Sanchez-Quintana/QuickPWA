@@ -207,13 +207,13 @@ export const NavBar = ({ tab_group }) => {
               />
             ) : (
               <button
-                className="md:hidden"
+                className="md:hidden h-full flex items-center justify-center"
                 type="button"
                 onClick={() => {
                   navigate("/");
                 }}
               >
-                <img src="./test.png" alt="" />
+                <img src="./quick_picto.png" className="h-8" alt="" />
               </button>
             )}
           </div>
@@ -253,7 +253,6 @@ export const NavBar = ({ tab_group }) => {
                             }}
                             onClick={() => {
                               navigate("/profile?user=" + user.id);
-                              window.location.reload();
                             }}
                           >
                             <div>
@@ -330,7 +329,6 @@ export const NavBar = ({ tab_group }) => {
                       }}
                       onClick={() => {
                         navigate("/profile?user=" + user.id);
-                        window.location.reload();
                       }}
                     >
                       <div>

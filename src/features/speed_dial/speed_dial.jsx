@@ -15,7 +15,7 @@ import {
 
 export const Speed_Dial = ({ clickHandler }) => {
   return (
-    <div onClick={clickHandler} className="fixed z-20 end-5 bottom-5 group">
+    <div onClick={clickHandler} className="fixed z-20 end-5 bottom-24 group">
       <SpeedDial>
         <SpeedDialHandler className="h-16 w-16 bg-green-500">
           <IconButton size="lg" className="rounded-full">
