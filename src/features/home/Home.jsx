@@ -138,8 +138,7 @@ export const Home = () => {
         className="
         flex flex-col 
         h-screen
-        bg-light-pattern
-        dark:bg-quick7
+        bg-light-pattern dark:bg-black-pattern 
         overflow-y-scroll
       "
       >

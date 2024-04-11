@@ -137,7 +137,7 @@ export const Chat = () => {
         className="
         flex flex-col 
         h-screen
-        bg-light-pattern
+        bg-light-pattern dark:bg-black-pattern 
         overflow-y-scroll
 
         dark:bg-quick7

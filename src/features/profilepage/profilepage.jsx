@@ -74,7 +74,7 @@ export const ProfilePage = ({ name, avatar }) => {
         className="
         flex flex-col 
         h-screen
-        bg-light-pattern
+        bg-light-pattern dark:bg-black-pattern 
         dark:bg-quick7
         overflow-y-scroll
       "
