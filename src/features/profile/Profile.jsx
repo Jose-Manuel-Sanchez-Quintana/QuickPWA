@@ -86,7 +86,7 @@ export const Profile = ({ name, avatar }) => {
           </button>
           {user.role.indexOf("administrator") !== -1 && (
             <button
-              className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:text-white w-full text-light-gray-8"
+              className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8"
               onClick={() => {
                 navigate("/admintools");
               }}

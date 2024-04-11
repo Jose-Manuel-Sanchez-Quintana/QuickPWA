@@ -162,7 +162,7 @@ export const ProfilePage = ({ name, avatar }) => {
                           onClick={() => {
                             navigate("/dms?to=" + search_params.get("user"));
                           }}
-                          className="flex items-center text-quick-green-0 hover:bg-light-gray-0 justify-center rounded-md bg-white border border-light-gray-border h-full aspect-square"
+                          className="flex items-center text-quick-green-0 dark:bg-quick5 hover:bg-light-gray-0 justify-center rounded-md bg-white border border-light-gray-border dark:border-0 h-full aspect-square"
                         >
                           <FaPaperPlane />
                         </button>

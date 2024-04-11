@@ -78,6 +78,7 @@ export const AdminTools = () => {
           justify-center
           w-full lg:w-fit
           bg-light-gray-0
+          dark:bg-quick4
           mx-auto
         "
         >
@@ -89,7 +90,7 @@ export const AdminTools = () => {
           </div>
           <div
             className="
-            md:border-x border-light-grey-border
+            md:border-x dark:border-0 border-light-grey-border
 						md:px-2
             box-content
 						w-[580px] max-w-[580px] md:min-w-[580px]
@@ -488,7 +489,7 @@ export const AdminTools = () => {
           {/* </div> */}
           <aside className="w-[300px] min-w-[300px] max-w-[300px]">
             <span className="sticky top-navbar-height">
-              <div className="text-xl p-2 font-semibold">Post preview</div>
+              <div className="text-xl p-2 font-semibold dark:text-white">Post preview</div>
               <PostPreview post_data={selected_post} />
             </span>
             {/* <Suggestions /> */}

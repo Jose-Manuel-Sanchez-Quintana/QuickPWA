@@ -199,7 +199,7 @@ export const NavBar = ({ tab_group }) => {
           <div className="flex items-center justify-center p-2 md:hidden grow dark:bg-quick4">
             {search_visible ? (
               <input
-                className="bg-light-gray-2 rounded-full w-full h-full px-4 focus:outline-none"
+                className="bg-light-gray-2 rounded-full w-full h-full px-4 focus:outline-none dark:bg-quick4"
                 type="text"
                 value={search_value}
                 onChange={(e) => {
@@ -220,7 +220,7 @@ export const NavBar = ({ tab_group }) => {
             )}
           </div>
 
-          <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px]">
+          <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px] dark:bg-quick4">
             <span className="relative w-full" ref={search_area_ref}>
               <label className="hidden md:flex items-center bg-light-gray-2 rounded h-9 px-3 dark:bg-quick5">
                 <FaMagnifyingGlass color="black" className="mr-2 dark:fill-white" />
@@ -238,7 +238,7 @@ export const NavBar = ({ tab_group }) => {
                 />
               </label>
               {search_active && search_results.length > 0 && (
-                <div className="absolute hidden md:block left-0 w-full shadow-md bg-light-gray-0">
+                <div className="absolute hidden md:block left-0 w-full shadow-md bg-light-gray-0 dark:bg-quick4">
                   {/* <div className="p-2">
                     Posts containing <i>{search_value}</i>
                   </div> */}
@@ -314,11 +314,11 @@ export const NavBar = ({ tab_group }) => {
           </div>
         )}
         {search_visible && search_results.length > 0 && (
-          <div className="lg:hidden w-full grow shadow-md bg-light-gray-0">
+          <div className="lg:hidden w-full grow shadow-md bg-light-gray-0 dark:bg-quick4">
             {/* <div className="p-2">
               Posts containing <i>{search_value}</i>
             </div> */}
-            <div className="p-2 bg-light-gray-2">People</div>
+            <div className="p-2 bg-light-gray-2 dark:bg-quick4">People</div>
             <ul>
               {search_results.map((user) => {
                 return (

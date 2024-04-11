@@ -142,7 +142,7 @@ const FullQuickThought = ({ makePost, handleClose }) => {
               <div className="relative flex p-1">
                 <img
                   src={media.preview}
-                  className="bg-black object-cover rounded-md w-24 h-24"
+                  className="bg-black dark:bg-quick4 object-cover rounded-md w-24 h-24"
                   alt=""
                 />
                 <span className="absolute text-white cursor-pointer p-1">

@@ -356,15 +356,15 @@ export const Chat = () => {
                 {/* </div> */}
                 {(chatroom !== null || new_recipient) && (
                   <>
-                    <div className="bg-light-gray-2">
+                    <div className="bg-light-gray-2 dark:bg-quick5">
                       <div>
-                        <div className="flex">
+                        <div className="flex dark:bg-quick5">
                           {message_media &&
                             message_media.map((media) => (
-                              <div className="flex">
+                              <div className="flex dark:bg-quick5">
                                 <img
                                   src={media.preview}
-                                  className="bg-black rounded-md w-24 h-24"
+                                  className="bg-black dark:bg-quick5 rounded-md w-24 h-24"
                                   alt=""
                                 />
                                 <span className="absolute text-white cursor-pointer p-1">
@@ -383,7 +383,7 @@ export const Chat = () => {
                               </div>
                             ))}
                         </div>
-                        <div className="flex gap-2 p-2">
+                        <div className="flex gap-2 p-2 dark:bg-quick5">
                           <button
                             className="text-light-gray-5 cursor-pointer"
                             onClick={() => {
@@ -394,7 +394,7 @@ export const Chat = () => {
                           </button>
                           <input
                             type="text"
-                            className="grow text-lg p-2 rounded bg-light-gray-2 focus:outline-none"
+                            className="grow text-lg p-2 rounded bg-light-gray-2 focus:outline-none dark:bg-quick4 dark:text-white"
                             placeholder="Escribe tu mensaje..."
                             value={newMessage}
                             onChange={(e) =>
@@ -504,15 +504,15 @@ export const Chat = () => {
               {/* </div> */}
               {(chatroom !== null || new_recipient) && (
                 <>
-                  <div className="bg-light-gray-2">
+                  <div className="bg-light-gray-2 dark:bg-quick5">
                     <div>
-                      <div className="flex">
+                      <div className="flex dark:bg-quick5">
                         {message_media &&
                           message_media.map((media) => (
-                            <div className="flex">
+                            <div className="flex dark:bg-quick5">
                               <img
                                 src={media.preview}
-                                className="bg-black rounded-md w-24 h-24"
+                                className="bg-black dark:bg-quick5 rounded-md w-24 h-24"
                                 alt=""
                               />
                               <span className="absolute text-white cursor-pointer p-1">
@@ -531,9 +531,9 @@ export const Chat = () => {
                             </div>
                           ))}
                       </div>
-                      <div className="flex gap-2 p-2">
+                      <div className="flex gap-2 p-2 ">
                         <button
-                          className="text-light-gray-5 cursor-pointer"
+                          className="text-light-gray-5 cursor-pointer dark:text-white"
                           onClick={() => {
                             file_input_ref.current.click();
                           }}
@@ -548,7 +548,7 @@ export const Chat = () => {
                           onChange={(e) => handleSetNewMessage(e.target.value)}
                         />
                         <button
-                          className="text-light-gray-5 disabled:text-light-gray-2"
+                          className="text-light-gray-5 dark:bg-quick5 disabled:text-light-gray-2"
                           onClick={handleSendMessage}
                           disabled={!message_enabled}
                         >
@@ -573,13 +573,13 @@ export const Chat = () => {
                     className={`${
                       chatroom &&
                       chatroom.id === chatroom_c.id &&
-                      "bg-light-gray-3"
+                      "bg-light-gray-3 dark:bg-quick4"
                     } flex items-center gap-2 p-2 hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5`}
                     onClick={() => {
                       setChatroom(chatroom_c);
                     }}
                   >
-                    <div className="flex ">
+                    <div className="flex">
                       {chatroom_c.participants.length > 2 ? (
                         chatroom_c.participants
                           .slice(1, 3)

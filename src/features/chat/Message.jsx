@@ -14,7 +14,7 @@ const Message = ({ index, content, by_user }) => {
         {content.media.slice(0, 4).map((file) =>
           file.mimetype.split("/")[0] === "image" ? (
             <div
-              className={`bg-black h-40 ${
+              className={`bg-quick-green-0 dark:bg-quick-green-0 h-40 ${
                 content.media.length > 1 ? "w-40" : "max-w-lg"
               }`}
             >
