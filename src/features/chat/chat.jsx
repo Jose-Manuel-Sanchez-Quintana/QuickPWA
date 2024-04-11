@@ -206,24 +206,14 @@ export const Chat = () => {
             {chatroom === null ? (
               <span className="md:hidden">
                 <div className="overflow-y-scroll h-full">
-                  <div className="font-semibold text-xl p-2">
-                    <span className="flex items-center gap-5 border-b border-light-gray-border">
-                      <button
-                        onClick={() => {
-                          navigation(-1);
-                        }}
-                        className="block md:hidden"
-                      >
-                        <FaArrowLeft />
-                      </button>
-                      <p>Chats</p>
-                    </span>
+                  <div className="font-semibold text-xl p-4">
+                    <p>Chats</p>
                   </div>
                   {chatroom_list !== null &&
                     chatroom_list.map((chatroom_c) => (
                       <div
                         key={chatroom_c.id}
-                        className={`flex items-center gap-2 p-2 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
+                        className={`flex items-center gap-2 py-2 px-4 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
                         onClick={() => {
                           setChatroom(chatroom_c);
                         }}
@@ -250,13 +240,15 @@ export const Chat = () => {
                           )}
                         </div>
                         <p className="truncate dark:text-white">
-                          {chatroom_c.participants.length > 2
-                            ? chatroom_c.participants
-                                .map(({ name }) => name)
-                                .join(", ")
-                            : chatroom_c.participants.filter(
-                                ({ id }) => id !== user.uid
-                              )[0].name}
+                          {chatroom_c.name === null
+                            ? chatroom_c.participants.length > 2
+                              ? chatroom_c.participants
+                                  .map(({ name }) => name)
+                                  .join(", ")
+                              : chatroom_c.participants.filter(
+                                  ({ id }) => id !== user.uid
+                                )[0].name
+                            : chatroom_c.name}
                         </p>
                         {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
                         {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
@@ -268,7 +260,7 @@ export const Chat = () => {
               </span>
             ) : (
               <span className="flex md:hidden flex-col border-x h-full border-ligt-gray-border">
-                <div className="flex dark:text-white p-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border border-light-gray-border">
+                <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border border-light-gray-border">
                   {chatroom === null ? (
                     new_recipient ? (
                       <span className="flex items-center gap-5">
@@ -308,9 +300,10 @@ export const Chat = () => {
                         </button>
                         <p>{chat_name}</p>
                       </span>
-                      {chatroom.participants.find(
+                      {(chatroom.participants.find(
                         (participant) => participant.id === user.uid
-                      ).chatroom_role === "owner" && (
+                      ).chatroom_role === "owner" ||
+                        chatroom.participants.length <= 2) && (
                         <>
                           <button
                             onClick={() => {
@@ -382,9 +375,9 @@ export const Chat = () => {
                               </div>
                             ))}
                         </div>
-                        <div className="flex gap-2 p-2">
+                        <div className="flex gap-2 p-3">
                           <button
-                            className="text-light-gray-5 cursor-pointer"
+                            className="text-light-gray-7 cursor-pointer"
                             onClick={() => {
                               file_input_ref.current.click();
                             }}
@@ -401,7 +394,7 @@ export const Chat = () => {
                             }
                           />
                           <button
-                            className="text-light-gray-5 disabled:text-light-gray-2"
+                            className="text-quick-green-0 disabled:text-light-gray-5"
                             onClick={handleSendMessage}
                             disabled={!message_enabled}
                           >
@@ -617,7 +610,7 @@ export const Chat = () => {
             </div>
           </aside>
         </div>
-        {/* <Bottom_NavBar /> */}
+        {!chatroom && <Bottom_NavBar />}
       </div>
     </>
   );
