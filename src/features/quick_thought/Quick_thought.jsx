@@ -79,12 +79,13 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
         multiple
         accept="image/*"
       />
-      <div className="border border-light-grey-border  bg-white ">
+      <div className="border border-light-grey-border bg-white dark:bg-quick4 ">
         <div
           className="
             flex flex-row 
             items-top gap-2  
-            p-6 md:p-3"
+            p-6 md:p-3
+            dark:bg-quick4"
         >
           <div className="block md:hidden">
             <button

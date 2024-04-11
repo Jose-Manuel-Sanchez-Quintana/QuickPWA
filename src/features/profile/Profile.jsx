@@ -17,11 +17,9 @@ export const Profile = ({ name, avatar }) => {
         className={`
         ${window.location.pathname !== "/dms" && "sticky top-navbar-height"}
 				overflow-hidden
-				w-full h-fit
-				dark:bg-quick4 
-				dark:bg-quick4 
+				w-full h-fit 
 				lg:row-span-3
-				dark:bg-quick4 md:dark:outline md:dark:outline-1 
+				dark:bg-quick4 
 				md:dark:outline-quick5 md:row-span-3
 			`}
       >
@@ -78,7 +76,7 @@ export const Profile = ({ name, avatar }) => {
             <span className="hidden lg:block">Messages</span>
           </button>
           <button
-            className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:text-white w-full text-light-gray-8"
+            className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8"
             onClick={() => {
               navigate("/settings");
             }}

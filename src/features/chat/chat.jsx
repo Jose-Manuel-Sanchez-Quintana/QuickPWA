@@ -154,6 +154,7 @@ export const Chat = () => {
           overflow-hidden
           w-full lg:w-fit
           bg-light-gray-0
+          dark:bg-quick4
           mx-auto
         "
         >
@@ -177,7 +178,7 @@ export const Chat = () => {
             w-full md:max-w-[580px] md:min-w-[580px] h-full
             md:px-2
             text-xl 
-            md:border-x border-light-grey-border
+            md:border-x dark:md:border-0 border-light-grey-border
             box-content
             "
           >
@@ -207,12 +208,12 @@ export const Chat = () => {
               <span className="md:hidden">
                 <div className="overflow-y-scroll h-full">
                   <div className="font-semibold text-xl p-2">
-                    <span className="flex items-center gap-5 border-b border-light-gray-border">
+                    <span className="flex items-center gap-5 border-b dark:text-white border-light-gray-border">
                       <button
                         onClick={() => {
                           navigation(-1);
                         }}
-                        className="block md:hidden"
+                        className="block md:hidden "
                       >
                         <FaArrowLeft />
                       </button>
@@ -562,7 +563,7 @@ export const Chat = () => {
           </div>
           <aside className="hidden md:block w-[300px] min-w-[300px] max-w-[300px]">
             <div className="overflow-y-scroll h-full">
-              <div className="font-semibold text-xl p-2">
+              <div className="font-semibold text-xl p-2 dark:text-white">
                 <p>Chats</p>
               </div>
               {chatroom_list !== null &&

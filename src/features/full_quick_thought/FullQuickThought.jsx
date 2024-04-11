@@ -82,17 +82,17 @@ const FullQuickThought = ({ makePost, handleClose }) => {
       />
 
       <div
-        className={`absolute flex flex-col justify-between border z-40 h-screen w-screen bg-white ${
+        className={`absolute flex flex-col justify-between border z-40 h-screen w-screen bg-white dark:bg-quick4 ${
           close ? "animate-slide_down" : "animate-slide_up"
         }`}
       >
-        <div className="flex h-10 px-4 items-end justify-between">
+        <div className="flex h-10 px-4 items-end justify-between dark:bg-quick4">
           <button
             onClick={() => {
               setClose(true);
               handleClose();
             }}
-            className="h-6 w-6 text-black dark:text-white"
+            className="h-6 w-6 text-black dark:text-white dark:bg-quick4"
           >
             <FaArrowLeft className="h-full w-full" />
           </button>
@@ -119,7 +119,7 @@ const FullQuickThought = ({ makePost, handleClose }) => {
           className="
             flex flex-row 
             items-top gap-2  
-            p-6 md:p-3 grow bg-white
+            p-6 md:p-3 grow bg-white dark:bg-quick4
           "
         >
           <div className="grid h-full w-full">
