@@ -79,12 +79,13 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
         multiple
         accept="image/*"
       />
-      <div className="border border-light-grey-border  bg-white ">
+      <div className="border border-light-grey-border bg-white dark:bg-quick4 ">
         <div
           className="
             flex flex-row 
             items-top gap-2  
-            p-6 md:p-3"
+            p-6 md:p-3
+            dark:bg-quick4"
         >
           <div className="block md:hidden">
             <button
@@ -148,7 +149,7 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
               <div className="relative flex p-1">
                 <img
                   src={media.preview}
-                  className="bg-black object-cover rounded-md w-24 h-24"
+                  className="bg-black dark:bg-quick4 object-cover rounded-md w-24 h-24"
                   alt=""
                 />
                 <span className="absolute text-white cursor-pointer p-1">

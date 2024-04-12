@@ -245,7 +245,7 @@ export const Feed = ({ posts, setPosts }) => {
         `}
     >
       {posts === null ? (
-        <div className="flex items-center justify-center h-full">
+        <div className="flex items-center justify-center h-full dark:text-white">
           Loading...
         </div>
       ) : (

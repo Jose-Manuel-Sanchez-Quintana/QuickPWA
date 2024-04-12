@@ -293,14 +293,14 @@ export const Post = ({
                               .map((file) => (
                                 <img
                                   src={file.url}
-                                  className="rounded-md bg-black aspect-square object-cover object-center w-full"
+                                  className="rounded-md bg-black dark:bg-quick4 aspect-square object-cover object-center w-full"
                                   alt=""
                                 />
                               ))
                           : post.media.length > 0 && (
                               <img
                                 src={post.media[0].url}
-                                className="rounded-md bg-black w-auto max-h-72 object-contain"
+                                className="rounded-md dark:bg-quick4 w-auto max-h-72 object-contain"
                                 alt=""
                               />
                             )}

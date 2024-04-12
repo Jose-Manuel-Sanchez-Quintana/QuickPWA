@@ -138,8 +138,7 @@ export const Home = () => {
         className="
         flex flex-col 
         h-screen
-        bg-light-pattern
-        dark:bg-quick7
+        bg-light-pattern dark:bg-black-pattern 
         overflow-y-scroll
       "
       >
@@ -153,12 +152,13 @@ export const Home = () => {
           w-full lg:w-fit
           bg-light-gray-0
           mx-auto
+          dark:bg-quick4
           "
         >
           {/* w-[590px] max-w-[590px] md:min-w-[590px] */}
 
           {/* <Speed_Dial clickHandler={() => { setQtActive(true) }} /> */}
-          <div className="hidden md:block grow lg:w-[100px] xl:w-[250px]">
+          <div className="hidden md:block grow lg:w-[100px] xl:w-[250px] dark:bg-quick4">
             <Profile name={user_name} avatar={user_avatar} />
           </div>
           <div
@@ -168,7 +168,8 @@ export const Home = () => {
           w-[580px] max-w-[580px] md:min-w-[580px]
           md:px-2
           text-xl 
-          md:border-x border-light-grey-border
+          md:border-x dark:md:border-0 border-light-grey-border
+          dark:bg-quick4
           box-content
           "
           >
@@ -186,11 +187,11 @@ export const Home = () => {
               <Feed posts={posts} setPosts={setPosts} />
             </span>
           </div>
-          <aside className="hidden md:flex w-[300px] min-w-[300px] max-w-[300px]">
+          <aside className="hidden md:flex w-[300px] min-w-[300px] max-w-[300px] dark:bg-quick4">
             <Suggestions />
           </aside>
         </div>
-        <span className="block md:hidden">
+        <span className="block md:hidden dark:bg-quick4">
           <Speed_Dial
             clickHandler={() => {
               setFullThoughtOpen(true);
