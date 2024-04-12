@@ -135,6 +135,8 @@ export const NavBar = ({ tab_group }) => {
         bg-white
         box-content
         z-20
+        dark:bg-quick4
+        dark:text-white
         `}
       >
         <div
@@ -146,7 +148,7 @@ export const NavBar = ({ tab_group }) => {
             shrink-0
           "
         >
-          <div className="flex md:grow md:justify-center xl:justify-start items-center lg:w-[100px] xl:w-[250px]">
+          <div className="flex md:grow md:justify-center xl:justify-start items-center lg:w-[100px] xl:w-[250px] dark:bg-quick4">
             <button
               className="flex items-center justify-center md:hidden h-full pl-3"
               onClick={() => {
@@ -179,7 +181,7 @@ export const NavBar = ({ tab_group }) => {
             </button>
           </div>
 
-          <div className="hidden md:flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px] box-content">
+          <div className="hidden md:flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px] box-content dark:bg-quick4">
             {tab_group &&
               tab_group.map((tab) => (
                 <NavbarTab
@@ -194,10 +196,10 @@ export const NavBar = ({ tab_group }) => {
                 />
               ))}
           </div>
-          <div className="flex items-center justify-center p-2 md:hidden grow">
+          <div className="flex items-center justify-center p-2 md:hidden grow dark:bg-quick4">
             {search_visible ? (
               <input
-                className="bg-light-gray-2 rounded-full w-full h-full px-4 focus:outline-none"
+                className="bg-light-gray-2 rounded-full w-full h-full px-4 focus:outline-none dark:bg-quick4"
                 type="text"
                 value={search_value}
                 onChange={(e) => {
@@ -218,10 +220,10 @@ export const NavBar = ({ tab_group }) => {
             )}
           </div>
 
-          <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px]">
+          <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px] dark:bg-quick4">
             <span className="relative w-full" ref={search_area_ref}>
-              <label className="hidden md:flex items-center bg-light-gray-2 rounded h-9 px-3">
-                <FaMagnifyingGlass color="black" className="mr-2" />
+              <label className="hidden md:flex items-center bg-light-gray-2 rounded h-9 px-3 dark:bg-quick5">
+                <FaMagnifyingGlass color="black" className="mr-2 dark:fill-white" />
                 <input
                   value={search_value}
                   onFocus={() => {
@@ -230,23 +232,23 @@ export const NavBar = ({ tab_group }) => {
                   onChange={(e) => {
                     handleSetSearchValue(e.target.value);
                   }}
-                  className="grow bg-transparent focus:outline-none"
+                  className="grow bg-transparent focus:outline-none dark:bg-quick5 "
                   type="text"
                   placeholder="Quick Search"
                 />
               </label>
               {search_active && search_results.length > 0 && (
-                <div className="absolute hidden md:block left-0 w-full shadow-md bg-light-gray-0">
+                <div className="absolute hidden md:block left-0 w-full shadow-md bg-light-gray-0 dark:bg-quick4">
                   {/* <div className="p-2">
                     Posts containing <i>{search_value}</i>
                   </div> */}
-                  <div className="p-2 bg-light-gray-2">People</div>
+                  <div className="p-2 bg-light-gray-2 dark:bg-quick4">People</div>
                   <ul>
                     {search_results.map((user) => {
                       return (
                         <>
                           <li
-                            className="text p-2 font-semibold hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5 dark:text-white flex"
+                            className="text p-2 font-semibold hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5 dark:bg-quick4 dark:text-white flex"
                             key={user.id}
                             onMouseDown={(e) => {
                               e.preventDefault();
@@ -281,9 +283,9 @@ export const NavBar = ({ tab_group }) => {
               }}
             >
               {search_visible ? (
-                <RxCross2 color="black" className="w-6 h-6" />
+                <RxCross2 color="black" className="w-6 h-6 dark:fill-white" />
               ) : (
-                <FaMagnifyingGlass color="black" className="w-6 h-6" />
+                <FaMagnifyingGlass color="black" className="w-6 h-6 dark:fill-white" />
               )}
             </div>
 
@@ -294,8 +296,8 @@ export const NavBar = ({ tab_group }) => {
           </div>
         </div>
         {!search_visible && tab_group && (
-          <div className="flex md:hidden justify-center h-navbar-height bg-white">
-            <div className="flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px]">
+          <div className="flex md:hidden justify-center h-navbar-height bg-white dark:bg-quick4">
+            <div className="flex md:px-2 w-[580px] max-w-[580px] md:min-w-[580px] dark:bg-quick4">
               {tab_group.map((tab) => (
                 <NavbarTab
                   key={tab.index}
@@ -312,11 +314,11 @@ export const NavBar = ({ tab_group }) => {
           </div>
         )}
         {search_visible && search_results.length > 0 && (
-          <div className="lg:hidden w-full grow shadow-md bg-light-gray-0">
+          <div className="lg:hidden w-full grow shadow-md bg-light-gray-0 dark:bg-quick4">
             {/* <div className="p-2">
               Posts containing <i>{search_value}</i>
             </div> */}
-            <div className="p-2 bg-light-gray-2">People</div>
+            <div className="p-2 bg-light-gray-2 dark:bg-quick4">People</div>
             <ul>
               {search_results.map((user) => {
                 return (

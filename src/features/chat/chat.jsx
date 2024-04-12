@@ -137,7 +137,7 @@ export const Chat = () => {
         className="
         flex flex-col 
         h-screen
-        bg-light-pattern
+        bg-light-pattern dark:bg-black-pattern 
         overflow-y-scroll
 
         dark:bg-quick7
@@ -154,6 +154,7 @@ export const Chat = () => {
           overflow-hidden
           w-full lg:w-fit
           bg-light-gray-0
+          dark:bg-quick4
           mx-auto
         "
         >
@@ -177,7 +178,7 @@ export const Chat = () => {
             w-full md:max-w-[580px] md:min-w-[580px] h-full
             md:px-2
             text-xl 
-            md:border-x border-light-grey-border
+            md:border-x dark:md:border-0 border-light-grey-border
             box-content
             "
           >
@@ -207,12 +208,12 @@ export const Chat = () => {
               <span className="md:hidden">
                 <div className="overflow-y-scroll h-full">
                   <div className="font-semibold text-xl p-2">
-                    <span className="flex items-center gap-5 border-b border-light-gray-border">
+                    <span className="flex items-center gap-5 border-b dark:text-white border-light-gray-border">
                       <button
                         onClick={() => {
                           navigation(-1);
                         }}
-                        className="block md:hidden"
+                        className="block md:hidden "
                       >
                         <FaArrowLeft />
                       </button>
@@ -355,15 +356,15 @@ export const Chat = () => {
                 {/* </div> */}
                 {(chatroom !== null || new_recipient) && (
                   <>
-                    <div className="bg-light-gray-2">
+                    <div className="bg-light-gray-2 dark:bg-quick5">
                       <div>
-                        <div className="flex">
+                        <div className="flex dark:bg-quick5">
                           {message_media &&
                             message_media.map((media) => (
-                              <div className="flex">
+                              <div className="flex dark:bg-quick5">
                                 <img
                                   src={media.preview}
-                                  className="bg-black rounded-md w-24 h-24"
+                                  className="bg-black dark:bg-quick5 rounded-md w-24 h-24"
                                   alt=""
                                 />
                                 <span className="absolute text-white cursor-pointer p-1">
@@ -382,7 +383,7 @@ export const Chat = () => {
                               </div>
                             ))}
                         </div>
-                        <div className="flex gap-2 p-2">
+                        <div className="flex gap-2 p-2 dark:bg-quick5">
                           <button
                             className="text-light-gray-5 cursor-pointer"
                             onClick={() => {
@@ -393,7 +394,7 @@ export const Chat = () => {
                           </button>
                           <input
                             type="text"
-                            className="grow text-lg p-2 rounded bg-light-gray-2 focus:outline-none"
+                            className="grow text-lg p-2 rounded bg-light-gray-2 focus:outline-none dark:bg-quick4 dark:text-white"
                             placeholder="Escribe tu mensaje..."
                             value={newMessage}
                             onChange={(e) =>
@@ -503,15 +504,15 @@ export const Chat = () => {
               {/* </div> */}
               {(chatroom !== null || new_recipient) && (
                 <>
-                  <div className="bg-light-gray-2">
+                  <div className="bg-light-gray-2 dark:bg-quick5">
                     <div>
-                      <div className="flex">
+                      <div className="flex dark:bg-quick5">
                         {message_media &&
                           message_media.map((media) => (
-                            <div className="flex">
+                            <div className="flex dark:bg-quick5">
                               <img
                                 src={media.preview}
-                                className="bg-black rounded-md w-24 h-24"
+                                className="bg-black dark:bg-quick5 rounded-md w-24 h-24"
                                 alt=""
                               />
                               <span className="absolute text-white cursor-pointer p-1">
@@ -530,9 +531,9 @@ export const Chat = () => {
                             </div>
                           ))}
                       </div>
-                      <div className="flex gap-2 p-2">
+                      <div className="flex gap-2 p-2 ">
                         <button
-                          className="text-light-gray-5 cursor-pointer"
+                          className="text-light-gray-5 cursor-pointer dark:text-white"
                           onClick={() => {
                             file_input_ref.current.click();
                           }}
@@ -547,7 +548,7 @@ export const Chat = () => {
                           onChange={(e) => handleSetNewMessage(e.target.value)}
                         />
                         <button
-                          className="text-light-gray-5 disabled:text-light-gray-2"
+                          className="text-light-gray-5 dark:bg-quick5 disabled:text-light-gray-2"
                           onClick={handleSendMessage}
                           disabled={!message_enabled}
                         >
@@ -562,7 +563,7 @@ export const Chat = () => {
           </div>
           <aside className="hidden md:block w-[300px] min-w-[300px] max-w-[300px]">
             <div className="overflow-y-scroll h-full">
-              <div className="font-semibold text-xl p-2">
+              <div className="font-semibold text-xl p-2 dark:text-white">
                 <p>Chats</p>
               </div>
               {chatroom_list !== null &&
@@ -572,13 +573,13 @@ export const Chat = () => {
                     className={`${
                       chatroom &&
                       chatroom.id === chatroom_c.id &&
-                      "bg-light-gray-3"
+                      "bg-light-gray-3 dark:bg-quick4"
                     } flex items-center gap-2 p-2 hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5`}
                     onClick={() => {
                       setChatroom(chatroom_c);
                     }}
                   >
-                    <div className="flex ">
+                    <div className="flex">
                       {chatroom_c.participants.length > 2 ? (
                         chatroom_c.participants
                           .slice(1, 3)

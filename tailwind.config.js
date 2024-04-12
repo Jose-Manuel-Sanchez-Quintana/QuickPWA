@@ -44,6 +44,7 @@ module.exports = {
       },
       backgroundImage: {
         "light-pattern": "url(/texture-test.png)",
+        "black-pattern": "url(/texture-test-black.jpg)",
         "profile-banner": "url(/bg.png)",
       },
       screens: {

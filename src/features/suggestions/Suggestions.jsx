@@ -15,7 +15,7 @@ export const Suggestions = () => {
 				sticky
 				top-navbar-height
 				h-fit
-        w-full dark:bg-quick4 dark:text-white lg:dark:bg-quick4"
+        w-full dark:bg-quick4 dark:text-white"
       >
         {/* <h1 className="text-black dark:text-white dark:border-quick5 border-b">Suggestions</h1> */}
         <div
@@ -23,12 +23,13 @@ export const Suggestions = () => {
 				m-2
 				font-semibold
 				text-xl
+      dark:bg-quick4
 			"
         >
           You may know
         </div>
-        <div className="dark:bg-quick4 flex flex-col items-center text-center group">
-          <ul className="w-full text-sm">
+        <div className="flex flex-col items-center text-center group dark:bg-quick4">
+          <ul className="w-full text-sm dark:bg-quick4">
             {users.slice(-7).map((user) => {
               return (
                 <>

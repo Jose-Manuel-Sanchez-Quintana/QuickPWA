@@ -74,7 +74,7 @@ export const ProfilePage = ({ name, avatar }) => {
         className="
         flex flex-col 
         h-screen
-        bg-light-pattern
+        bg-light-pattern dark:bg-black-pattern 
         dark:bg-quick7
         overflow-y-scroll
       "
@@ -88,6 +88,7 @@ export const ProfilePage = ({ name, avatar }) => {
         justify-center
         w-full lg:w-fit
         bg-light-gray-0
+        dark:bg-quick4
         mx-auto
     "
         >
@@ -103,13 +104,13 @@ export const ProfilePage = ({ name, avatar }) => {
           w-[580px] max-w-[580px] md:min-w-[580px]
           md:px-2
           text-xl 
-          md:border-x border-light-grey-border
+          md:border-x dark:md:border-0 border-light-grey-border
           box-content
         "
           >
             <div className="w-full bg-white dark:bg-quick7 overflow-hidden">
               {user.uid === search_params.get("user") && (
-                <span className="block md:hidden">
+                <span className="block md:hidden dark:bg-quick4">
                   <Speed_Dial
                     clickHandler={() => {
                       setFullThoughtOpen(true);
@@ -133,7 +134,7 @@ export const ProfilePage = ({ name, avatar }) => {
               <div className="p-5 border-x border-light-gray-border">
                 {user.uid === search_params.get("user") ? (
                   <div
-                    className="-mt-20 cursor-pointer overflow-hidden rounded-2xl h-40 w-40 border-white border-8 bg-cover bg-center"
+                    className="-mt-20 cursor-pointer overflow-hidden rounded-2xl h-40 w-40 border-white dark:border-quick4 border-8 bg-cover bg-center"
                     style={{ backgroundImage: `url("${user_avatar}")` }}
                     onClick={handleClick}
                     alt="user avatar"
@@ -149,7 +150,7 @@ export const ProfilePage = ({ name, avatar }) => {
                 ) : (
                   <div className="flex justify-between">
                     <div
-                      className="-mt-20 cursor-pointer overflow-hidden rounded-2xl h-40 w-40 border-white border-8 bg-cover bg-center"
+                      className="-mt-20 cursor-pointer overflow-hidden rounded-2xl h-40 w-40 border-white dark:border-quick4 border-8 bg-cover bg-center"
                       style={{ backgroundImage: `url("${user_avatar}")` }}
                       alt="user avatar"
                       title="Upload Image"
@@ -161,7 +162,7 @@ export const ProfilePage = ({ name, avatar }) => {
                           onClick={() => {
                             navigate("/dms?to=" + search_params.get("user"));
                           }}
-                          className="flex items-center text-quick-green-0 hover:bg-light-gray-0 justify-center rounded-md bg-white border border-light-gray-border h-full aspect-square"
+                          className="flex items-center text-quick-green-0 dark:bg-quick5 hover:bg-light-gray-0 justify-center rounded-md bg-white border border-light-gray-border dark:border-0 h-full aspect-square"
                         >
                           <FaPaperPlane />
                         </button>
