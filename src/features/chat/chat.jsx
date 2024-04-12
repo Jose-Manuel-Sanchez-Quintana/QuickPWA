@@ -178,8 +178,8 @@ export const Chat = () => {
             w-full md:max-w-[580px] md:min-w-[580px] h-full
             md:px-2
             text-xl 
-            md:border-x dark:md:border-0 border-light-grey-border
             box-content
+            md:border-x border-light-gray-border
             "
           >
             <input
@@ -204,11 +204,11 @@ export const Chat = () => {
             </div> */}
             {/* Rectángulo superior */}
             {/* CHATLIST IN MOBILE */}
-            {chatroom === null ? (
+            {chatroom === null && !new_recipient ? (
               <span className="md:hidden">
                 <div className="overflow-y-scroll h-full">
-                  <div className="font-semibold text-xl p-2">
-                    <span className="flex items-center gap-5 border-b dark:text-white border-light-gray-border">
+                  <div className="font-semibold text-xl p-4 border-b border-light-gray-border">
+                    <span className="flex items-center gap-5 dark:text-white ">
                       <button
                         onClick={() => {
                           navigation(-1);
@@ -224,7 +224,7 @@ export const Chat = () => {
                     chatroom_list.map((chatroom_c) => (
                       <div
                         key={chatroom_c.id}
-                        className={`flex items-center gap-2 py-2 px-4 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
+                        className={`flex items-center gap-2 py-4 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
                         onClick={() => {
                           setChatroom(chatroom_c);
                         }}
@@ -270,7 +270,7 @@ export const Chat = () => {
                 </div>
               </span>
             ) : (
-              <span className="flex md:hidden flex-col border-x h-full border-ligt-gray-border">
+              <span className="flex md:hidden flex-col h-full">
                 <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border border-light-gray-border">
                   {chatroom === null ? (
                     new_recipient ? (
@@ -388,7 +388,7 @@ export const Chat = () => {
                         </div>
                         <div className="flex gap-2 p-2 dark:bg-quick5">
                           <button
-                            className="text-light-gray-7 cursor-pointer"
+                            className="text-light-gray-7 dark:text-white cursor-pointer"
                             onClick={() => {
                               file_input_ref.current.click();
                             }}
@@ -419,7 +419,7 @@ export const Chat = () => {
               </span>
             )}
             {/* MESSAGES */}
-            <span className="hidden md:flex flex-col border-x h-full border-ligt-gray-border">
+            <span className="hidden md:flex flex-col md:border-x border-light-gray-border h-full">
               <div className="flex dark:text-white p-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border-b border-light-gray-border">
                 {chatroom === null ? (
                   new_recipient ? (
@@ -507,7 +507,7 @@ export const Chat = () => {
               {/* </div> */}
               {(chatroom !== null || new_recipient) && (
                 <>
-                  <div className="bg-light-gray-2 dark:bg-quick5">
+                  <div className="bg-light-gray-2 dark:bg-quick5 p-1">
                     <div>
                       <div className="flex dark:bg-quick5">
                         {message_media &&
@@ -545,13 +545,13 @@ export const Chat = () => {
                         </button>
                         <input
                           type="text"
-                          className="grow text-lg p-2 rounded bg-light-gray-2 focus:outline-none"
+                          className="grow text-lg p-2 rounded bg-light-gray-2 dark:bg-quick5 dark:text-white focus:outline-none"
                           placeholder="Escribe tu mensaje..."
                           value={newMessage}
                           onChange={(e) => handleSetNewMessage(e.target.value)}
                         />
                         <button
-                          className="text-light-gray-5 dark:bg-quick5 disabled:text-light-gray-2"
+                          className="text-quick-green-0 dark:bg-quick5 disabled:text-light-gray-5"
                           onClick={handleSendMessage}
                           disabled={!message_enabled}
                         >
@@ -566,7 +566,7 @@ export const Chat = () => {
           </div>
           <aside className="hidden md:block w-[300px] min-w-[300px] max-w-[300px]">
             <div className="overflow-y-scroll h-full">
-              <div className="font-semibold text-xl p-2 dark:text-white">
+              <div className="font-semibold text-xl p-4 border-b border-light-gray-border dark:text-white">
                 <p>Chats</p>
               </div>
               {chatroom_list !== null &&
@@ -621,7 +621,7 @@ export const Chat = () => {
             </div>
           </aside>
         </div>
-        {!chatroom && <Bottom_NavBar />}
+        {!chatroom && !new_recipient && <Bottom_NavBar />}
       </div>
     </>
   );

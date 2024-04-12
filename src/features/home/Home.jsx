@@ -168,7 +168,7 @@ export const Home = () => {
           w-[580px] max-w-[580px] md:min-w-[580px]
           md:px-2
           text-xl 
-          md:border-x dark:md:border-0 border-light-grey-border
+          md:border-x border-light-grey-border
           dark:bg-quick4
           box-content
           "
