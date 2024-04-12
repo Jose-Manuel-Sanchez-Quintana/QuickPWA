@@ -167,11 +167,9 @@ const UseChat = () => {
           });
         } else {
           setChatroom({
-            ...chatroom,
-            participants: [
-              ...chatroom.participants,
-              ...response.data.participants,
-            ],
+            id: response.data.id,
+            messages: [],
+            participants: response.data.participants,
           });
         }
       });
