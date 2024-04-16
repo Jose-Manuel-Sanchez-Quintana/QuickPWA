@@ -271,7 +271,7 @@ export const Chat = () => {
               </span>
             ) : (
               <span className="flex md:hidden flex-col h-full">
-                <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border border-light-gray-border">
+                <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center border-b border-light-gray-border">
                   {chatroom === null ? (
                     new_recipient ? (
                       <span className="flex items-center gap-5">
@@ -460,9 +460,10 @@ export const Chat = () => {
                       </button>
                       <p>{chat_name}</p>
                     </span>
-                    {chatroom.participants.find(
+                    {(chatroom.participants.find(
                       (participant) => participant.id === user.uid
-                    ).chatroom_role === "owner" && (
+                    ).chatroom_role === "owner" ||
+                      chatroom.participants.length) <= 2 && (
                       <>
                         <button
                           onClick={() => {
