@@ -131,7 +131,7 @@ export const AdminTools = () => {
                           key={post.id}
                           className={`cursor-pointer ${
                             !post.active
-                              ? "bg-light-error-0 even:bg-light-error-1 hover:bg-light-error-3"
+                              ? "bg-light-error-0 dark:bg-light-error-11 even:bg-light-error-1 even:dark:bg-light-error-12 hover:bg-light-error-3 dark:hover:bg-light-error-1011"
                               : "bg-light-gray-0 dark:bg-quick4 even:bg-light-gray-1 dark:even:bg-quick45 hover:bg-light-gray-3 dark:hover:bg-quick46"
                           } p-2 border-b border-light-grey-border dark:border-light-gray-8-0 dark:text-white`}
                           onClick={() => {
