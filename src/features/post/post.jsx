@@ -240,6 +240,7 @@ export const Post = ({
                 {is_flagged !== null && updating_flagged ? (
                   <AiOutlineLoading className="text-quick-green-0 h-6 animate-spin" />
                 ) : (
+                  user.role !== undefined &&
                   user.role.indexOf("administrator") !== -1 && (
                     <button
                       className={

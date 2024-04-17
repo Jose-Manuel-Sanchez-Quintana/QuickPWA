@@ -20,7 +20,10 @@ const FullQuickThought = ({ makePost, handleClose }) => {
   //     posts
   // } = useHome();
   const message_max_chars =
-    user.subscriptions.indexOf("quicker") === -1 ? 128 : 512;
+    user.subscriptions !== undefined &&
+    user.subscriptions.indexOf("quicker") === -1
+      ? 128
+      : 512;
 
   const removePostMedia = (file_name) => {
     setPostMedia(post_media.filter(({ file }) => file.name !== file_name));

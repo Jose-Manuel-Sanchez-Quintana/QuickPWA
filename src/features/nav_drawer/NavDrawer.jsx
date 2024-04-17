@@ -53,6 +53,7 @@ const NavDrawer = ({ open, setOpen }) => {
           <Typography variant="h5" className="flex" color="blue-gray">
             {user.name}
             {user.subscriptions !== undefined &&
+              user.subscriptions !== undefined &&
               user.subscriptions.indexOf("quicker") !== -1 && (
                 <span className="w-4 ml-1">
                   <img src="quicker_badge.png" />

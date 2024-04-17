@@ -59,6 +59,7 @@ export const Profile = ({ name, avatar }) => {
                 <div className="flex font-semibold">
                   {user.name}
                   {user.subscriptions !== undefined &&
+                    user.subscriptions !== undefined &&
                     user.subscriptions.indexOf("quicker") !== -1 && (
                       <span className="w-4 ml-1">
                         <img src="quicker_badge.png" />
@@ -106,6 +107,7 @@ export const Profile = ({ name, avatar }) => {
             <span className="hidden lg:block">Settings</span>
           </button>
           {user.role !== undefined &&
+            user.role !== undefined &&
             user.role.indexOf("administrator") !== -1 && (
               <button
                 className={`flex flex-col xl:flex-row ${
