@@ -32,6 +32,7 @@ module.exports = {
         quick2: "#7a8d91",
         quick3: "#586669",
         quick4: "#222b32",
+        quick45: "#34414c",
         quick5: "#435164",
         quick6: "#8E9EB6",
         quick7: "#23272a",

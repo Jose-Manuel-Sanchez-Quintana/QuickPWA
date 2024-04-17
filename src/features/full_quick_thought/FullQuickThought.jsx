@@ -137,7 +137,7 @@ const FullQuickThought = ({ makePost, handleClose }) => {
           </div>
         </div>
         {post_media.length > 0 && (
-          <div className="flex border-t-2 border-dashed border-light-gray-border p-3 bg-white">
+          <div className="flex border-t-2 border-dashed border-light-grey-border dark:border-light-gray-8 p-3 bg-white">
             {post_media.map((media) => (
               <div className="relative flex p-1">
                 <img

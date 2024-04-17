@@ -9,7 +9,7 @@ const Bottom_NavBar = () => {
 
   return (
     <>
-      <div className="sticky md:hidden bottom-0 left-0 z-10 w-full h-navbar-height shrink-0 bg-white border-t border-light-gray-border dark:bg-gray-700 dark:border-gray-600">
+      <div className="sticky md:hidden bottom-0 left-0 z-10 w-full h-navbar-height shrink-0 bg-white border-t border-light-grey-border dark:border-light-gray-8 dark:bg-gray-700 dark:border-gray-600">
         <div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium">
           <button
             onClick={() => {

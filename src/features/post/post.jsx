@@ -143,7 +143,7 @@ export const Post = ({
             <div
               className={
                 is_repost
-                  ? "rounded-md border border-light-gray-border p-2 mt-1"
+                  ? "rounded-md border border-light-grey-border dark:border-light-gray-8 p-2 mt-1"
                   : "p-2"
               }
             >

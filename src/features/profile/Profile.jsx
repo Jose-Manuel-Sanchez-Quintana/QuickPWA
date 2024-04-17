@@ -58,18 +58,22 @@ export const Profile = ({ name, avatar }) => {
               <span className="hidden xl:block text-left p-1">
                 <div className="flex font-semibold">
                   {user.name}
-                  {user.subscriptions.indexOf("quicker") !== -1 && (
-                    <span className="w-4 ml-1">
-                      <img src="quicker_badge.png" />
-                    </span>
-                  )}
+                  {user.subscriptions !== undefined &&
+                    user.subscriptions.indexOf("quicker") !== -1 && (
+                      <span className="w-4 ml-1">
+                        <img src="quicker_badge.png" />
+                      </span>
+                    )}
                 </div>
                 <div className="text-gray-500">{user.post_count} Posts</div>
               </span>
             </button>
           </div>
           <button
-            className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8"
+            className={`flex flex-col xl:flex-row ${
+              window.location.pathname === "/" &&
+              "bg-light-gray-1 dark:bg-quick45"
+            } items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8`}
             onClick={() => {
               navigate("/");
             }}
@@ -78,7 +82,10 @@ export const Profile = ({ name, avatar }) => {
             <span className="hidden lg:block">Home</span>
           </button>
           <button
-            className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8"
+            className={`flex flex-col xl:flex-row ${
+              window.location.pathname === "/dms" &&
+              "bg-light-gray-1 dark:bg-quick45"
+            } items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8`}
             onClick={() => {
               navigate("/dms?to=" + user.uid);
             }}
@@ -87,7 +94,10 @@ export const Profile = ({ name, avatar }) => {
             <span className="hidden lg:block">Messages</span>
           </button>
           <button
-            className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8"
+            className={`flex flex-col xl:flex-row ${
+              window.location.pathname === "/settings" &&
+              "bg-light-gray-1 dark:bg-quick45"
+            } items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8`}
             onClick={() => {
               navigate("/settings");
             }}
@@ -95,17 +105,21 @@ export const Profile = ({ name, avatar }) => {
             <BsFillGearFill className="xl:mr-3" />
             <span className="hidden lg:block">Settings</span>
           </button>
-          {user.role.indexOf("administrator") !== -1 && (
-            <button
-              className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8"
-              onClick={() => {
-                navigate("/admintools");
-              }}
-            >
-              <FaWrench className="xl:mr-3" />
-              <span className="hidden lg:block">Administrator tools</span>
-            </button>
-          )}
+          {user.role !== undefined &&
+            user.role.indexOf("administrator") !== -1 && (
+              <button
+                className={`flex flex-col xl:flex-row ${
+                  window.location.pathname === "/admintools" &&
+                  "bg-light-gray-1 dark:bg-quick45"
+                } items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8`}
+                onClick={() => {
+                  navigate("/admintools");
+                }}
+              >
+                <FaWrench className="xl:mr-3" />
+                <span className="hidden lg:block">Administrator tools</span>
+              </button>
+            )}
           <button
             className="flex flex-col xl:flex-row items-center p-3 hover:bg-light-gray-2 dark:hover:bg-quick5 dark:text-white w-full text-light-gray-8"
             onClick={so}

@@ -79,7 +79,7 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
         multiple
         accept="image/*"
       />
-      <div className="border border-light-grey-border bg-white dark:bg-quick4 ">
+      <div className="border border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8  bg-white dark:bg-quick4 ">
         <div
           className="
             flex flex-row 
@@ -144,7 +144,7 @@ export const Quick_Thought = ({ makePost, handleClose }) => {
           </div>
         </div>
         {post_media.length > 0 && (
-          <div className="flex border-t-2 border-dashed border-light-gray-border p-3">
+          <div className="flex border-t-2 border-dashed border-light-grey-border dark:border-light-gray-8 p-3">
             {post_media.map((media) => (
               <div className="relative flex p-1">
                 <img

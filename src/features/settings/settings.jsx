@@ -63,7 +63,7 @@ export const Settings = () => {
     switch (index) {
       case 0:
         setSettingTab(
-          <div className="border-x border-light-grey-border p-2 h-full dark:bg-quick4">
+          <div className="border-x border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8  p-2 h-full dark:bg-quick4">
             <div className="font-semibold text-xl text-black dark:text-white mb-7">
               Appearance settings
             </div>
@@ -96,7 +96,7 @@ export const Settings = () => {
         break;
       case 1:
         setSettingTab(
-          <div className="border-x border-light-grey-border p-2 h-full dark:bg-quick4">
+          <div className="border-x border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8  p-2 h-full dark:bg-quick4">
             <div className="font-semibold text-xl text-black dark:text-white mb-7">
               Account settings
             </div>
@@ -218,7 +218,7 @@ export const Settings = () => {
           </div>
           <div
             className="
-            md:border-x dark:md:border-0 border-light-grey-border
+            md:border-x border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8 
 						md:px-2
             box-content
 						w-[580px] max-w-[580px] md:min-w-[580px]

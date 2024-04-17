@@ -178,7 +178,7 @@ export const Chat = () => {
             md:px-2
             text-xl 
             box-content
-            md:border-x border-light-gray-border
+            md:border-x border-light-grey-border dark:border-light-gray-8
             "
           >
             <input
@@ -206,7 +206,7 @@ export const Chat = () => {
             {chatroom === null && !new_recipient ? (
               <span className="md:hidden">
                 <div className="overflow-y-scroll h-full">
-                  <div className="font-semibold text-xl p-4 border-b border-light-gray-border">
+                  <div className="font-semibold text-xl p-4 border-b border-light-grey-border dark:border-light-gray-8">
                     <span className="flex items-center gap-5 dark:text-white ">
                       <button
                         onClick={() => {
@@ -223,7 +223,7 @@ export const Chat = () => {
                     chatroom_list.map((chatroom_c) => (
                       <div
                         key={chatroom_c.id}
-                        className={`flex items-center gap-2 py-4 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
+                        className={`flex items-center px-4 gap-2 py-4 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
                         onClick={() => {
                           setChatroom(chatroom_c);
                         }}
@@ -276,7 +276,7 @@ export const Chat = () => {
               />
             ) : (
               <span className="flex md:hidden flex-col h-full">
-                <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center border-b border-light-gray-border">
+                <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center border-b border-light-grey-border dark:border-light-gray-8">
                   {chatroom === null ? (
                     new_recipient ? (
                       <span className="flex items-center gap-5">
@@ -432,8 +432,8 @@ export const Chat = () => {
               </span>
             )}
             {/* MESSAGES */}
-            <span className="hidden md:flex flex-col md:border-x border-light-gray-border h-full">
-              <div className="flex dark:text-white p-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border-b border-light-gray-border">
+            <span className="hidden md:flex flex-col md:border-x border-light-grey-border dark:border-light-gray-8 h-full">
+              <div className="flex dark:text-white p-2 font-semibold text-xl shrink-0 justify-between items-center dark:border-b dark:border-quick5 border-b border-light-grey-border dark:border-light-gray-8">
                 {chatroom === null ? (
                   new_recipient ? (
                     <span className="flex items-center gap-5">
@@ -590,7 +590,7 @@ export const Chat = () => {
           </div>
           <aside className="hidden md:block w-[300px] min-w-[300px] max-w-[300px]">
             <div className="overflow-y-scroll h-full">
-              <div className="font-semibold text-xl p-4 border-b border-light-gray-border dark:text-white">
+              <div className="font-semibold text-xl p-4 border-b border-light-grey-border dark:border-light-gray-8 dark:text-white">
                 <p>Chats</p>
               </div>
               {chatroom_list !== null &&

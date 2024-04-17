@@ -34,7 +34,7 @@ export const FollowerPicker = ({
     <>
       <div className="block md:hidden h-full w-full">
         <span className="flex flex-col h-full bg-white">
-          <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center border-b border-light-gray-border">
+          <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center border-b border-light-grey-border dark:border-light-gray-8">
             <span className="flex items-center gap-5">
               <button className="block md:hidden" onClick={handleClose}>
                 <FaArrowLeft />
@@ -148,7 +148,7 @@ export const FollowerPicker = ({
       <div class="hidden md:flex fixed bg-black bg-opacity-40 overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen md:max-h-full">
         <div class="relative p-0 md:p-4 w-full max-w-full md:max-w-2xl max-h-full">
           <div class="relative h-screen md:h-auto bg-white shadow  dark:bg-quick4">
-            <div className="font-semibold text-xl p-4 border-b border-light-gray-border dark:text-white">
+            <div className="font-semibold text-xl p-4 border-b border-light-grey-border dark:border-light-gray-8 dark:text-white">
               <div className="flex items-center justify-between dark:text-white ">
                 <span className="flex items-center gap-5">
                   <button className="block md:hidden" onClick={handleClose}>

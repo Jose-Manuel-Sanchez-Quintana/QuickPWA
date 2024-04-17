@@ -104,7 +104,7 @@ export const ProfilePage = ({ name, avatar }) => {
           w-[580px] max-w-[580px] md:min-w-[580px]
           md:px-2
           text-xl 
-          md:border-x dark:md:border-0 border-light-grey-border
+          md:border-x dark:md:border-0 border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8 
           box-content
         "
           >
@@ -130,8 +130,8 @@ export const ProfilePage = ({ name, avatar }) => {
               />
 
               {/* Avatar */}
-              <div className="bg-profile-banner w-full h-44 border-x border-light-gray-border"></div>
-              <div className="p-5 border-x border-light-gray-border">
+              <div className="bg-profile-banner w-full h-44 border-x border-light-grey-border dark:border-light-gray-8"></div>
+              <div className="p-5 border-x border-light-grey-border dark:border-light-gray-8">
                 {user.uid === search_params.get("user") ? (
                   <div
                     className="-mt-20 cursor-pointer overflow-hidden rounded-2xl h-40 w-40 border-white dark:border-quick4 border-8 bg-cover bg-center"
@@ -162,7 +162,7 @@ export const ProfilePage = ({ name, avatar }) => {
                           onClick={() => {
                             navigate("/dms?to=" + search_params.get("user"));
                           }}
-                          className="flex items-center text-quick-green-0 dark:bg-quick5 hover:bg-light-gray-0 justify-center rounded-md bg-white border border-light-gray-border dark:border-0 h-full aspect-square"
+                          className="flex items-center text-quick-green-0 dark:bg-quick5 hover:bg-light-gray-0 justify-center rounded-md bg-white border border-light-grey-border dark:border-light-gray-8 dark:border-0 h-full aspect-square"
                         >
                           <FaPaperPlane />
                         </button>
@@ -172,7 +172,7 @@ export const ProfilePage = ({ name, avatar }) => {
                           <button
                             type="button"
                             onClick={followUser}
-                            className={`shadow-2xl p-1 rounded-md h-full ${
+                            className={`p-1 rounded-md h-full ${
                               following
                                 ? "bg-yellow-900 hover:bg-yellow-800"
                                 : "bg-green-800 hover:bg-green-700"
@@ -224,7 +224,7 @@ export const ProfilePage = ({ name, avatar }) => {
                 className={`h-full ${
                   posts &&
                   posts.length < 1 &&
-                  "border-x border-light-gray-border"
+                  "border-x border-light-grey-border dark:border-light-gray-8"
                 }`}
               >
                 {/* POST Quick Thought */}

@@ -52,11 +52,12 @@ const NavDrawer = ({ open, setOpen }) => {
           </div>
           <Typography variant="h5" className="flex" color="blue-gray">
             {user.name}
-            {user.subscriptions.indexOf("quicker") !== -1 && (
-              <span className="w-4 ml-1">
-                <img src="quicker_badge.png" />
-              </span>
-            )}
+            {user.subscriptions !== undefined &&
+              user.subscriptions.indexOf("quicker") !== -1 && (
+                <span className="w-4 ml-1">
+                  <img src="quicker_badge.png" />
+                </span>
+              )}
           </Typography>
         </div>
         <List>
