@@ -18,7 +18,6 @@ const UserCard = ({ profile_user }) => {
       key={profile_user.id}
       onClick={(e) => {
         e.stopPropagation();
-        navigate("/profile?user=" + profile_user.id);
       }}
     >
       <div>
