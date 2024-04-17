@@ -22,8 +22,8 @@ const Bottom_NavBar = () => {
               className={`${
                 window.location.pathname === "/"
                   ? "text-quick-green-0"
-                  : "text-light-gray-8"
-              } dark:text-white`}
+                  : "text-light-gray-8 dark:text-white"
+              } `}
             />
             <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"></span>
           </button>
@@ -38,8 +38,8 @@ const Bottom_NavBar = () => {
               className={`${
                 window.location.pathname === "/dms"
                   ? "text-quick-green-0"
-                  : "text-light-gray-8"
-              } dark:text-white`}
+                  : "text-light-gray-8 dark:text-white"
+              }`}
             />
             <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"></span>
           </button>
@@ -55,8 +55,8 @@ const Bottom_NavBar = () => {
                 window.location.pathname === "/profile" &&
                 window.location.search === "?user=" + user.uid
                   ? "text-quick-green-0"
-                  : "text-light-gray-8"
-              } dark:text-white`}
+                  : "text-light-gray-8 dark:text-white"
+              }`}
             />
           </button>
         </div>

@@ -151,7 +151,7 @@ export const Post = ({
                 <span className="flex items-center space-x-4">
                   {is_repost ? (
                     <img
-                      className="w-12 h-12 rounded cursor-pointer"
+                      className="w-12 h-12 rounded cursor-pointer object-cover"
                       onClick={() => {
                         navigate(
                           "/profile?user=" + post.original_post.author.id
@@ -163,7 +163,7 @@ export const Post = ({
                     ></img>
                   ) : (
                     <img
-                      className="w-12 h-12 rounded cursor-pointer"
+                      className="w-12 h-12 rounded cursor-pointer object-cover"
                       onClick={() => {
                         navigate("/profile?user=" + post.author.id);
                       }}

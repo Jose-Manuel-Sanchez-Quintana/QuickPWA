@@ -20,6 +20,7 @@ import { Profile } from "../profile/Profile";
 import useHome from "../home/UseHome";
 import { Suggestions } from "../suggestions/Suggestions";
 import Bottom_NavBar from "../bottom_navbar/Bottom_NavBar";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export const Chat = () => {
   const { user_name, user_avatar, posts, setPosts, post } = useHome();
@@ -43,8 +44,10 @@ export const Chat = () => {
     chatroom_list,
     chat_name,
     getChatName,
+    sending_message_ref,
     setChatName,
     getMessages,
+    setSendingMessage,
     getChatrooms,
     setChatroom,
     // openChatroomListener,
@@ -71,7 +74,8 @@ export const Chat = () => {
   };
 
   const handleSendMessage = () => {
-    if (message_enabled) {
+    if (message_enabled && !sending_message_ref.current) {
+      setSendingMessage(true);
       sendMessage(newMessage, message_media);
       setMessageMedia([]);
       setNewMessage("");
@@ -145,6 +149,7 @@ export const Chat = () => {
         // overflow-y-scroll
       >
         <NavBar />
+
         {/* w-full lg:w-[1010px] xl:w-[1150px] */}
         <div
           className="
@@ -164,13 +169,7 @@ export const Chat = () => {
           <div className="hidden md:block grow lg:w-[100px] xl:w-[250px] ">
             <Profile name={user_name} avatar={user_avatar} />
           </div>
-          {search_user && (
-            <FollowerPicker
-              current_chatroom={chatroom}
-              handleAddParticipants={addParticipants}
-              handleClose={HandlecloseSearchModal}
-            />
-          )}
+
           <div
             className="
             flex flex-col
@@ -236,7 +235,7 @@ export const Chat = () => {
                               .map(({ avatar }) => (
                                 <img
                                   src={avatar}
-                                  className="rounded-full w-10 h-10 last:-ml-4 border-2 border-gray-100"
+                                  className="rounded w-10 h-10 last:-ml-4 border-2 border-gray-100 bg-black"
                                 />
                               ))
                           ) : (
@@ -246,7 +245,7 @@ export const Chat = () => {
                                   ({ id }) => id !== user.uid
                                 )[0].avatar
                               }
-                              className="rounded-full w-10 h-10 border-2 border-gray-100"
+                              className="rounded w-10 h-10 border-2 border-gray-100"
                             />
                           )}
                         </div>
@@ -269,6 +268,12 @@ export const Chat = () => {
                   {/* <Suggestions /> */}
                 </div>
               </span>
+            ) : search_user ? (
+              <FollowerPicker
+                current_chatroom={chatroom}
+                handleAddParticipants={addParticipants}
+                handleClose={HandlecloseSearchModal}
+              />
             ) : (
               <span className="flex md:hidden flex-col h-full">
                 <div className="flex dark:text-white p-4 font-semibold text-xl shrink-0 justify-between items-center border-b border-light-gray-border">
@@ -367,7 +372,7 @@ export const Chat = () => {
                               <div className="flex dark:bg-quick5">
                                 <img
                                   src={media.preview}
-                                  className="bg-black dark:bg-quick5 rounded-md w-24 h-24"
+                                  className="bg-black dark:bg-quick5 rounded-md w-24 h-24 object-cover"
                                   alt=""
                                 />
                                 <span className="absolute text-white cursor-pointer p-1">
@@ -405,11 +410,19 @@ export const Chat = () => {
                             }
                           />
                           <button
-                            className="text-quick-green-0 disabled:text-light-gray-5"
+                            className={`text-quick-green-0 ${
+                              sending_message_ref.current && "cursor-default"
+                            } disabled:text-light-gray-5`}
                             onClick={handleSendMessage}
                             disabled={!message_enabled}
                           >
-                            <FaPaperPlane />
+                            {sending_message_ref.current ? (
+                              <div className="flex justify-center items-center h-5 w-5">
+                                <AiOutlineLoading className="h-full w-full text-quick-green-0 animate-spin" />
+                              </div>
+                            ) : (
+                              <FaPaperPlane />
+                            )}
                           </button>
                         </div>
                       </div>
@@ -516,7 +529,7 @@ export const Chat = () => {
                             <div className="flex dark:bg-quick5">
                               <img
                                 src={media.preview}
-                                className="bg-black dark:bg-quick5 rounded-md w-24 h-24"
+                                className="bg-black dark:bg-quick5 rounded-md w-24 h-24 object-cover"
                                 alt=""
                               />
                               <span className="absolute text-white cursor-pointer p-1">
@@ -556,7 +569,17 @@ export const Chat = () => {
                           onClick={handleSendMessage}
                           disabled={!message_enabled}
                         >
-                          <FaPaperPlane />
+                          {sending_message_ref.current ? (
+                            <div
+                              className={`text-quick-green-0 ${
+                                sending_message_ref.current && "cursor-default"
+                              } disabled:text-light-gray-5`}
+                            >
+                              <AiOutlineLoading className="h-full w-full text-quick-green-0 animate-spin" />
+                            </div>
+                          ) : (
+                            <FaPaperPlane />
+                          )}
                         </button>
                       </div>
                     </div>
@@ -583,14 +606,14 @@ export const Chat = () => {
                       setChatroom(chatroom_c);
                     }}
                   >
-                    <div className="flex">
+                    <div className="flex shrink-0">
                       {chatroom_c.participants.length > 2 ? (
                         chatroom_c.participants
                           .slice(1, 3)
                           .map(({ avatar }) => (
                             <img
                               src={avatar}
-                              className="rounded-full w-10 h-10 last:-ml-4 border-2 border-gray-100"
+                              className="rounded w-10 h-10 last:-ml-4 border-2 border-gray-100 bg-black"
                             />
                           ))
                       ) : (
@@ -600,7 +623,7 @@ export const Chat = () => {
                               ({ id }) => id !== user.uid
                             )[0].avatar
                           }
-                          className="rounded-full w-10 h-10 border-2 border-gray-100"
+                          className="rounded w-10 h-10 border-2 border-gray-100"
                         />
                       )}
                     </div>
