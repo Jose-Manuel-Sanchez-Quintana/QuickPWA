@@ -144,6 +144,7 @@ function App() {
                     isAllowed={
                       user &&
                       user.role !== undefined &&
+                      user.role !== undefined &&
                       user.role.indexOf("administrator") !== -1
                     }
                     redirectTo="/login"

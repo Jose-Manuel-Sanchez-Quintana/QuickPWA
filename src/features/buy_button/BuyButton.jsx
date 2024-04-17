@@ -19,7 +19,8 @@ function BuyButton({ onClickHandler }) {
   // Paste the stripe-buy-button snippet in your React component
   return (
     <>
-      {user.subscriptions.indexOf("quicker") === -1 ? (
+      {user.subscriptions !== undefined &&
+      user.subscriptions.indexOf("quicker") === -1 ? (
         <Button
           className="bg-green-700 mt-3 align-middle sm:mt-0 md:mt-0 lg:mt-0"
           onClick={a}
