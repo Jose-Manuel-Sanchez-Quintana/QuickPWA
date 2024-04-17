@@ -285,7 +285,7 @@ export const NavBar = ({ tab_group }) => {
               )}
             </span>
             <div
-              className="flex md:hidden h-full w-10 pr-3 justify-center items-center"
+              className="flex md:hidden h-full w-10 pr-3 justify-center items-center dark:text-white"
               onClick={() => {
                 setSearchVisible(!search_visible);
                 if (!search_visible) {
@@ -294,12 +294,9 @@ export const NavBar = ({ tab_group }) => {
               }}
             >
               {search_visible ? (
-                <RxCross2 color="black" className="w-6 h-6 dark:fill-white" />
+                <RxCross2 className="w-6 h-6 darkfill-white" />
               ) : (
-                <FaMagnifyingGlass
-                  color="black"
-                  className="w-6 h-6 dark:fill-white"
-                />
+                <FaMagnifyingGlass className="w-6 h-6 dark:fill-white" />
               )}
             </div>
 

@@ -220,52 +220,57 @@ export const Chat = () => {
                     </span>
                   </div>
                   {chatroom_list !== null &&
-                    chatroom_list.map((chatroom_c) => (
-                      <div
-                        key={chatroom_c.id}
-                        className={`flex items-center px-4 gap-2 py-4 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
-                        onClick={() => {
-                          setChatroom(chatroom_c);
-                        }}
-                      >
-                        <div className="flex ">
-                          {chatroom_c.participants.length > 2 ? (
-                            chatroom_c.participants
-                              .slice(1, 3)
-                              .map(({ avatar }) => (
-                                <img
-                                  src={avatar}
-                                  className="rounded w-10 h-10 last:-ml-4 border-2 border-gray-100 bg-black"
-                                />
-                              ))
-                          ) : (
-                            <img
-                              src={
-                                chatroom_c.participants.filter(
-                                  ({ id }) => id !== user.uid
-                                )[0].avatar
-                              }
-                              className="rounded w-10 h-10 border-2 border-gray-100"
-                            />
-                          )}
+                    chatroom_list.map((chatroom_c, i) =>
+                      chatroom_list.findIndex(
+                        (o, j) => chatroom_c.id === o.id && j !== i
+                      ) ? (
+                        <div
+                          key={chatroom_c.id}
+                          className={`flex items-center px-4 gap-2 py-4 cursor-pointer hover:bg-light-gray-2 dark:hover:bg-quick5`}
+                          onClick={() => {
+                            setChatroom(chatroom_c);
+                          }}
+                        >
+                          <div className="flex ">
+                            {chatroom_c.participants.length > 2 ? (
+                              chatroom_c.participants
+                                .slice(1, 3)
+                                .map(({ avatar }) => (
+                                  <img
+                                    src={avatar}
+                                    className="rounded w-10 h-10 last:-ml-4 border-2 border-gray-100 bg-black"
+                                  />
+                                ))
+                            ) : (
+                              <img
+                                src={
+                                  chatroom_c.participants.filter(
+                                    ({ id }) => id !== user.uid
+                                  )[0].avatar
+                                }
+                                className="rounded w-10 h-10 border-2 border-gray-100"
+                              />
+                            )}
+                          </div>
+                          <p className="truncate dark:text-white">
+                            {chatroom_c.name === null
+                              ? chatroom_c.participants.length > 2
+                                ? chatroom_c.participants
+                                    .map(({ name }) => name)
+                                    .join(", ")
+                                : chatroom_c.participants.filter(
+                                    ({ id }) => id !== user.uid
+                                  )[0].name
+                              : chatroom_c.name}
+                          </p>
+                          {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
+                          {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
+                          {/* <span>{chat.name}</span> */}
                         </div>
-                        <p className="truncate dark:text-white">
-                          {chatroom_c.name === null
-                            ? chatroom_c.participants.length > 2
-                              ? chatroom_c.participants
-                                  .map(({ name }) => name)
-                                  .join(", ")
-                              : chatroom_c.participants.filter(
-                                  ({ id }) => id !== user.uid
-                                )[0].name
-                            : chatroom_c.name}
-                        </p>
-                        {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
-                        {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
-                        {/* <span>{chat.name}</span> */}
-                      </div>
-                    ))}
-                  {/* <Suggestions /> */}
+                      ) : (
+                        <></>
+                      )
+                    )}
                 </div>
               </span>
             ) : search_user ? (
@@ -594,53 +599,59 @@ export const Chat = () => {
                 <p>Chats</p>
               </div>
               {chatroom_list !== null &&
-                chatroom_list.map((chatroom_c) => (
-                  <div
-                    key={chatroom_c.id}
-                    className={`${
-                      chatroom &&
-                      chatroom.id === chatroom_c.id &&
-                      "bg-light-gray-3 dark:bg-quick4"
-                    } flex items-center gap-2 p-2 hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5`}
-                    onClick={() => {
-                      setChatroom(chatroom_c);
-                    }}
-                  >
-                    <div className="flex shrink-0">
-                      {chatroom_c.participants.length > 2 ? (
-                        chatroom_c.participants
-                          .slice(1, 3)
-                          .map(({ avatar }) => (
-                            <img
-                              src={avatar}
-                              className="rounded w-10 h-10 last:-ml-4 border-2 border-gray-100 bg-black"
-                            />
-                          ))
-                      ) : (
-                        <img
-                          src={
-                            chatroom_c.participants.filter(
+                chatroom_list.map((chatroom_c, i) =>
+                  chatroom_list.findIndex(
+                    (o, j) => chatroom_c.id === o.id && j !== i
+                  ) ? (
+                    <div
+                      key={chatroom_c.id}
+                      className={`${
+                        chatroom &&
+                        chatroom.id === chatroom_c.id &&
+                        "bg-light-gray-3 dark:bg-quick4"
+                      } flex items-center gap-2 p-2 hover:bg-light-gray-2 cursor-pointer dark:hover:bg-quick5`}
+                      onClick={() => {
+                        setChatroom(chatroom_c);
+                      }}
+                    >
+                      <div className="flex shrink-0">
+                        {chatroom_c.participants.length > 2 ? (
+                          chatroom_c.participants
+                            .slice(1, 3)
+                            .map(({ avatar }) => (
+                              <img
+                                src={avatar}
+                                className="rounded w-10 h-10 last:-ml-4 border-2 border-gray-100 bg-black"
+                              />
+                            ))
+                        ) : (
+                          <img
+                            src={
+                              chatroom_c.participants.filter(
+                                ({ id }) => id !== user.uid
+                              )[0].avatar
+                            }
+                            className="rounded w-10 h-10 border-2 border-gray-100"
+                          />
+                        )}
+                      </div>
+                      <p className="truncate dark:text-white">
+                        {chatroom_c.participants.length > 2
+                          ? chatroom_c.participants
+                              .map(({ name }) => name)
+                              .join(", ")
+                          : chatroom_c.participants.filter(
                               ({ id }) => id !== user.uid
-                            )[0].avatar
-                          }
-                          className="rounded w-10 h-10 border-2 border-gray-100"
-                        />
-                      )}
+                            )[0].name}
+                      </p>
+                      {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
+                      {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
+                      {/* <span>{chat.name}</span> */}
                     </div>
-                    <p className="truncate dark:text-white">
-                      {chatroom_c.participants.length > 2
-                        ? chatroom_c.participants
-                            .map(({ name }) => name)
-                            .join(", ")
-                        : chatroom_c.participants.filter(
-                            ({ id }) => id !== user.uid
-                          )[0].name}
-                    </p>
-                    {/* <div key={chatroom.id} className={`flex items-center p-2 cursor-pointer ${chat.uid === search_params.get("to") && "bg-blue-100"}`} onClick={() => { navigation("/dms?to=" + chat.uid); }}> */}
-                    {/* <img src={chat.avatar} alt={`Foto de ${chat.name}`} className="w-12 h-12 rounded-full mr-2" /> */}
-                    {/* <span>{chat.name}</span> */}
-                  </div>
-                ))}
+                  ) : (
+                    <></>
+                  )
+                )}
               {/* <Suggestions /> */}
             </div>
           </aside>

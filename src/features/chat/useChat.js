@@ -79,7 +79,7 @@ const UseChat = () => {
         {}
       );
       if (response.status === 200) {
-        setChatroomList(response.data);
+        setChatroomList([...response.data, ...response.data]);
         // console.log('Opening ' + response.data.length + ' chatroom listeners...')
         response.data.forEach(({ id }) => {
           // openChatroomListener(id);
@@ -400,6 +400,7 @@ const UseChat = () => {
               id: change.doc.id,
               ...change.doc.data(),
             };
+            console.log(change.doc.id);
             // const updated_chatrooms_ids = updated_chatrooms.map(({ id }) => (id))
             const updated_user_chatrooms = chatroom_list_ref.current.filter(
               ({ id }) => id.indexOf(change.doc.id) !== -1
@@ -425,6 +426,7 @@ const UseChat = () => {
                 )
                 .then((response) => {
                   if (response.status === 200) {
+                    console.log("---------------------------");
                     console.log(response.data);
                     setChatroomList([
                       response.data,

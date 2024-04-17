@@ -192,11 +192,12 @@ export const ProfilePage = ({ name, avatar }) => {
                   <span className="flex items-center">
                     <p className="flex text-md font-semibold text-black dark:text-white p-0 lg:text-2xl md:text-2xl sm:text-2xl mr-5">
                       {user_name}{" "}
-                      {user_subscriptions.indexOf("quicker") !== -1 && (
-                        <span className="w-4 ml-1">
-                          <img src="quicker_badge.png" />
-                        </span>
-                      )}
+                      {user_subscriptions !== undefined &&
+                        user_subscriptions.indexOf("quicker") !== -1 && (
+                          <span className="w-4 ml-1">
+                            <img src="quicker_badge.png" />
+                          </span>
+                        )}
                     </p>
                     <div>
                       {follows_you &&
