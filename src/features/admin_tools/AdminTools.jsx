@@ -90,7 +90,7 @@ export const AdminTools = () => {
           </div>
           <div
             className="
-            md:border-x dark:border-0 border-light-grey-border
+            md:border-x border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8 
 						md:px-2
             box-content
 						w-[580px] max-w-[580px] md:min-w-[580px]
@@ -103,8 +103,8 @@ export const AdminTools = () => {
           "
             >
               {/* <div className='hidden md:block h-screen w-auto bg-gray-400 dark:bg-quick7 p-4 grid grid-cols-1 gap-3 lg:grid-cols-1 lg:p-10 md:grid-cols-1 md:p-10 sm:grid-cols-1 sm:p-10 '> */}
-              <div className="dark:bg-quick4 h-full border-x border-light-gray-border p-2">
-                <div className="flex justify-between border-b-2 border-dashed border-light-gray-border font-semibold w-full pb-5 text-xl text-black dark:text-white">
+              <div className="dark:bg-quick4 h-full border-x border-light-grey-border dark:border-light-gray-8 p-2">
+                <div className="flex justify-between border-b-2 border-dashed border-light-grey-border dark:border-light-gray-8 font-semibold w-full pb-5 text-xl text-black dark:text-white">
                   <p>Flagged & inactive posts</p>
                   <button
                     onClick={() => {
@@ -133,7 +133,7 @@ export const AdminTools = () => {
                             !post.active
                               ? "bg-light-error-0 even:bg-light-error-1 hover:bg-light-error-3"
                               : "bg-light-gray-0 even:bg-light-gray-1 hover:bg-light-gray-3"
-                          } p-2 border-b border-light-gray-border-0`}
+                          } p-2 border-b border-light-grey-border dark:border-light-gray-8-0`}
                           onClick={() => {
                             setSelectedPost(post);
                           }}

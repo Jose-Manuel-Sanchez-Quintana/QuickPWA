@@ -12,7 +12,7 @@ export const LogInForm = () => {
     useLoginForm();
   const [email_error, setEmailError] = useState(null);
   const [password_error, setPasswordError] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   //variables para la validacion de correos
   const validation_email = () => {
     if (email === "") {
@@ -33,10 +33,10 @@ export const LogInForm = () => {
       setPasswordError("Required field");
       return;
     }
-    if (password < 6) {
-      setPasswordError("Password must be at least 6 characters long");
-      return;
-    }
+    // if (password < 6) {
+    //   setPasswordError("Password must be at least 6 characters long");
+    //   return;
+    // }
     setPasswordError(null);
   };
   return (
@@ -74,7 +74,7 @@ export const LogInForm = () => {
                 }}
               />
               {password_error !== null ? (
-                <label className="text-red-800">{password_error}</label>
+                <label className="text-red-700">{password_error}</label>
               ) : (
                 ""
               )}
@@ -105,16 +105,21 @@ export const LogInForm = () => {
             </div>
           </button>
 
-          {status === "auth/invalid-login-credentials" ? (
-            <label className="text-red-800 flex items-center justify-center">
-              Invalid credentials
+          {status === "auth/invalid-credential" ? (
+            <label className="text-red-700 flex items-center justify-center">
+              Wrong username or password
             </label>
           ) : (
             ""
           )}
           <h5 className="text-center">
-            <p onClick={() => { navigate('/signup') }} className="text-white text-decoration: underline hover:text-purple-400 cursor-pointer">
-              {'Don\'t have an account? Sign up!'}
+            <p
+              onClick={() => {
+                navigate("/signup");
+              }}
+              className="text-white text-decoration: underline hover:text-purple-400 cursor-pointer"
+            >
+              {"Don't have an account? Sign up!"}
             </p>
           </h5>
         </div>

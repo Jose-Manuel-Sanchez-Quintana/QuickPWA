@@ -10,7 +10,7 @@ const useLoginForm = () => {
   const { user, setUser } = useContext(UserContext);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const logIn = (email, password) => {
     setLoading(true);
@@ -21,13 +21,13 @@ const useLoginForm = () => {
           name: userCredential.user.displayName,
           email: userCredential.user.email,
         });
-        setLoading(false)
-        navigate('/')
+        setLoading(false);
+        navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode);
+        // console.log(error.code);
         setStatus(error.code);
         setLoading(false);
       });

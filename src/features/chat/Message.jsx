@@ -20,7 +20,7 @@ const Message = ({ index, content, by_user }) => {
             >
               <img
                 src={file.url}
-                className="object-cover h-full w-full max-w-xs"
+                className="object-cover h-full w-full max-w-xs bg-black"
               />
             </div>
           ) : (

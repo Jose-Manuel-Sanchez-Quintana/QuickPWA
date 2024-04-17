@@ -24,7 +24,7 @@ export const SignUpForm = () => {
   const [email_error, setEmailError] = useState(null);
   const [password_error, setPasswordError] = useState(null);
   const [name_error, setNameError] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //variables para la validacion de correos
   const validation_email = () => {
@@ -46,7 +46,7 @@ export const SignUpForm = () => {
       setPasswordError("Required field");
       return;
     }
-    if (password < 6) {
+    if (password.length < 6) {
       setPasswordError("Password must be at least 6 characters long");
       return;
     }
@@ -58,6 +58,7 @@ export const SignUpForm = () => {
       setNameError("Required field");
       return;
     }
+
     setNameError(null);
   };
 
@@ -110,7 +111,7 @@ export const SignUpForm = () => {
                 }}
               />
               {password_error !== null ? (
-                <label className="text-red-800">{password_error}</label>
+                <label className="text-red-700">{password_error}</label>
               ) : (
                 ""
               )}
@@ -146,14 +147,19 @@ export const SignUpForm = () => {
             </div>
           </button>
           {/*{status === "auth/invalid-login-credentials" ? (
-            <label className="text-red-800 flex items-center justify-center">
+            <label className="text-red-700 flex items-center justify-center">
               Invalid credentials
             </label>
           ) : (
             ""
           )}*/}
           <h5 className="text-center">
-            <p onClick={() => { navigate('/login') }} className="text-white text-decoration: underline hover:text-purple-400 cursor-pointer">
+            <p
+              onClick={() => {
+                navigate("/login");
+              }}
+              className="text-white text-decoration: underline hover:text-purple-400 cursor-pointer"
+            >
               Already have an account? Log in
             </p>
           </h5>
