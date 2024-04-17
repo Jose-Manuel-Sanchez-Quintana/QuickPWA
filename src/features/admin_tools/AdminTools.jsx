@@ -132,13 +132,13 @@ export const AdminTools = () => {
                           className={`cursor-pointer ${
                             !post.active
                               ? "bg-light-error-0 even:bg-light-error-1 hover:bg-light-error-3"
-                              : "bg-light-gray-0 even:bg-light-gray-1 hover:bg-light-gray-3"
-                          } p-2 border-b border-light-grey-border dark:border-light-gray-8-0`}
+                              : "bg-light-gray-0 dark:bg-quick4 even:bg-light-gray-1 dark:even:bg-quick45 hover:bg-light-gray-3 dark:hover:bg-quick46"
+                          } p-2 border-b border-light-grey-border dark:border-light-gray-8-0 dark:text-white`}
                           onClick={() => {
                             setSelectedPost(post);
                           }}
                         >
-                          <div className="flex justify-between text-sm text-light-gray-text-0">
+                          <div className="flex justify-between text-sm text-light-gray-text-0 dark:text-light-gray-text-4">
                             <span className="flex gap-x-1">
                               <p>{post.id}</p>
                               <p>-</p>
@@ -243,7 +243,7 @@ export const AdminTools = () => {
                               )}
                             </p>
                           </div>
-                          <div className="text-sm text-light-gray-text-0">
+                          <div className="text-sm text-light-gray-text-0 dark:text-light-gray-text-4">
                             <p>
                               {new Date(post.date._seconds * 1000).toString()}
                             </p>
