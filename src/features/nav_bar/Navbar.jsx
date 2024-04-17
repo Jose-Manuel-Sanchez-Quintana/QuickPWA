@@ -158,7 +158,7 @@ export const NavBar = ({ tab_group }) => {
             >
               <img
                 src={user.avatar}
-                className="rounded w-10 h-10 bg-black object-contain"
+                className="rounded w-10 h-10 bg-black object-cover"
                 alt=""
               />
             </button>
@@ -169,8 +169,13 @@ export const NavBar = ({ tab_group }) => {
               }}
             >
               <img
+                src="./quick_combo_bueno.png"
+                className="hidden dark:xl:block max-w-[170px]"
+                alt=""
+              />
+              <img
                 src="./quick_combo.png"
-                className="hidden xl:block max-w-[170px]"
+                className="hidden xl:block xl:dark:hidden max-w-[170px]"
                 alt=""
               />
               <img
@@ -199,7 +204,7 @@ export const NavBar = ({ tab_group }) => {
           <div className="flex items-center justify-center p-2 md:hidden grow dark:bg-quick4">
             {search_visible ? (
               <input
-                className="bg-light-gray-2 rounded-full w-full h-full px-4 focus:outline-none dark:bg-quick4"
+                className="bg-light-gray-2 rounded-full w-full h-full px-4 focus:outline-none dark:bg-quick5"
                 type="text"
                 value={search_value}
                 onChange={(e) => {
@@ -223,7 +228,10 @@ export const NavBar = ({ tab_group }) => {
           <div className="flex relative justify-end items-center shrink-0 md:w-[300px] md:min-w-[300px] md:max-w-[300px] dark:bg-quick4">
             <span className="relative w-full" ref={search_area_ref}>
               <label className="hidden md:flex items-center bg-light-gray-2 rounded h-9 px-3 dark:bg-quick5">
-                <FaMagnifyingGlass color="black" className="mr-2 dark:fill-white" />
+                <FaMagnifyingGlass
+                  color="black"
+                  className="mr-2 dark:fill-white"
+                />
                 <input
                   value={search_value}
                   onFocus={() => {
@@ -242,7 +250,9 @@ export const NavBar = ({ tab_group }) => {
                   {/* <div className="p-2">
                     Posts containing <i>{search_value}</i>
                   </div> */}
-                  <div className="p-2 bg-light-gray-2 dark:bg-quick4">People</div>
+                  <div className="p-2 bg-light-gray-2 dark:bg-quick4">
+                    People
+                  </div>
                   <ul>
                     {search_results.map((user) => {
                       return (
@@ -254,6 +264,7 @@ export const NavBar = ({ tab_group }) => {
                               e.preventDefault();
                             }}
                             onClick={() => {
+                              setSearchActive(false);
                               navigate("/profile?user=" + user.id);
                             }}
                           >
@@ -285,7 +296,10 @@ export const NavBar = ({ tab_group }) => {
               {search_visible ? (
                 <RxCross2 color="black" className="w-6 h-6 dark:fill-white" />
               ) : (
-                <FaMagnifyingGlass color="black" className="w-6 h-6 dark:fill-white" />
+                <FaMagnifyingGlass
+                  color="black"
+                  className="w-6 h-6 dark:fill-white"
+                />
               )}
             </div>
 
@@ -330,6 +344,7 @@ export const NavBar = ({ tab_group }) => {
                         e.preventDefault();
                       }}
                       onClick={() => {
+                        setSearchVisible(false);
                         navigate("/profile?user=" + user.id);
                       }}
                     >

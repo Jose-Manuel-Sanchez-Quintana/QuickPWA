@@ -37,7 +37,7 @@ const NavDrawer = ({ open, setOpen }) => {
         <div className="mb-2 items-center justify-between p-4">
           <div className="flex flex-col items-start">
             <img
-              className="rounded-md cursor-pointer w-20 aspect-square"
+              className="rounded-md cursor-pointer w-20 aspect-square object-cover"
               src={user.avatar}
               onClick={() => {
                 navigate("/profile?user=" + user.uid);
@@ -52,11 +52,12 @@ const NavDrawer = ({ open, setOpen }) => {
           </div>
           <Typography variant="h5" className="flex" color="blue-gray">
             {user.name}
-            {user.subscriptions.indexOf("quicker") !== -1 && (
-              <span className="w-4 ml-1">
-                <img src="quicker_badge.png" />
-              </span>
-            )}
+            {user.subscriptions !== undefined &&
+              user.subscriptions.indexOf("quicker") !== -1 && (
+                <span className="w-4 ml-1">
+                  <img src="quicker_badge.png" />
+                </span>
+              )}
           </Typography>
         </div>
         <List>

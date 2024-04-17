@@ -238,7 +238,7 @@ export const Feed = ({ posts, setPosts }) => {
             overflow-hidden
             col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2  
             bg-light-white dark:bg-quick4
-            border-x border-light-gray-border
+            border-x border-light-grey-border dark:border-light-gray-8
             text-black text-3xl
             divide-y divide-light-gray-border
 						${posts === null && "h-full"}

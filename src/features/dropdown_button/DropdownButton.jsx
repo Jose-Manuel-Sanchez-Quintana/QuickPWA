@@ -25,7 +25,7 @@ const DropdownButton = ({ actions }) => {
   return (
     <span className="relative">
       <div
-        className="p-1 bg-white hover:bg-light-gray-1 border border-light-gray-border rounded-sm"
+        className="p-1 bg-white hover:bg-light-gray-1 border border-light-grey-border dark:border-light-gray-8 rounded-sm"
         onClick={(e) => {
           setCollapsed(false);
           e.stopPropagation();
@@ -36,7 +36,7 @@ const DropdownButton = ({ actions }) => {
       {!collapsed && (
         <div
           ref={safe_area_ref}
-          className="absolute z-10 bg-white border border-light-gray-border rounded-sm"
+          className="absolute z-10 bg-white border border-light-grey-border dark:border-light-gray-8 rounded-sm"
         >
           <ul className="min-w-32 divide-y divide-solid">
             {actions &&

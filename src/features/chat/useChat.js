@@ -22,6 +22,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import useState from "react-usestateref";
+import useStateRef from "react-usestateref";
 
 const UseChat = () => {
   const [new_messages, setNewMessages] = useState([]);
@@ -34,6 +35,8 @@ const UseChat = () => {
   const { user } = useContext(UserContext);
   const [search_params] = useSearchParams();
   const [new_recipient, setNewRecipient] = useState(null);
+  const [sending_message, setSendingMessage, sending_message_ref] =
+    useStateRef(false);
   const messages_end_ref = useRef(null);
   const navigate = useNavigate();
 
@@ -215,6 +218,7 @@ const UseChat = () => {
               }
             )
             .then(() => {
+              setSendingMessage(false);
               setChatroom(response.data);
               setNewRecipient(null);
               navigate("/dms");
@@ -226,20 +230,24 @@ const UseChat = () => {
         });
     } else {
       // axios.post(`https://quick-api-9c95.onrender.com/messages/${chatroom.id}`, form_data, {
-      axios.post(
-        `https://quick-api-9c95.onrender.com/messages/${chatroom.id}`,
-        form_data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          params: {
-            from_user: user.uid,
-            // color: '#000000',
-            message: message,
-          },
-        }
-      );
+      axios
+        .post(
+          `https://quick-api-9c95.onrender.com/messages/${chatroom.id}`,
+          form_data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            params: {
+              from_user: user.uid,
+              // color: '#000000',
+              message: message,
+            },
+          }
+        )
+        .then(() => {
+          setSendingMessage(false);
+        });
     }
     // try {
     //     const self_ref = await doc(db, "users", user.uid);
@@ -518,12 +526,14 @@ const UseChat = () => {
     messages,
     sendMessage,
     chat_list,
+    sending_message_ref,
     chat_name,
     chatroom_list,
     chatroom,
     new_recipient,
     setChatName,
     setChatroom,
+    setSendingMessage,
     getChatName,
     getMessages,
     getChatrooms,
