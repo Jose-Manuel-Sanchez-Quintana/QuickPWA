@@ -104,7 +104,7 @@ export const ProfilePage = ({ name, avatar }) => {
           w-[580px] max-w-[580px] md:min-w-[580px]
           md:px-2
           text-xl 
-          md:border-x dark:md:border-0 border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8 
+          md:border-x border-light-grey-border dark:border-light-gray-8 dark:border-light-gray-8 
           box-content
         "
           >
